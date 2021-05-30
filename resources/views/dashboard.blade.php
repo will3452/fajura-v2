@@ -7,9 +7,9 @@
                 @livewire('date-card')
             </div>
             <div class="column is-8">
-                <div class="columns">
+                <div class="columns is-multiline">
                     @can('browse services')
-                        <div class="column">
+                        <div class="column is-6">
                             <div class="box">
                                 <div class="level">
                                     <div class="level-left">
@@ -32,7 +32,7 @@
                         </div>
                     @endcan
                     @can('read accounts')
-                        <div class="column">
+                        <div class="column is-6">
                             <div class="box">
                                 <div class="level">
                                     <div class="level-left">
@@ -54,10 +54,8 @@
                             </div>
                         </div>
                     @endcan
-                </div>
-                <div class="columns">
                     @can('add appointments', Model::class)
-                        <div class="column">
+                        <div class="column is-6">
                             <div class="box">
                                 <div class="level">
                                     <div class="level-left">
@@ -79,9 +77,31 @@
                             </div>
                         </div>
                     @endcan
-                   
+                   @can('edit appointments', Model::class)
+                        <div class="column is-6">
+                            <div class="box">
+                                <div class="level">
+                                    <div class="level-left">
+                                        <div class="level-item">
+                                            <i data-feather="calendar"></i>
+                                        </div>
+                                        <div class="level-item">
+                                        Appointment
+                                        </div>
+                                    </div>
+                                    <div class="level-right">
+                                        <div class="level-item">
+                                            <a href="{{ route('dentist-appointments.index') }}" class="button is-info is-small is-rounded">
+                                                view
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endcan
                     @can('browse blog')
-                        <div class="column">
+                        <div class="column is-6">
                             <div class="box">
                                 <div class="level">
                                     <div class="level-left">
@@ -103,10 +123,9 @@
                             </div>
                         </div>
                     @endcan
-                </div>
-                <div class="columns">
+
                     @can('edit schedules', Model::class)
-                        <div class="column">
+                        <div class="column is-6">
                             <div class="box">
                                 <div class="level">
                                     <div class="level-left">
@@ -130,7 +149,7 @@
                     @endcan
                    
                     @can('edit accounts')
-                        <div class="column">
+                        <div class="column is-6">
                             <div class="box">
                                 <div class="level">
                                     <div class="level-left">
@@ -152,9 +171,7 @@
                             </div>
                         </div>
                     @endcan
-                </div>
-                <div class="columns">
-                    <div class="column">
+                    <div class="column is-6">
                         <div class="box">
                             <div class="level">
                                 <div class="level-left">
@@ -176,7 +193,7 @@
                         </div>
                     </div>
                    
-                    <div class="column">
+                    <div class="column is-6">
                         <div class="box">
                             <div class="level">
                                 <div class="level-left">

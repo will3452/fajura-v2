@@ -6,6 +6,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\SchedulesController;
 use App\Http\Controllers\getDentistController;
 use App\Http\Controllers\AppointmentController;
+use App\Http\Controllers\DentistAppointmentController;
 use App\Http\Controllers\AdminPermissionUpdateController;
 
 /*
@@ -32,4 +33,5 @@ Route::post('admin/permission/update/{role}', AdminPermissionUpdateController::c
 Route::resource('services', ServiceController::class);
 Route::resource('schedules', SchedulesController::class);
 Route::resource('appointments', AppointmentController::class);
+Route::resource('dentist-appointments', DentistAppointmentController::class);
 
