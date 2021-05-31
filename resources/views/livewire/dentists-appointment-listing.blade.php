@@ -22,7 +22,8 @@
                 </div>
             </div>
             <div class="level-right">
-                <a href="#" class="button is-small is-success is-rounded">check</a>
+                <a href="{{ route('dental-records.show', $meeting->user) }}" class="button is-small is-success is-rounded mx-2">Dental Records</a>
+                <a href="#" class="button is-small is-info is-rounded mx-2">Medical Records</a>
             </div>
         </div>
     @empty 

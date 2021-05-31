@@ -46,6 +46,10 @@ class User extends Authenticatable
         return $this->hasOne(Profile::class);
     }
 
+    public function getFirstNameAttribute(){
+        return explode(' ', $this->name)[0];
+    }
+
     //schedule time
     public function times(){
         return $this->hasMany(Time::class);

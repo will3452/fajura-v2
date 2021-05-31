@@ -6,6 +6,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\SchedulesController;
 use App\Http\Controllers\getDentistController;
 use App\Http\Controllers\AppointmentController;
+use App\Http\Controllers\DentalRecordsController;
 use App\Http\Controllers\DentistAppointmentController;
 use App\Http\Controllers\AdminPermissionUpdateController;
 
@@ -34,4 +35,10 @@ Route::resource('services', ServiceController::class);
 Route::resource('schedules', SchedulesController::class);
 Route::resource('appointments', AppointmentController::class);
 Route::resource('dentist-appointments', DentistAppointmentController::class);
+Route::resource('dental-records', DentalRecordsController::class);
+
+
+// testing
+
+Route::view('chart', 'chart');
 
