@@ -23,8 +23,8 @@ class AdminSeeder extends Seeder
         $super = $this->user->create([
             'name'=>'Administrator',
             'is_admin'=>true, 
-            'email'=>'super@user.com',
-            'password'=>Hash::make('password')
+            'email'=>'admin@fajura.site',
+            'password'=>Hash::make('#include19')
         ]);
 
         $super->profile()->create([
