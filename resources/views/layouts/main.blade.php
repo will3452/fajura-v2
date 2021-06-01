@@ -24,6 +24,9 @@
     {{-- <link rel="stylesheet" href="/css/center-simple.css"> --}}
     {{-- <link rel="stylesheet" href="/css/big-counter.css"> --}}
     <link rel="stylesheet" href="/css/flash.css">
+
+    @stack('styles')
+
 </head>
 <body>
     @include('sweetalert::alert')

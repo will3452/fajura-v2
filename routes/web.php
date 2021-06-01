@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TeethController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\SchedulesController;
@@ -36,6 +37,7 @@ Route::resource('schedules', SchedulesController::class);
 Route::resource('appointments', AppointmentController::class);
 Route::resource('dentist-appointments', DentistAppointmentController::class);
 Route::resource('dental-records', DentalRecordsController::class);
+Route::resource('teeth', TeethController::class);
 
 
 // testing

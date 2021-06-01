@@ -74,4 +74,12 @@ class User extends Authenticatable
     public function meetings(){
         return $this->hasMany(Appointment::class, 'dentist_id');
     }
+    
+    public function patientDentalRecords(){
+        return $this->hasMany(DentalRecord::class, 'dentist_id');
+    }
+
+    public function dentalRecords(){
+        return $this->hasMany(DentalRecord::class);
+    }
 }

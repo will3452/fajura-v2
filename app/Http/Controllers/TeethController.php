@@ -6,9 +6,8 @@ use App\Models\User;
 use App\Models\Tooth;
 use Illuminate\Http\Request;
 
-class DentalRecordsController extends Controller
+class TeethController extends Controller
 {
-
     /**
      * Display a listing of the resource.
      *
@@ -16,6 +15,7 @@ class DentalRecordsController extends Controller
      */
     public function index()
     {
+        //
     }
 
     /**
@@ -36,22 +36,7 @@ class DentalRecordsController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'treatments'=>'required',
-            'cost'=>'required'
-        ]);
-
-        foreach($request->teeth as $toothId){
-            auth()->user()->patientDentalRecords()->create([
-                'tooth_id'=>$toothId,
-                'user_id'=>$request->user_id,
-                'treatments'=>$request->treatments,
-                'cost'=>$request->cost
-            ]);
-        }
-
-        toast('success');
-        return back();
+        //
     }
 
     /**
@@ -62,10 +47,18 @@ class DentalRecordsController extends Controller
      */
     public function show($id)
     {
-        $user = User::find($id);
-        $lower = Tooth::LOWER();
-        $upper = Tooth::UPPER();
-        return view('dental_records.show', compact('user', 'lower', 'upper'));
+        $tooth = Tooth::findOrFail($id);
+        request()->validate([
+            'user'=>'required',
+            'valid'=>'required'
+        ]);
+
+        if(!\Hash::check(request()->user.$id, request()->valid)){
+            abort(401);
+        }
+        $user = User::findOrFail(request()->user);
+        $records = $user->dentalRecords()->where('tooth_id', $id)->latest()->get();
+        return view('teeth_records.index', compact('user', 'tooth', 'records'));
     }
 
     /**

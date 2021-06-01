@@ -17,8 +17,4 @@ class Tooth extends Model
     public static function LOWER(){
         return self::where('position', 'like', 'lower%')->get();
     }
-
-    public function records(){
-        return [];
-    }
 }

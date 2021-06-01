@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <div class="columns">
-            <div class="column is-4">
+            <div class="column is-4 is-hidden-mobile">
                 @livewire('date-card')
             </div>
             <div class="column is-8">
