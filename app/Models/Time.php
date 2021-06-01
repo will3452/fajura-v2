@@ -19,6 +19,10 @@ class Time extends Model
         return Day::where('id', $this->day_id)->first();
     }
 
+    public function appointments(){
+        return $this->hasMany(Appointment::class);
+    }
+
     public function makeReadable($str){
         return Carbon::parse($str)->format('h:s a');
     }

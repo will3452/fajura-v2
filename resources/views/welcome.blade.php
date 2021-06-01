@@ -19,6 +19,12 @@
             <li>
                 Dentist view appointment added
             </li>
+            <li>
+                Appointment Time slot blocking added
+            </li>
+            <li>
+                Teeth Chart added, with its description
+            </li>
         </ul>
     </div>
     <h1 class="title">Todo</h1>
@@ -29,6 +35,15 @@
             </li>
             <li>
                 Patient: 24 hours cancelled
+            </li>
+            <li>
+                Reschedule function for dentist
+            </li>
+            <li>
+                Staff options
+            </li>
+            <li>
+                Help Section
             </li>
             <li>
                 Profile settings

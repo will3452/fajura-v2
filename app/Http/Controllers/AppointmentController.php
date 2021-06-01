@@ -45,7 +45,7 @@ class AppointmentController extends Controller
             $dentist = User::findOrFail($dentist_id);
             $dayWeek = Carbon::parse($date)->dayOfWeek;
             $day = Day::where('num', $dayWeek)->first();
-            $times = $dentist->times()->where('day_id', $day->id)->get();
+            $times = $dentist->times()->where('day_id', $day->id)->whereDoesntHave('appointments')->get();
             $date_secret =Hash::make($date);
             $dentist_secret =Hash::make($dentist_id);
             

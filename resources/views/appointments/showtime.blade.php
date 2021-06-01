@@ -26,15 +26,20 @@
                     <input type="text" disabled class="input" value="{{ $date }}">
                 </div>
             </div>
-            @foreach ($times as $time)
-            <div class="field">
-                <div class="label">
-                    <input type="radio" required name="time" value="{{ $time->id }}"> 
-                    {{ $time->makeReadable($time->start) }} - {{ $time->makeReadable($time->end) }}
+            @forelse ($times as $time)
+                <div class="field">
+                    <div class="label">
+                        <input type="radio" required name="time" value="{{ $time->id }}"> 
+                        {{ $time->makeReadable($time->start) }} - {{ $time->makeReadable($time->end) }}
+                    </div>
                 </div>
-            </div>
-            @endforeach
-            <button class="button is-small is-success is-rounded">Submit</button>
+                <button class="button is-small is-success is-rounded">Submit</button>
+            @empty
+                <p>
+                    No Available Time Slot!
+                </p>
+            @endforelse
+            
         </form>
         
     </div>
