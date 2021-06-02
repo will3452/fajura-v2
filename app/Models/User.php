@@ -67,12 +67,20 @@ class User extends Authenticatable
         return $this->hasMany(Appointment::class);
     }
 
+    public function appointmentsToday(){
+        return $this->appointments()->where('date', today()->format('Y/m/d'))->get();
+    }
+
     public function hasUnfinishedAppointment(){
         return  $this->appointments()->where('status', 'pending')->count() ? true: false;
     }
 
     public function meetings(){
         return $this->hasMany(Appointment::class, 'dentist_id');
+    }
+
+    public function meetingsToday(){
+        return $this->meetings()->where('date', today()->format('Y/m/d'))->get();
     }
     
     public function patientDentalRecords(){

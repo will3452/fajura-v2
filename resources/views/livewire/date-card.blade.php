@@ -55,7 +55,19 @@
             </div>
         </div>
         <div class="date-card-body">
-            No upcoming meetings today
+            @if (auth()->user()->hasRole('dentist'))
+                @if(count(auth()->user()->meetingsToday()) == 0)
+                    No upcoming meetings today
+                @else
+                    <a href="{{route('dentist-appointments.index')}}" class="button is-rounded is-info">Show Meeting(s) Today</a>
+                @endif
+            @else
+                @if(count(auth()->user()->appointmentsToday()) == 0)
+                    No upcoming meetings today
+                @else
+                    <a href="{{ route('appointments.index') }}" class="button is-rounded is-info">Show Meeting Today</a>
+                @endif
+            @endif
         </div>
     </div>
 </div>
