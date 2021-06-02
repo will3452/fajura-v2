@@ -20,12 +20,12 @@ class DentistsAppointmentListing extends Component
     }
 
     public function __construct(){
-        $this->selected = 1;
-        $this->meetings = auth()->user()->meetings;
+        $this->selected = 2;
+        $this->meetings = auth()->user()->meetings()->where('date', today()->format('Y/m/d'))->get();
     }
     public function changeSelected($id){
         $this->selected = $id;
-        if($id == 1) $this->meetings = auth()->user()->meetings;
+        if($id == 1) $this->meetings = auth()->user()->meetings()->latest()->get();
         else if($id == 2) $this->meetings = auth()->user()->meetings()->where('date', today()->format('Y/m/d'))->get();
         else if($id == 3) $this->meetings = auth()->user()->meetings()->where('status', 'completed')->get();
         else if($id == 4) $this->meetings = auth()->user()->meetings()->where('status', 'pending')->get();

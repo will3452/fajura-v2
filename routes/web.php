@@ -32,12 +32,12 @@ Route::get('/home', [DashboardController::class, 'index'])->name('home');
 
 Route::post('admin/permission/update/{role}', AdminPermissionUpdateController::class)->name('admin.permission.update')->middleware('auth');
 
-Route::resource('services', ServiceController::class);
-Route::resource('schedules', SchedulesController::class);
-Route::resource('appointments', AppointmentController::class);
-Route::resource('dentist-appointments', DentistAppointmentController::class);
-Route::resource('dental-records', DentalRecordsController::class);
-Route::resource('teeth', TeethController::class);
+Route::resource('services', ServiceController::class)->middleware('auth');
+Route::resource('schedules', SchedulesController::class)->middleware('auth');
+Route::resource('appointments', AppointmentController::class)->middleware('auth');
+Route::resource('dentist-appointments', DentistAppointmentController::class)->middleware('auth');
+Route::resource('dental-records', DentalRecordsController::class)->middleware('auth');
+Route::resource('teeth', TeethController::class)->middleware('auth');
 
 
 // testing

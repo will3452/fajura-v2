@@ -4,10 +4,19 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Tooth;
+use App\Models\Appointment;
 use Illuminate\Http\Request;
 
 class DentalRecordsController extends Controller
 {
+
+    public function updateAppointment(){
+        if(request()->has('appointment_id')){
+            Appointment::find(request()->appointment_id)->update([
+                'status'=>'completed'
+            ]);
+        }
+    }
 
     /**
      * Display a listing of the resource.
@@ -36,6 +45,8 @@ class DentalRecordsController extends Controller
      */
     public function store(Request $request)
     {
+        $this->updateAppointment();
+
         $request->validate([
             'treatments'=>'required',
             'cost'=>'required'
@@ -50,7 +61,7 @@ class DentalRecordsController extends Controller
             ]);
         }
 
-        toast('success');
+        toast('success', 'success');
         return back();
     }
 
@@ -62,10 +73,14 @@ class DentalRecordsController extends Controller
      */
     public function show($id)
     {
+        //get the app_id and valid 
+        $app_id = request()->appointment_id;
+        if(! request()->has('validate') || !\Hash::check($app_id, request()->validate)) abort(401);
+        
         $user = User::find($id);
         $lower = Tooth::LOWER();
         $upper = Tooth::UPPER();
-        return view('dental_records.show', compact('user', 'lower', 'upper'));
+        return view('dental_records.show', compact('user', 'lower', 'upper', 'app_id'));
     }
 
     /**

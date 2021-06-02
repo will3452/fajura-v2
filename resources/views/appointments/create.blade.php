@@ -5,6 +5,5 @@
         @livewire('appointment-create')
     </div>
 @endsection
-
 @push('scripts')
 @endpush

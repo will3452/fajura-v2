@@ -1,6 +1,7 @@
 @extends('layouts.main')
 
 @section('content')
+{{session()->get('appointment_id')}}
     <div class="container">
         <div class="columns">
             <div class="column is-4 is-hidden-mobile">

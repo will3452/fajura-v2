@@ -40,18 +40,31 @@ class AppointmentController extends Controller
     public function store(Request $request)
     {
 
-        if(!$request->has('time')){
-            $date = $request->date;
+        $date = $request->date;
             $dentist_id  = $request->dentist_id;
             $dentist = User::findOrFail($dentist_id);
             $dayWeek = Carbon::parse($date)->dayOfWeek;
             $day = Day::where('num', $dayWeek)->first();
-            $times = $dentist->times()->where('day_id', $day->id)->whereDoesntHave('appointments')->get();
+            $timesx = $dentist->times()->where('day_id', $day->id)->get();
+            $times = collect([]);
+            foreach($timesx as $t){
+                if($t->appointments()->where('date', $date)->count() == 0 || ($t->appointments()->where('status', 'cancelled')->count() != 0  && $t->appointments()->where('status', 'pending')->count() == 0)){
+                    $times->push($t);
+                }
+            }
+
+        if(!$request->has('time')){
             $date_secret =Hash::make($date);
             $dentist_secret =Hash::make($dentist_id);
             
-            return view('appointments.showtime',compact('times', 'date', 'dentist', 'date_secret', 'dentist_secret'));
+            return view('appointments.showtime',compact('times', 'date', 'dentist', 'date_secret', 'dentist_secret', 'day'));
         }else {
+            if(!$times->where('id', $request->time)->count()) {
+                $date_secret =Hash::make($date);
+                $dentist_secret =Hash::make($dentist_id);
+                toast('This slot is not available', 'error');
+                return view('appointments.showtime',compact('times', 'date', 'dentist', 'date_secret', 'dentist_secret', 'day'));
+            }
             if(Hash::check($request->dentist_id, $request->dentist_secret) && Hash::check($request->date, $request->date_secret)){
                 $time = Time::find($request->time);
                 $appointment = auth()->user()->appointments()->create([
@@ -104,13 +117,13 @@ class AppointmentController extends Controller
 
         //check if cancellable
         if(!$appointment->is_cancellable){
-            toast('You\' cancel this booked appointment', 'toast');
+            toast('You\' cancel this booked appointment', 'success');
             return back();
         }
 
         $appointment->status = 'cancelled';
         $appointment->save();
-        toast('You\'ve successfully cancelled!', 'toast');
+        toast('You\'ve successfully cancelled!', 'success');
         return back();
     }
 

@@ -6,7 +6,7 @@ use Livewire\Component;
 
 class DentistsAppointmentListingTab extends Component
 {
-    public $selected = 1;
+    public $selected = 2;
     public function changeSelected($d){
         $this->selected = $d;
         $this->emitUp('changeSelected', $d);

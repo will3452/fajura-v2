@@ -29,11 +29,13 @@
             @forelse ($times as $time)
                 <div class="field">
                     <div class="label">
-                        <input type="radio" required name="time" value="{{ $time->id }}"> 
-                        {{ $time->makeReadable($time->start) }} - {{ $time->makeReadable($time->end) }}
+                        <input type="radio" required name="time" value="{{ $time['id'] }}"> 
+                        {{ \App\Models\Time::MAKEREADBLE($time['start']) }} - {{ \App\Models\Time::MAKEREADBLE($time['end']) }}
                     </div>
                 </div>
+                @if($loop->last)
                 <button class="button is-small is-success is-rounded">Submit</button>
+                @endif
             @empty
                 <p>
                     No Available Time Slot!
@@ -44,6 +46,3 @@
         
     </div>
 @endsection
-
-@push('scripts')
-@endpush

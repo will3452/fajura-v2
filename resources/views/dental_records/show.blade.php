@@ -48,11 +48,9 @@
                 @endforeach
             </div>
         </div>
-        
         @livewire('tooth-ui-control')
-
         <div class="block">
-            @livewire('tooth-info', ['user'=>$user])
+            @livewire('tooth-info', ['user'=>$user, 'app_id'=>$app_id])
         </div>
     </div>
 @endsection

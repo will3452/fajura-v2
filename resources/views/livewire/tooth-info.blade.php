@@ -4,6 +4,7 @@
     </div>
     <form action="{{ route('dental-records.store') }}" method="POST">
         @csrf
+        <input type="hidden" value="{{$app_id}}" name="appointment_id">
         <input type="hidden" name="user_id" value="{{ $user->id }}">
        <div class="block" style="max-height:600px;overflow-y:auto">
             @foreach ($teeth as $tooth)
