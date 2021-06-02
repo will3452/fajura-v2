@@ -16,21 +16,39 @@
             </a>
         @endif
         <h3 class="title is-4" style="text-align:center;">{{ $user->first_name }}'s teeth</h3>
-        <div class="block" >
-            <div style="display: flex; justify-content:center;">
+        <div class="block is-hidden-desktop" style="overflow-x:auto">
+            <div class="is-flex ">
                 @foreach ($upper as $item)
-                    @livewire('tooth-ui', ['user'=>$user,'tooth'=>$item, 'width'=>'50px', 'height'=>'50px'], key($item->id))
+                    <div class="">
+                        @livewire('tooth-ui', ['user'=>$user, 'tooth'=>$item, 'width'=>'40px', 'height'=>'40px'])
+                    </div>
                 @endforeach
             </div>
-        </div>
-        <div class="block" >
-            <div style="display: flex; justify-content:center;">
+            <div class="is-flex">
                 @foreach ($lower as $item)
-                    @livewire('tooth-ui', ['user'=>$user,'tooth'=>$item, 'width'=>'50px', 'height'=>'50px'], key($item->id))
+                    <div class="">
+                        @livewire('tooth-ui', ['user'=>$user, 'tooth'=>$item, 'width'=>'40px', 'height'=>'40px'])
+                    </div>
                 @endforeach
             </div>
         </div>
-
+        <div class="block is-hidden-touch" style="overflow-x:auto">
+            <div class="is-flex is-justify-content-center">
+                @foreach ($upper as $item)
+                    <div class="">
+                        @livewire('tooth-ui', ['user'=>$user, 'tooth'=>$item, 'width'=>'40px', 'height'=>'40px'])
+                    </div>
+                @endforeach
+            </div>
+            <div class="is-flex is-justify-content-center">
+                @foreach ($lower as $item)
+                    <div class="">
+                        @livewire('tooth-ui', ['user'=>$user, 'tooth'=>$item, 'width'=>'40px', 'height'=>'40px'])
+                    </div>
+                @endforeach
+            </div>
+        </div>
+        
         @livewire('tooth-ui-control')
 
         <div class="block">

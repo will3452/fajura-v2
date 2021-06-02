@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Carbon\Carbon;
 use App\Models\Day;
+use App\Models\Time;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -52,9 +53,12 @@ class AppointmentController extends Controller
             return view('appointments.showtime',compact('times', 'date', 'dentist', 'date_secret', 'dentist_secret'));
         }else {
             if(Hash::check($request->dentist_id, $request->dentist_secret) && Hash::check($request->date, $request->date_secret)){
+                $time = Time::find($request->time);
                 $appointment = auth()->user()->appointments()->create([
                     'date'=>$request->date, 
                     'time_id'=>$request->time,
+                    'end_time'=>$time->end,
+                    'start_time'=>$time->start,
                     'dentist_id'=>$request->dentist_id
                     ]);
                     toast('You booked successfully!');
@@ -96,7 +100,18 @@ class AppointmentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $appointment = auth()->user()->appointments()->findOrFail($id);
+
+        //check if cancellable
+        if(!$appointment->is_cancellable){
+            toast('You\' cancel this booked appointment', 'toast');
+            return back();
+        }
+
+        $appointment->status = 'cancelled';
+        $appointment->save();
+        toast('You\'ve successfully cancelled!', 'toast');
+        return back();
     }
 
     /**

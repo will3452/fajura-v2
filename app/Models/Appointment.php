@@ -25,4 +25,8 @@ class Appointment extends Model
     public function getIsFinishedAttribute(){
         return $this->status != 'pending';
     }
+
+    public function getIsCancellableAttribute(){
+        return now()->diffInHours($this->created_at) <= 24;
+    }
 }

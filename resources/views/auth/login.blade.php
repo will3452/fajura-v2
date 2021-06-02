@@ -62,7 +62,7 @@
                 </form>
             </div>
         </div>
-        <div class="column">
+        <div class="column is-hidden-mobile">
             <img src="/illus/dentist.svg" alt="" style="display:block;margin:auto">
         </div>
     </div>

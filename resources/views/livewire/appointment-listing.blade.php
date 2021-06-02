@@ -41,9 +41,21 @@
                     </td>
                     <td>
                         @if (!$appointment->is_finished)
-                            <button class="button is-dark is-small is-rounded">
-                                Cancel
-                            </button>
+                            @if ($appointment->is_cancellable)
+                                <form action="{{route('appointments.update', $appointment)}}" method="POST">
+                                    @csrf 
+                                    @method('PUT')
+                                    <button class="button is-dark is-small is-rounded">
+                                        Cancel
+                                    </button>
+                                </form>
+                            @else
+                                <form action="#" method="POST">
+                                    <button class="button is-dark is-small is-rounded" disabled>
+                                        Cancel
+                                    </button>
+                                </form>
+                            @endif
                         @else 
                             <button class="button is-success is-small is-rounded">
                                 Details
