@@ -30,7 +30,7 @@
 </head>
 <body>
     @include('sweetalert::alert')
-    <div id="app" class="mx-3">
+    <div id="app" >
         {{-- <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
@@ -190,7 +190,7 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        <main class="py-4 mx-2">
             @yield('content')
         </main>
     </div>
