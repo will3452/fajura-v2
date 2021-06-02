@@ -25,17 +25,17 @@
             <li>
                 Teeth Chart added, with its description
             </li>
-        </ul>
-    </div>
-    <h1 class="title">Todo</h1>
-    <div class="content">
-        <ul>
             <li>
                 Dentist : Add dental Record
             </li>
             <li>
                 Patient: 24 hours cancelled
             </li>
+        </ul>
+    </div>
+    <h1 class="title">Todo</h1>
+    <div class="content">
+        <ul>
             <li>
                 Reschedule function for dentist
             </li>
