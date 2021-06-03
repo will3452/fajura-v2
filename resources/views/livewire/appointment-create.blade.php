@@ -30,7 +30,7 @@
                 const value = moment(date).format('YYYY/MM/DD')
                 input.value = value // => '1/1/2099'
             },
-            minDate:new Date(moment().add(3, 'days').format('YYYY-MM-DD')),
+            minDate:new Date(moment().add(1, 'days').format('YYYY-MM-DD')),
             maxDate:new Date(moment().add(4, 'months').format()),
             startDate:new Date(moment().add(3, 'days').format('YYYY-MM-DD')),
             disabler: date => {
