@@ -55,7 +55,7 @@
                             const resp = await fetch('/json/refprovince.json')
                             const {RECORDS: data} = await resp.json()
                             const provinces = await data.filter(d=>d.regCode == '03');
-                            document.getElementById('prov').innerHTML = `<option value='' disabled selected>Province</option>`;
+                            document.getElementById('prov').innerHTML = `<option value='' disabled selected>City</option>`;
                             this.provinces = await provinces;
                             for({provDesc} of provinces){
                                 let [first, ...str] = provDesc;
@@ -113,6 +113,7 @@
                             <div class="select is-fullwidth">
                                 <select name="prov" id="prov" x-on:change="fetchMunicipality()" required x-on:click="fetchProvinces()">
                                     <option value="" disabled selected>City</option>
+                                    <option value="" disabled>Loading...</option>
                                 </select>
                             </div>
                         </div>
@@ -120,6 +121,8 @@
                             <div class="select is-fullwidth">
                                 <select name="city" x-on:change="fetchBrgy()" id="city"required>
                                     <option value="" disabled selected>Municipality</option>
+                                    <option value="" disabled>Loading...</option>
+
                                 </select>
                             </div>
                         </div>
@@ -127,6 +130,7 @@
                             <div class="select is-fullwidth"  >
                                 <select name="brgy" id="brgy"required>
                                     <option value="" disabled selected>Barangay</option>
+                                    <option value="" disabled>Loading...</option>
                                 </select>
                             </div>
                         </div>
