@@ -112,7 +112,7 @@
                         <div class="column">
                             <div class="select is-fullwidth">
                                 <select name="prov" id="prov" x-on:change="fetchMunicipality()" required x-on:click="fetchProvinces()">
-                                    <option value="" disabled selected>Province</option>
+                                    <option value="" disabled selected>City</option>
                                 </select>
                             </div>
                         </div>

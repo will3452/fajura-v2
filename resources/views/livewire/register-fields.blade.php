@@ -21,7 +21,7 @@
         let password = document.getElementById('password').value;
         let cpassword = document.getElementById('password-confirm').value;
     
-        this.passwordIsEmail = (password.includes(email) || password.includes(firstname) || password.includes(lastname));
+        this.passwordIsEmail = password.includes(email) && email.length > 0
         if(!this.passwordIsEmail && password.length && firstname.length && lastname.length && cpassword == password){
             document.getElementById('submitButton').disabled = false;
         }else {
@@ -44,6 +44,8 @@
 
     <div class="field" >
         <label for="password" class="label">{{ __('Password') }}</label>
+        
+        <small wire:loading target="updatePassword">Please wait. Your password has been validating...</small>
         <div class="field has-addons">
             <div class="control is-expanded">
                 <input id="password" x-on:input="checkPasswordIsEmail()" value="{{ old('email') }}" wire:ignore wire:model="password" x-on:change="checkpassword()" type="password" class="input @error('password') is-danger @enderror" name="password" required autocomplete="new-password">
@@ -55,6 +57,19 @@
                 <span class="help is-danger" x-show="passwordIsEmail" role="alert">
                     Your email or name should not included to your password.
                 </span>
+                <div class="content">
+                    <ul>
+                        <li>
+                            <small>The password must have atlease special characters.</small>
+                        </li>
+                        <li>
+                            <small>The password must have atlease special Numeric characters.</small>
+                        </li>
+                        <li>
+                            <small>The password must be at least 8 characters.</small>
+                        </li>
+                    </ul>
+                </div>
             </div>
             <p class="control">
                 <a class="button" wire:ignore x-on:click="updatePasswordVisible1()">
