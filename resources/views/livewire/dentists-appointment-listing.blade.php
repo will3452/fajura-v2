@@ -9,7 +9,7 @@
     @forelse ($meetings as $meeting)
         <div class="box mt-2 columns">
             <div class="column is-2" style="display:flex; justify-content:center;">
-                <img src="https://picsum.photos/200" alt=""  width="100" style="border-radius: 50%" height="100">
+                <img src="{{ $meeting->user->profile->picture ? $meeting->user->public_picture : "https://ui-avatars.com/api/?size=128&background=random&name=".$meeting->user->name }}" alt=""  width="100" style="border-radius: 50%" height="100">
             </div>
             <div style="text-align:center" class="column is-7 has-text-left-desktop">
                 

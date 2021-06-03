@@ -153,7 +153,7 @@
                         <div class="navbar-item has-dropdown is-hoverable ">
                             <a class="navbar-link has-icon">
                                 <div class="icon mr-2">
-                                    <img style="border-radius: 50%" src="https://ui-avatars.com/api/?size=128&background=random&name={{ auth()->user()->name }}" alt="">
+                                    <img style="border-radius: 50%" src="{{ auth()->user()->profile->picture ? auth()->user()->public_picture : "https://ui-avatars.com/api/?size=128&background=random&name=".auth()->user()->name  }}" alt="">
                                 </div>
                                 <div>
                                     {{ auth()->user()->name }}
