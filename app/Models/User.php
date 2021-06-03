@@ -90,4 +90,9 @@ class User extends Authenticatable
     public function dentalRecords(){
         return $this->hasMany(DentalRecord::class);
     }
+
+    public function getPublicPictureAttribute(){
+        $path = explode('/', $this->profile->picture);
+        return '/storage/profile/'.end($path);
+    }
 }

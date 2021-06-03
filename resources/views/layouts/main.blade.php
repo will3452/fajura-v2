@@ -164,7 +164,7 @@
                               {{-- <a class="navbar-item">
                                 text here
                               </a> --}}
-                              <a class="navbar-item">
+                              <a class="navbar-item" href="{{route('profile.show', auth()->user()->id)}}">
                                 <i data-feather="user" class="mr-1"></i> 
                                 Profile
                               </a>

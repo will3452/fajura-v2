@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TeethController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\SchedulesController;
@@ -9,6 +10,7 @@ use App\Http\Controllers\getDentistController;
 use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\DentalRecordsController;
 use App\Http\Controllers\DentistAppointmentController;
+use App\Http\Controllers\ProfilePictureUpdateController;
 use App\Http\Controllers\AdminPermissionUpdateController;
 
 /*
@@ -38,7 +40,8 @@ Route::resource('appointments', AppointmentController::class)->middleware('auth'
 Route::resource('dentist-appointments', DentistAppointmentController::class)->middleware('auth');
 Route::resource('dental-records', DentalRecordsController::class)->middleware('auth');
 Route::resource('teeth', TeethController::class)->middleware('auth');
-
+Route::resource('profile', ProfileController::class)->middleware('auth');
+Route::post('profile-picture/{id}', ProfilePictureUpdateController::class);
 
 // testing
 
