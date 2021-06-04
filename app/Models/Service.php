@@ -21,4 +21,12 @@ class Service extends Model
     public function getUniqIdAttribute(){
         return 'FAJ'.Str::padleft($this->id, 5, '0');
     }
+
+    public function feedbacks(){
+        return $this->hasMany(Feedback::class);
+    }
+
+    public function ratings(){
+        return \number_format($this->feedbacks()->average('stars'), 1);
+    }
 }

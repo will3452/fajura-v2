@@ -91,6 +91,10 @@ class User extends Authenticatable
         return $this->hasMany(DentalRecord::class);
     }
 
+    public function feedbacks(){
+        return $this->hasMany(Feedback::class);
+    }
+
     public function getPublicPictureAttribute(){
         $path = explode('/', $this->profile->picture);
         return '/storage/profile/'.end($path);

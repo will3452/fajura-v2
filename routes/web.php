@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TeethController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\SchedulesController;
 use App\Http\Controllers\getDentistController;
@@ -42,6 +43,7 @@ Route::resource('dental-records', DentalRecordsController::class)->middleware('a
 Route::resource('teeth', TeethController::class)->middleware('auth');
 Route::resource('profile', ProfileController::class)->middleware('auth');
 Route::post('profile-picture/{id}', ProfilePictureUpdateController::class);
+Route::resource('feedbacks', FeedbackController::class);
 
 // testing
 
