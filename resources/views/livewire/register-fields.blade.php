@@ -48,7 +48,7 @@
         <small wire:loading target="updatePassword">Please wait. Your password has been validating...</small>
         <div class="field has-addons">
             <div class="control is-expanded">
-                <input id="password" x-on:input="checkPasswordIsEmail()" value="{{ old('email') }}" wire:ignore wire:model="password" x-on:change="checkpassword()" type="password" class="input @error('password') is-danger @enderror" name="password" required autocomplete="new-password">
+                <input id="password" x-on:input="checkPasswordIsEmail()" value="{{ old('email') }}" wire:ignore wire:model="password" x-on:input="checkpassword()" type="password" class="input @error('password') is-danger @enderror" name="password" required autocomplete="new-password">
                 @error('password')
                     <span class="help is-danger" role="alert">
                         {{ $message }}
@@ -84,7 +84,7 @@
         <label for="password" class="label">{{ __('Confirm Password') }}</label>
         <div class="field has-addons">
             <div class="control is-expanded">
-                <input x-on:input="checkPasswordIsEmail()" x-on:change="checkpassword()" id="password-confirm" wire:ignore type="password" class="input @error('password') is-danger @enderror" name="password_confirmation" required autocomplete="new-password">
+                <input x-on:input="checkPasswordIsEmail()" x-on:input="checkpassword()" id="password-confirm" wire:ignore type="password" class="input @error('password') is-danger @enderror" name="password_confirmation" required autocomplete="new-password">
                 @error('password_confirmation')
                     <span class="help is-danger" role="alert">
                         {{ $message }}
