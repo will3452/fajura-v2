@@ -75,7 +75,7 @@ class DentalRecordsController extends Controller
     {
         //get the app_id and valid 
         $app_id = request()->appointment_id;
-        if(! request()->has('validate') || !\Hash::check($app_id, request()->validate)) abort(401);
+        if(! request()->has('validate') && !\Hash::check($app_id, request()->validate)) abort(401);
         
         $user = User::find($id);
         $lower = Tooth::LOWER();

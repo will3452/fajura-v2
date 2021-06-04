@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         @if (!auth()->user()->hasRole('dentist'))
-            <a href="{{ route('appointments.index') }}" class="button is-small is-rounded has-icon">
+            <a href="{{ route('profile.show', auth()->user()->id) }}" class="button is-small is-rounded has-icon">
                 <div class="icon">
                     <i data-feather="arrow-left"></i>
                 </div>

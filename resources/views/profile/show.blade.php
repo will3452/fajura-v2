@@ -54,6 +54,13 @@
                         {{$user->created_at->format('m/d/y')}}
                     </div>
                 </div>
+                @if (auth()->user()->id == $user->id || auth()->user()->is_admin || auth()->user()->hasRole('dentist'))
+                    <div class="block">
+                        <a href="{{ route('dental-records.show', $user->id) }}?validate={{ \Hash::make($user->id) }}" class="button is-small is-rounded is-info">
+                            My Teeth
+                        </a>
+                    </div>
+                @endif
             </div>
             <div class="column is-9">
                 <form action="">
@@ -94,7 +101,7 @@
                         </div>
                     </div>
                     <div class="field" style="text-align:right;">
-                        <a href="#" class="button is-rounded is-small has-icon">
+                        <a href="#" onclick="alert('editing information is currently not allowed!')" class="button is-rounded is-small has-icon">
                             <div class="icon">
                                 <i data-feather="edit"></i>
                             </div>
