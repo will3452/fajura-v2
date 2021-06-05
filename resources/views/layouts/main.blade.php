@@ -141,14 +141,6 @@
                                     Home
                                 </div>
                             </a>
-                            <a href="/home" class="navbar-item has-icon">
-                                <div class="icon mr-2">
-                                    <i data-feather="heart"></i>
-                                </div>
-                                <div>
-                                    Services
-                                </div>
-                            </a>
                         @endif
                         <div class="navbar-item has-dropdown is-hoverable ">
                             <a class="navbar-link has-icon">

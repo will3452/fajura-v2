@@ -57,13 +57,17 @@
                 @if (auth()->user()->id == $user->id || auth()->user()->is_admin || auth()->user()->hasRole('dentist'))
                     <div class="block">
                         <a href="{{ route('dental-records.show', $user->id) }}?validate={{ \Hash::make($user->id) }}" class="button is-small is-rounded is-info">
-                            My Teeth
+                            My Dental Chart
                         </a>
                     </div>
                 @endif
             </div>
             <div class="column is-9">
-                <form action="">
+                <form action="{{ auth()->user()->id == $user->id ? route('profile.update', $user->id) : '#' }}" method="POST">
+                    @csrf
+                    @if (auth()->user()->id == $user->id)
+                        @method('PUT')
+                    @endif
                     <div class="field">
                         <label for="" class="label">Name</label>
                         <div class="control">
@@ -77,7 +81,7 @@
                         </div>
                     </div>
                     <div class="field">
-                        <label for="" class="label">Email</label>
+                        <label for="" class="label">Phone</label>
                         <div class="control">
                             <input type="text" disabled value="+63{{$user->profile->phone}}" class="input">
                         </div>
@@ -100,16 +104,45 @@
                             <input type="text" class="input" style="text-transform:capitalize" disabled value="{{strtolower($user->profile->address)}}">
                         </div>
                     </div>
+                    @if (auth()->user()->id == $user->id)
+
+                    <div class="field">
+                        <label for="" class="label">Job title</label>
+                        <div class="control">
+                            <input type="text" class="input" style="text-transform:capitalize" name="job" value="{{ $user->profile->job }}" placeholder="eg. Programmer">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label for="" class="label">Availability <small class="is-text-7 is-text-light">( days / time )</small></label>
+                        <div class="control">
+                            <textarea name="availability" id="" class="textarea" placeholder=" Monday 9:00am - 1:00pm, Tuesday Whole Day">{{ $user->profile->availability }}</textarea>
+                        </div>
+                    </div>
                     <div class="field" style="text-align:right;">
-                        <a href="#" onclick="alert('editing information is currently not allowed!')" class="button is-rounded is-small has-icon">
+                        <button class="button is-rounded is-small has-icon">
                             <div class="icon">
-                                <i data-feather="edit"></i>
+                                <i data-feather="save"></i>
                             </div>
                             <div>
-                                Edit Information
+                                Save Changes
                             </div>
-                        </a>
+                        </button>
                     </div>
+                    @else 
+                    <div class="field">
+                        <label for="" class="label">Job title</label>
+                        <div class="control">
+                            <input type="text" class="input" style="text-transform:capitalize" disabled value="{{ $user->profile->job ?? 'N/a' }}" placeholder="eg. Programmer">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label for="" class="label">Availability <small class="is-text-7 is-text-light">( days / time )</small></label>
+                        <div class="control">
+                            <textarea id="" disabled class="textarea">{{ $user->profile->availability?? 'N/a' }}</textarea>
+                        </div>
+                    </div>
+
+                    @endif
                 </form>
             </div>
         </div>

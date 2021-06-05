@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Profile;
 use Illuminate\Http\Request;
 
 class ProfileController extends Controller
@@ -46,7 +47,7 @@ class ProfileController extends Controller
      */
     public function show($id)
     {
-        return view('profile.show', ['user'=>User::with('profile')->find($id)]);
+        return view('profile.show', ['user'=>User::with('profile')->findOrFail($id)]);
     }
 
     /**
@@ -69,7 +70,13 @@ class ProfileController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        Profile::findOrFail($id)->update([
+            'job'=>$request->job, 
+            'availability'=>$request->availability
+        ]);
+
+        toast('Profile Updated! ', 'success');
+        return back();
     }
 
     /**

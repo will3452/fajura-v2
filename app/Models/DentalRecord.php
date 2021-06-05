@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Carbon\Carbon;
+use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class DentalRecord extends Model
 {
@@ -20,5 +22,18 @@ class DentalRecord extends Model
 
     public function getCreatedDateReadableAttribute(){
         return $this->created_at->format('M d, Y');
+    }
+
+    public function getDateOfInitialSymptomsReadableAttribute(){
+        return Carbon::parse($this->date_of_initial_symptoms)->format('M d, Y');
+    }
+
+    public function getDateOfDentalWorkReadableAttribute(){
+        return Carbon::parse($this->date_of_dental_work)->format('M d, Y');
+    }
+
+
+    public function getUniqidAttribute(){
+        return 'FAJ'.Str::padLeft($this->id, 7, '0');
     }
 }

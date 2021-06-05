@@ -22,8 +22,8 @@
            </div>
             <div class="block">
                 @livewire('data-tables',[
-                    'title'=>['ID', 'TREATMENT/SERVICES', 'DENTIST', 'COST','DATE'],
-                    'key'=>['id', 'treatments', 'dentist_name', 'cost', 'created_date_readable'],
+                    'title'=>['ID','DATE OF INITIAL SYSMPTOMS' ,'SYMPTOMS', 'TREATMENT/SERVICES/DENTAL WORK','DATE OF DENTAL WORK', 'DENTIST', 'COST','DATE CREATED'],
+                    'key'=>['uniqid','date_of_initial_symptoms_readable','symptoms', 'treatments','date_of_dental_work_readable', 'dentist_name', 'cost', 'created_date_readable'],
                     'data'=>$records
                 ])
             </div>

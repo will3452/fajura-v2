@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Tooth;
 use App\Models\Appointment;
@@ -49,15 +50,24 @@ class DentalRecordsController extends Controller
 
         $request->validate([
             'treatments'=>'required',
-            'cost'=>'required'
+            'cost'=>'required',
+            'date_of_intial_symptoms'=>'',
+            'date_of_dental_work'=>'required',
+            'symptoms'=>'required'
         ]);
+
+        $groups = count($request->teeth) > 1 ? implode(',', $request->teeth) : null;
 
         foreach($request->teeth as $toothId){
             auth()->user()->patientDentalRecords()->create([
                 'tooth_id'=>$toothId,
+                'groups'=>$groups,
                 'user_id'=>$request->user_id,
                 'treatments'=>$request->treatments,
-                'cost'=>$request->cost
+                'cost'=>$request->cost,
+                'date_of_initial_symptoms'=>Carbon::parse($request->date_of_initial_symptoms),
+                'date_of_dental_work'=>Carbon::parse($request->date_of_dental_work),
+                'symptoms'=>$request->symptoms
             ]);
         }
 

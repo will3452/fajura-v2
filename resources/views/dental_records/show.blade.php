@@ -2,7 +2,8 @@
 
 @section('content')
     <div class="container">
-        @if (!auth()->user()->hasRole('dentist'))
+        <div class="is-flex is-justify-content-space-between">
+            @if (!auth()->user()->hasRole('dentist'))
             <a href="{{ route('profile.show', auth()->user()->id) }}" class="button is-small is-rounded has-icon">
                 <div class="icon">
                     <i data-feather="arrow-left"></i>
@@ -15,6 +16,10 @@
                 </div>
             </a>
         @endif
+            <a href="{{ route('profile.show', $user) }}" class="button is-small is-rounded has-icon">
+                Show Profile
+            </a>
+        </div>
         <h3 class="title is-4" style="text-align:center;">{{ $user->first_name }}'s teeth</h3>
         <div class="block is-hidden-desktop" style="overflow-x:auto">
             <div class="is-flex ">

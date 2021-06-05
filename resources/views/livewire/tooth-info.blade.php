@@ -27,10 +27,27 @@
             @endforeach
        </div>
         @if (auth()->user()->hasRole('dentist') && count($teeth))
-            <div class="box is-fixed-top">
+            <div class="box">
+                <h1 class="title">Add Treatment</h1>
                 <div class="field">
-                    <label for="" class="label">Services / Treatments</label>
+                    <label for="" class="label">Date of inital symptoms</label>
+                    <div class="control">
+                        <input type="date" class="input" name="date_of_initial_symptoms">
+                    </div>
+                </div>
+                <div class="field">
+                    <label for="" class="label">Symptoms</label>
+                    <textarea class="textarea" name="symptoms" placeholder="Aa" required></textarea>
+                </div>
+                <div class="field">
+                    <label for="" class="label">Services / Treatments / Dental Work</label>
                     <textarea class="textarea" name="treatments" placeholder="Aa" required></textarea>
+                </div>
+                <div class="field">
+                    <label for="" class="label">Date of Dental Work</label>
+                    <div class="control">
+                        <input type="date" class="input" id="d" name="date_of_dental_work">
+                    </div>
                 </div>
                 <div class="field">
                     <label for="" class="label">Cost</label>
