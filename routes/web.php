@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Luigel\Paymongo\Facades\Paymongo;
 use App\Http\Controllers\TeethController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ServiceController;
@@ -49,3 +50,25 @@ Route::resource('feedbacks', FeedbackController::class);
 
 Route::view('chart', 'chart');
 
+
+//payment
+Route::get('/payment', function(){
+        $gcashSource = Paymongo::source()->create([
+            'type' => 'gcash',
+            'amount' => 100.00,
+            'currency' => 'PHP',
+            'redirect' => [
+                'success' => url('/p/success'),
+                'failed' => url('/p/failed')
+            ]
+        ]);
+        return redirect($gcashSource->getRedirect()['checkout_url']);
+});
+
+Route::get('/p/success', function(){
+    return 'success';
+});
+
+Route::get('/p/failed', function(){
+    return 'failed';
+});
