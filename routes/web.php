@@ -54,8 +54,8 @@ Route::view('chart', 'chart');
 //payment
 Route::get('/payment', function(){
         $gcashSource = Paymongo::source()->create([
-            'type' => 'gcash',
-            'amount' => 100.00,
+            'type' => request()->type ?? 'gcash',
+            'amount' => intval(request()->amount) ?? 100.00,
             'currency' => 'PHP',
             'redirect' => [
                 'success' => url('/p/success'),
