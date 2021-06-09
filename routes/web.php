@@ -12,6 +12,7 @@ use App\Http\Controllers\getDentistController;
 use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\AdminServiceController;
 use App\Http\Controllers\DentalRecordsController;
+use App\Http\Controllers\AdminPermissionController;
 use App\Http\Controllers\DentistAppointmentController;
 use App\Http\Controllers\ProfilePictureUpdateController;
 use App\Http\Controllers\AdminPermissionUpdateController;
@@ -70,6 +71,10 @@ Route::middleware(['auth'])->prefix('admin/')->name('admin.')->group(function(){
     // service management
     Route::resource('services', AdminServiceController::class);
     // end of service manegment
+
+    // permission management
+    Route::resource('permissions', AdminPermissionController::class);
+    // end of permissions
 
 
     Route::post('permission/update/{role}', AdminPermissionUpdateController::class)->name('permission.update')->middleware('auth');

@@ -1,4 +1,4 @@
-<div class="box" x-data="{
+<div class="mb-2" x-data="{
     editable:false,
     makeObject(status, ...obj){
         return obj.map(e=>{
@@ -57,122 +57,125 @@
     }
     
 }">
-    <div class="is-flex is-justify-content-space-between is-justify-content-space-between">
-        <h3 class="title is-6">{{ strtoupper($role->name) }}</h3>
-        <div>
-            <button class="button is-small is-rounded is-dark" x-on:click="editable = true" x-show="!editable">Edit Permissions</button>
-            <button class="button is-small is-rounded is-info" x-on:click="editable = false" x-show="editable">End Edit</button>
-        </div>
-    </div>
-    <div class="block mb-2" x-show="editable">
-        <div class="columns">
-            <div class="column">
-                <h4>
-                    {{-- <input type="checkbox" x-ref="schedule{{ $role->id }}" x-on:click="checkAllSchedule"> --}}
-                     Schedules
-                </h4>
-                <ul class="">
-                    
-                    <li>
-                        <input type="checkbox" @if($role->hasPermissionTo('browse schedules')) checked @endif class="sched{{ $role->id }}" x-on:click="updatePermission({name:'browse schedules', status:$event.target.checked})"> Browse
-                    </li>
-                    <li>
-                        <input type="checkbox" @if($role->hasPermissionTo('edit schedules')) checked @endif  class="sched{{ $role->id }}" x-on:click="updatePermission({name:'edit schedules', status:$event.target.checked})"> Edit
-                    </li>
-                </ul>
-            </div>
-            <div class="column">
-                <h4>
-                    {{-- <input type="checkbox"  x-ref="service{{ $role->id }}" x-on:click="checkAllService"> --}}
-                    Services
-                </h4>
-                <ul class="">
-                    <li>
-                        <input type="checkbox"@if($role->hasPermissionTo('browse services')) checked @endif class="serv{{ $role->id }}"  x-on:click="updatePermission({name:'browse services', status:$event.target.checked})"> Browse
-                    </li>
-                    <li>
-                        <input type="checkbox"@if($role->hasPermissionTo('read services')) checked @endif class="serv{{ $role->id }}"  x-on:click="updatePermission({name:'read services', status:$event.target.checked})"> Read
-                    </li>
-                    <li>
-                        <input type="checkbox"@if($role->hasPermissionTo('edit services')) checked @endif class="serv{{ $role->id }}"  x-on:click="updatePermission({name:'edit services', status:$event.target.checked})"> Edit
-                    </li>
-                    <li>
-                        <input type="checkbox"@if($role->hasPermissionTo('add services')) checked @endif class="serv{{ $role->id }}"  x-on:click="updatePermission({name:'add services', status:$event.target.checked})"> Add
-                    </li>
-                    <li>
-                        <input type="checkbox"@if($role->hasPermissionTo('delete services')) checked @endif class="serv{{ $role->id }}"  x-on:click="updatePermission({name:'delete services', status:$event.target.checked})"> Delete
-                    </li>
-                </ul>
-            </div>
-            <div class="column">
-                <h4>
-                    {{-- <input type="checkbox" x-ref="page{{ $role->id }}" x-on:click="checkAllPages"> --}}
-                     Pages
-                </h4>
-                <ul class="">
-                    <li>
-                        <input type="checkbox" @if($role->hasPermissionTo('browse pages')) checked @endif class="page{{ $role->id }}" x-on:click="updatePermission({name:'browse pages', status:$event.target.checked})"> Browse
-                    </li>
-                    <li>
-                        <input type="checkbox" @if($role->hasPermissionTo('read pages')) checked @endif class="page{{ $role->id }}" x-on:click="updatePermission({name:'read pages', status:$event.target.checked})"> Read
-                    </li>
-                    <li>
-                        <input type="checkbox" @if($role->hasPermissionTo('edit pages')) checked @endif class="page{{ $role->id }}" x-on:click="updatePermission({name:'edit pages', status:$event.target.checked})"> Edit
-                    </li>
-                    <li>
-                        <input type="checkbox" @if($role->hasPermissionTo('add pages')) checked @endif class="page{{ $role->id }}" x-on:click="updatePermission({name:'add pages', status:$event.target.checked})"> Add
-                    </li>
-                    <li>
-                        <input type="checkbox" @if($role->hasPermissionTo('delete pages')) checked @endif class="page{{ $role->id }}" x-on:click="updatePermission({name:'delete pages', status:$event.target.checked})"> Delete
-                    </li>
-                </ul>
-            </div>
-            <div class="column">
-                <h4>
-                    {{-- <input type="checkbox" x-ref="appo{{ $role->id }}" x-on:click="checkAllAppo"> --}}
-                    Appointments
-                </h4>
-                <ul class="">
-                    <li>
-                        <input type="checkbox" @if($role->hasPermissionTo('browse appointments')) checked @endif class="appo{{ $role->id }}" x-on:click="updatePermission({name:'browse appointments', status:$event.target.checked})"> Browse
-                    </li>
-                    <li>
-                        <input type="checkbox"  @if($role->hasPermissionTo('read appointments')) checked @endif class="appo{{ $role->id }}" x-on:click="updatePermission({name:'read appointments', status:$event.target.checked})"> Read
-                    </li>
-                    <li>
-                        <input type="checkbox" @if($role->hasPermissionTo('edit appointments')) checked @endif class="appo{{ $role->id }}" x-on:click="updatePermission({name:'edit appointments', status:$event.target.checked})"> Edit
-                    </li>
-                    <li>
-                        <input type="checkbox" @if($role->hasPermissionTo('add appointments')) checked @endif class="appo{{ $role->id }}" x-on:click="updatePermission({name:'add appointments', status:$event.target.checked})"> Add
-                    </li>
-                    <li>
-                        <input type="checkbox" @if($role->hasPermissionTo('delete appointments')) checked @endif class="appo{{ $role->id }}" x-on:click="updatePermission({name:'delete appointments', status:$event.target.checked})"> Delete
-                    </li>
-                </ul>
-            </div>
-            <div class="column">
-                <h4>
-                    {{-- <input type="checkbox" x-ref="acc{{ $role->id }}" x-on:click="checkAllAcc"> --}}
-                    Accounts
-                </h4>
-                <ul class="">
-                    <li>
-                        <input type="checkbox" class="acc{{ $role->id }}" @if($role->hasPermissionTo('browse accounts')) checked @endif x-on:click="updatePermission({name:'browse accounts', status:$event.target.checked})"> Browse
-                    </li>
-                    <li>
-                        <input type="checkbox" class="acc{{ $role->id }}" @if($role->hasPermissionTo('read accounts')) checked @endif x-on:click="updatePermission({name:'read accounts', status:$event.target.checked})"> Read
-                    </li>
-                    <li>
-                        <input type="checkbox" class="acc{{ $role->id }}" @if($role->hasPermissionTo('edit accounts')) checked @endif x-on:click="updatePermission({name:'edit accounts', status:$event.target.checked})"> Edit
-                    </li>
-                    <li>
-                        <input type="checkbox" class="acc{{ $role->id }}" @if($role->hasPermissionTo('add accounts')) checked @endif x-on:click="updatePermission({name:'add accounts', status:$event.target.checked})"> Add
-                    </li>
-                    <li>
-                        <input type="checkbox" class="acc{{ $role->id }}" @if($role->hasPermissionTo('delete accounts')) checked @endif x-on:click="updatePermission({name:'delete accounts', status:$event.target.checked})"> Delete
-                    </li>
-                </ul>
+    <div class="card card-body">
+        <div class="d-flex justify-content-between">
+            <h5 class="title is-6">{{ strtoupper($role->name) }}</h5>
+            <div>
+                <button class="btn btn-success btn-sm" x-on:click="editable = true" x-show="!editable">Edit Permissions</button>
+                <button class="btn btn-dark btn-sm" x-on:click="editable = false" x-show="editable">End Edit</button>
             </div>
         </div>
+        <div class="block mb-2" x-show="editable">
+            <div class="row">
+                <div class="col">
+                    <strong>
+                        {{-- <input type="checkbox" x-ref="schedule{{ $role->id }}" x-on:click="checkAllSchedule"> --}}
+                         Schedules
+                    </strong>
+                    <ul class="">
+                        
+                        <li>
+                            <input type="checkbox" @if($role->hasPermissionTo('browse schedules')) checked @endif class="sched{{ $role->id }}" x-on:click="updatePermission({name:'browse schedules', status:$event.target.checked})"> Browse
+                        </li>
+                        <li>
+                            <input type="checkbox" @if($role->hasPermissionTo('edit schedules')) checked @endif  class="sched{{ $role->id }}" x-on:click="updatePermission({name:'edit schedules', status:$event.target.checked})"> Edit
+                        </li>
+                    </ul>
+                </div>
+                <div class="col">
+                    <strong>
+                        {{-- <input type="checkbox"  x-ref="service{{ $role->id }}" x-on:click="checkAllService"> --}}
+                        Services
+                    </strong>
+                    <ul class="">
+                        <li>
+                            <input type="checkbox"@if($role->hasPermissionTo('browse services')) checked @endif class="serv{{ $role->id }}"  x-on:click="updatePermission({name:'browse services', status:$event.target.checked})"> Browse
+                        </li>
+                        <li>
+                            <input type="checkbox"@if($role->hasPermissionTo('read services')) checked @endif class="serv{{ $role->id }}"  x-on:click="updatePermission({name:'read services', status:$event.target.checked})"> Read
+                        </li>
+                        <li>
+                            <input type="checkbox"@if($role->hasPermissionTo('edit services')) checked @endif class="serv{{ $role->id }}"  x-on:click="updatePermission({name:'edit services', status:$event.target.checked})"> Edit
+                        </li>
+                        <li>
+                            <input type="checkbox"@if($role->hasPermissionTo('add services')) checked @endif class="serv{{ $role->id }}"  x-on:click="updatePermission({name:'add services', status:$event.target.checked})"> Add
+                        </li>
+                        <li>
+                            <input type="checkbox"@if($role->hasPermissionTo('delete services')) checked @endif class="serv{{ $role->id }}"  x-on:click="updatePermission({name:'delete services', status:$event.target.checked})"> Delete
+                        </li>
+                    </ul>
+                </div>
+                <div class="col">
+                    <strong>
+                        {{-- <input type="checkbox" x-ref="page{{ $role->id }}" x-on:click="checkAllPages"> --}}
+                         Pages
+                    </strong>
+                    <ul class="">
+                        <li>
+                            <input type="checkbox" @if($role->hasPermissionTo('browse pages')) checked @endif class="page{{ $role->id }}" x-on:click="updatePermission({name:'browse pages', status:$event.target.checked})"> Browse
+                        </li>
+                        <li>
+                            <input type="checkbox" @if($role->hasPermissionTo('read pages')) checked @endif class="page{{ $role->id }}" x-on:click="updatePermission({name:'read pages', status:$event.target.checked})"> Read
+                        </li>
+                        <li>
+                            <input type="checkbox" @if($role->hasPermissionTo('edit pages')) checked @endif class="page{{ $role->id }}" x-on:click="updatePermission({name:'edit pages', status:$event.target.checked})"> Edit
+                        </li>
+                        <li>
+                            <input type="checkbox" @if($role->hasPermissionTo('add pages')) checked @endif class="page{{ $role->id }}" x-on:click="updatePermission({name:'add pages', status:$event.target.checked})"> Add
+                        </li>
+                        <li>
+                            <input type="checkbox" @if($role->hasPermissionTo('delete pages')) checked @endif class="page{{ $role->id }}" x-on:click="updatePermission({name:'delete pages', status:$event.target.checked})"> Delete
+                        </li>
+                    </ul>
+                </div>
+                <div class="col">
+                    <strong>
+                        {{-- <input type="checkbox" x-ref="appo{{ $role->id }}" x-on:click="checkAllAppo"> --}}
+                        Appointments
+                    </strong>
+                    <ul class="">
+                        <li>
+                            <input type="checkbox" @if($role->hasPermissionTo('browse appointments')) checked @endif class="appo{{ $role->id }}" x-on:click="updatePermission({name:'browse appointments', status:$event.target.checked})"> Browse
+                        </li>
+                        <li>
+                            <input type="checkbox"  @if($role->hasPermissionTo('read appointments')) checked @endif class="appo{{ $role->id }}" x-on:click="updatePermission({name:'read appointments', status:$event.target.checked})"> Read
+                        </li>
+                        <li>
+                            <input type="checkbox" @if($role->hasPermissionTo('edit appointments')) checked @endif class="appo{{ $role->id }}" x-on:click="updatePermission({name:'edit appointments', status:$event.target.checked})"> Edit
+                        </li>
+                        <li>
+                            <input type="checkbox" @if($role->hasPermissionTo('add appointments')) checked @endif class="appo{{ $role->id }}" x-on:click="updatePermission({name:'add appointments', status:$event.target.checked})"> Add
+                        </li>
+                        <li>
+                            <input type="checkbox" @if($role->hasPermissionTo('delete appointments')) checked @endif class="appo{{ $role->id }}" x-on:click="updatePermission({name:'delete appointments', status:$event.target.checked})"> Delete
+                        </li>
+                    </ul>
+                </div>
+                <div class="col">
+                    <strong>
+                        {{-- <input type="checkbox" x-ref="acc{{ $role->id }}" x-on:click="checkAllAcc"> --}}
+                        Accounts
+                    </strong>
+                    <ul class="">
+                        <li>
+                            <input type="checkbox" class="acc{{ $role->id }}" @if($role->hasPermissionTo('browse accounts')) checked @endif x-on:click="updatePermission({name:'browse accounts', status:$event.target.checked})"> Browse
+                        </li>
+                        <li>
+                            <input type="checkbox" class="acc{{ $role->id }}" @if($role->hasPermissionTo('read accounts')) checked @endif x-on:click="updatePermission({name:'read accounts', status:$event.target.checked})"> Read
+                        </li>
+                        <li>
+                            <input type="checkbox" class="acc{{ $role->id }}" @if($role->hasPermissionTo('edit accounts')) checked @endif x-on:click="updatePermission({name:'edit accounts', status:$event.target.checked})"> Edit
+                        </li>
+                        <li>
+                            <input type="checkbox" class="acc{{ $role->id }}" @if($role->hasPermissionTo('add accounts')) checked @endif x-on:click="updatePermission({name:'add accounts', status:$event.target.checked})"> Add
+                        </li>
+                        <li>
+                            <input type="checkbox" class="acc{{ $role->id }}" @if($role->hasPermissionTo('delete accounts')) checked @endif x-on:click="updatePermission({name:'delete accounts', status:$event.target.checked})"> Delete
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </div>
+    
 </div>
