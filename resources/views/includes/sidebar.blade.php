@@ -60,6 +60,25 @@
         </div>
     </li>
 
+    <!-- Nav Item - Utilities Collapse Menu -->
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseApp"
+            aria-expanded="true" aria-controls="collapseUtilities">
+            <i class="fas fa-fw fa-calendar"></i>
+            <span>Appointments</span>
+        </a>
+        <div id="collapseApp" class="collapse" aria-labelledby="headingApp"
+            data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item" href="#">All</a>
+                <a class="collapse-item" href="{{ route('admin.appointments.today') }}">Today</a>
+                <a class="collapse-item" href="#">Incomming</a>
+                <a class="collapse-item" href="#">Resolved</a>
+                <a class="collapse-item" href="{{ route('admin.appointments.cancelled') }}">Cancelled</a>
+            </div>
+        </div>
+    </li>
+
     <!-- Divider -->
     <hr class="sidebar-divider">
 

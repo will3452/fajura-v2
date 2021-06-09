@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Appointment extends Model
 {
@@ -12,6 +13,10 @@ class Appointment extends Model
 
     public function user(){
         return $this->belongsTo(User::class);
+    }
+
+    public function getUniqueIdAttribute(){
+        return 'FAP'.Str::padleft($this->id, 5, '0');
     }
 
     public function dentist(){

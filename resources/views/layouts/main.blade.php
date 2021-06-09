@@ -24,7 +24,7 @@
     {{-- <link rel="stylesheet" href="/css/center-simple.css"> --}}
     {{-- <link rel="stylesheet" href="/css/big-counter.css"> --}}
     <link rel="stylesheet" href="/css/flash.css">
-
+    <script data-ad-client="ca-pub-5277127680186259" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     @stack('styles')
 
 </head>
