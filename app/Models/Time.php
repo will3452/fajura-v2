@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Carbon\Carbon;
 use App\Models\Day;
+use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -29,6 +30,10 @@ class Time extends Model
 
     public static function MAKEREADBLE($str){
         return Carbon::parse($str)->format('h:s a');
+    }
+
+    public function getUniqueIdAttribute(){
+        return 'SH'.Str::padleft($this->id, 5, '0');
     }
     
 }

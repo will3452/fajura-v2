@@ -25,7 +25,7 @@ class DashboardController extends Controller
     {
         // dd(auth()->user()->profile);
         if(auth()->user()->profile->approved_at != null){
-            return auth()->user()->is_admin ? view('admin-dashboard'):view('dashboard');
+            return auth()->user()->is_admin ? view('admin.dashboard'):view('dashboard');
         }else {
             auth()->logout();
             alert()->info('','Your Profile is under review');

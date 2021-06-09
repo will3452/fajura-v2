@@ -14,6 +14,7 @@ use App\Http\Controllers\DentalRecordsController;
 use App\Http\Controllers\DentistAppointmentController;
 use App\Http\Controllers\ProfilePictureUpdateController;
 use App\Http\Controllers\AdminPermissionUpdateController;
+use App\Http\Controllers\AdminAccountManagementController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,7 +35,39 @@ Auth::routes();
 
 Route::get('/home', [DashboardController::class, 'index'])->name('home');
 
-Route::post('admin/permission/update/{role}', AdminPermissionUpdateController::class)->name('admin.permission.update')->middleware('auth');
+Route::middleware(['auth'])->prefix('admin/')->name('admin.')->group(function(){
+
+    // admin account management
+    Route::prefix('accounts')->name('account.')->group(function(){\
+        // list of new accounts
+        Route::get('/list-new-patients', [AdminAccountManagementController::class, 'listOfNewAccounts'])->name('list_of_all_new_patients');
+        Route::post('/list-new-patients/{id}/update', [AdminAccountManagementController::class, 'updateListOfNewAccounts'])->name('list_of_all_new_patients.update');
+        // end of list new accounts
+
+        // patient accounts
+        Route::get('/patients-accounts', [AdminAccountManagementController::class, 'patientAccounts'])->name('patient_accounts');
+        Route::get('/patients-accounts/{id}', [AdminAccountManagementController::class, 'patientAccountsShow'])->name('patient_accounts.show');
+        Route::put('/patients-accounts/{id}', [AdminAccountManagementController::class, 'patientAccountUpdate'])->name('patient_accounts.update');
+        // end of patient accounts
+
+        // dentist account
+        Route::get('/dentist-accounts', [AdminAccountManagementController::class, 'dentistAccounts'])->name('dentist_accounts');
+        // endof dentist account 
+
+        // account create
+        Route::get('/create', [AdminAccountManagementController::class, 'create'])->name('create');
+        Route::post('/', [AdminAccountManagementController::class, 'store'])->name('store');
+        // end account create
+    });
+
+    // end of admin account management
+
+
+    Route::post('permission/update/{role}', AdminPermissionUpdateController::class)->name('permission.update')->middleware('auth');
+
+
+});
+
 
 Route::resource('services', ServiceController::class)->middleware('auth');
 Route::resource('schedules', SchedulesController::class)->middleware('auth');
@@ -47,6 +80,8 @@ Route::post('profile-picture/{id}', ProfilePictureUpdateController::class);
 Route::resource('feedbacks', FeedbackController::class);
 
 // testing
+
+
 
 Route::view('chart', 'chart');
 
