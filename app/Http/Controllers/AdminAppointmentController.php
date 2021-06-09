@@ -11,6 +11,12 @@ class AdminAppointmentController extends Controller
         if(!auth()->user()->is_admin) abort(401);
     }
 
+    public function all(){
+        $this->isAdmin();
+        $appointments = Appointment::get();
+        return view('admin.appointments.all', compact('appointments'));
+    }
+
     public function today(){
         $this->isAdmin();
         $appointments = Appointment::where('date', today()->format('Y/m/d'))->get();
@@ -26,7 +32,7 @@ class AdminAppointmentController extends Controller
     public function resolved(){
         $this->isAdmin();
         $appointments = Appointment::where('status', 'completed')->get();
-        return view('admin.appointments.completed', compact('appointments'));
+        return view('admin.appointments.resolve', compact('appointments'));
     }
 
     public function cancelled(){

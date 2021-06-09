@@ -70,10 +70,10 @@
         <div id="collapseApp" class="collapse" aria-labelledby="headingApp"
             data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="#">All</a>
+                <a class="collapse-item" href="{{ route('admin.appointments.all') }}">All</a>
                 <a class="collapse-item" href="{{ route('admin.appointments.today') }}">Today</a>
-                <a class="collapse-item" href="#">Incomming</a>
-                <a class="collapse-item" href="#">Resolved</a>
+                <a class="collapse-item" href="{{ route('admin.appointments.incomming') }}">Incomming</a>
+                <a class="collapse-item" href="{{ route('admin.appointments.resolved') }}">Resolved</a>
                 <a class="collapse-item" href="{{ route('admin.appointments.cancelled') }}">Cancelled</a>
             </div>
         </div>

@@ -81,7 +81,10 @@ Route::middleware(['auth'])->prefix('admin/')->name('admin.')->group(function(){
 
     // appointment management
     Route::prefix('appointments')->name('appointments.')->group(function(){
+        Route::get('/', [AdminAppointmentController::class, 'all'])->name('all');
         Route::get('/today', [AdminAppointmentController::class, 'today'])->name('today');
+        Route::get('/incomming', [AdminAppointmentController::class, 'incomming'])->name('incomming');
+        Route::get('/resolved', [AdminAppointmentController::class, 'resolved'])->name('resolved');
         Route::get('/cancelled', [AdminAppointmentController::class, 'cancelled'])->name('cancelled');
         Route::delete('/{id}', [AdminAppointmentController::class, 'destroy'])->name('destroy');
     });
