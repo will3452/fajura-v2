@@ -38,7 +38,7 @@
                 <a class="collapse-item" href="{{ route('admin.account.list_of_all_new_patients') }}">New Patient Accounts</a>
                 <a class="collapse-item" href="{{ route('admin.account.patient_accounts') }}">Patient Accounts</a>
                 <a class="collapse-item" href="{{ route('admin.account.dentist_accounts') }}">Dentist Accounts</a>
-                <a class="collapse-item" href="#">Staff Accounts</a>
+                <a class="collapse-item" href="{{ route('admin.account.staff_accounts') }}">Staff Accounts</a>
                 <a class="collapse-item" href="{{ route('admin.account.create') }}">Create new Account</a>
             </div>
         </div>
@@ -54,8 +54,8 @@
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
             data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="#">List of Services</a>
-                <a class="collapse-item" href="#">Add new Service</a>
+                <a class="collapse-item" href="{{ route('admin.services.index') }}">List of Services</a>
+                <a class="collapse-item" href="{{ route('admin.services.create') }}">Add new Service</a>
             </div>
         </div>
     </li>

@@ -7,15 +7,17 @@ use Livewire\Component;
 class ToggleButton extends Component
 {
     public $active;
-    public $return;
-    public function mounted($active, $return){
+    public $service;
+
+    public function mounted($active, $service){
         $this->active = $active;
-        $this->return = $return;
+        $this->service = $service;
+
     }
 
     public function clicked(){
-        $this->emitUp('toggleClicked', $this->return);
         $this->active = !$this->active;
+        $this->service->update(['active'=>$this->active]);
     }
     public function render()
     {

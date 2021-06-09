@@ -35,14 +35,13 @@
 
 
     </style>
-
     @if ($active)
-        <div class="toggle active" wire:click="clicked">
+        <div class="toggle active" wire:click="clicked()">
             <div>
             </div>
         </div>
     @else
-        <div class="toggle not-active" wire:click="clicked">
+        <div class="toggle not-active" wire:click="clicked()">
             <div>
             </div>
         </div>

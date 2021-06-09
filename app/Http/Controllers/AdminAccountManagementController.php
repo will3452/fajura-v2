@@ -103,7 +103,16 @@ class AdminAccountManagementController extends Controller
     }
 // end of patient accounts
 
+//staff accounts
+    public function staffAccounts(){
+        $this->isAdmin();
+        $users = User::role('staff')->whereHas('profile', function(Builder $q){
+            return $q->whereNotNull('approved_at');
+        })->get();
 
+        return view('admin.accounts.staff-accounts', compact('users'));
+    }
+//end of staff accounts
 // dentist accounts 
     public function dentistAccounts(){
         $this->isAdmin();

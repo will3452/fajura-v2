@@ -10,6 +10,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\SchedulesController;
 use App\Http\Controllers\getDentistController;
 use App\Http\Controllers\AppointmentController;
+use App\Http\Controllers\AdminServiceController;
 use App\Http\Controllers\DentalRecordsController;
 use App\Http\Controllers\DentistAppointmentController;
 use App\Http\Controllers\ProfilePictureUpdateController;
@@ -54,6 +55,10 @@ Route::middleware(['auth'])->prefix('admin/')->name('admin.')->group(function(){
         Route::get('/dentist-accounts', [AdminAccountManagementController::class, 'dentistAccounts'])->name('dentist_accounts');
         // endof dentist account 
 
+        // staff account
+        Route::get('/staff-accounts', [AdminAccountManagementController::class, 'staffAccounts'])->name('staff_accounts');
+        // endof staff account 
+
         // account create
         Route::get('/create', [AdminAccountManagementController::class, 'create'])->name('create');
         Route::post('/', [AdminAccountManagementController::class, 'store'])->name('store');
@@ -61,6 +66,10 @@ Route::middleware(['auth'])->prefix('admin/')->name('admin.')->group(function(){
     });
 
     // end of admin account management
+
+    // service management
+    Route::resource('services', AdminServiceController::class);
+    // end of service manegment
 
 
     Route::post('permission/update/{role}', AdminPermissionUpdateController::class)->name('permission.update')->middleware('auth');
