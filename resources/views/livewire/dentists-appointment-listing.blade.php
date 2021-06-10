@@ -41,7 +41,7 @@
             <div class="column is-3" style="display:flex; justify-content:center; align-items:center">
                 @if ($meeting->status == 'pending')
                     <a class="button is-success is-rounded is-small" href="#">
-                        Resolve
+                        Resolve Now
                     </a>
                 @endif
             </div>

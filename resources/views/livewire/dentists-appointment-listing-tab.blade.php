@@ -17,7 +17,7 @@
       @if ($selected == 3)
       class="is-active"
       @endif
-      ><a>Accomplished</a></li>
+      ><a>Completed</a></li>
       <li
       wire:click="changeSelected(4)"
       @if ($selected == 4)
