@@ -39,8 +39,11 @@
                 </div>
             </div>
             <div class="column is-3" style="display:flex; justify-content:center; align-items:center">
-                <a href="{{ route('dental-records.show', $meeting->user) }}?appointment_id={{$meeting->id}}&validate={{\Hash::make($meeting->id)}}" class="button is-small is-success is-rounded mx-2">Dental Records</a>
-                <a href="#" class="button is-small is-info is-rounded mx-2">Medical Records</a>
+                @if ($meeting->status == 'pending')
+                    <a class="button is-success is-rounded is-small" href="#">
+                        Resolve
+                    </a>
+                @endif
             </div>
         </div>
     @empty 

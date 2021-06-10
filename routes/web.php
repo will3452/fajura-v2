@@ -102,8 +102,6 @@ Route::middleware(['auth'])->prefix('admin/')->name('admin.')->group(function(){
     Route::resource('log', AdminLogController::class);
     // end of log
 
-
-
 });
 
 
@@ -111,8 +109,6 @@ Route::resource('services', ServiceController::class)->middleware('auth');
 Route::resource('schedules', SchedulesController::class)->middleware('auth');
 Route::resource('appointments', AppointmentController::class)->middleware('auth');
 Route::resource('dentist-appointments', DentistAppointmentController::class)->middleware('auth');
-Route::resource('dental-records', DentalRecordsController::class)->middleware('auth');
-Route::resource('teeth', TeethController::class)->middleware('auth');
 Route::resource('profile', ProfileController::class)->middleware('auth');
 Route::post('profile-picture/{id}', ProfilePictureUpdateController::class);
 Route::resource('feedbacks', FeedbackController::class);
