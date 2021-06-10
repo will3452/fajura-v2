@@ -3,7 +3,10 @@
 @section('content')
 <div class="container">
     <div class="columns">
-        <div class="column">
+        <div class="column is-hidden-mobile">
+            <img src="/img/undraw_doctors_hwty.svg" alt="" style="display:block;margin:auto;width:60%">
+        </div>
+        <div class="column is-4">
             <div class="box">
                 <h2 class="title">
                     Login Here
@@ -61,9 +64,6 @@
                     </div>
                 </form>
             </div>
-        </div>
-        <div class="column is-hidden-mobile">
-            <img src="/illus/dentist.svg" alt="" style="display:block;margin:auto">
         </div>
     </div>
 </div>
