@@ -26,7 +26,7 @@ class DentalRecordsController extends Controller
      */
     public function create()
     {
-        if(!request()->has('user_id') && !auth()->user()->hasRole('dentist')){
+        if(!request()->has('user_id') ||  !auth()->user()->hasRole('dentist')){
             toast('Something went wrong', 'error');
             return back();
         }

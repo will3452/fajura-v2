@@ -69,37 +69,37 @@
                     <div class="field">
                         <label for="" class="label">Name</label>
                         <div class="control">
-                            <input type="text" disabled value="{{$user->name}}" class="input">
+                            <input type="text" disabled value="{{$user->name}}" class="input is-small">
                         </div>
                     </div>
                     <div class="field">
                         <label for="" class="label">Email</label>
                         <div class="control">
-                            <input type="text" disabled value="{{$user->email}}" class="input">
+                            <input type="text" disabled value="{{$user->email}}" class="input is-small">
                         </div>
                     </div>
                     <div class="field">
                         <label for="" class="label">Phone</label>
                         <div class="control">
-                            <input type="text" disabled value="+63{{$user->profile->phone}}" class="input">
+                            <input type="text" disabled value="+63{{$user->profile->phone}}" class="input is-small">
                         </div>
                     </div>
                     <div class="field">
                         <label for="" class="label">Sex</label>
                         <div class="control">
-                            <input type="text" class="input" disabled value="{{$user->profile->sex}}"/>
+                            <input type="text" class="input is-small" disabled value="{{$user->profile->sex}}"/>
                         </div>
                     </div>
                     <div class="field">
                         <label for="" class="label">Birthdate</label>
                         <div class="control">
-                            <input type="text" disabled class="input" value="{{\Carbon\Carbon::parse($user->profile->birthdate)->format('m-d-Y')}}">
+                            <input type="text" disabled class="input is-small" value="{{\Carbon\Carbon::parse($user->profile->birthdate)->format('m-d-Y')}}">
                         </div>
                     </div>
                     <div class="field">
                         <label for="" class="label">Address</label>
                         <div class="control">
-                            <input type="text" class="input" style="text-transform:capitalize" disabled value="{{strtolower($user->profile->address)}}">
+                            <input type="text" class="input is-small" style="text-transform:capitalize" disabled value="{{strtolower($user->profile->address)}}">
                         </div>
                     </div>
                     @if (auth()->user()->id == $user->id)
@@ -107,13 +107,13 @@
                     <div class="field">
                         <label for="" class="label">Job title</label>
                         <div class="control">
-                            <input type="text" class="input" style="text-transform:capitalize" name="job" value="{{ $user->profile->job }}" placeholder="eg. Programmer">
+                            <input type="text" class="input is-small" style="text-transform:capitalize" name="job" value="{{ $user->profile->job }}" placeholder="eg. Programmer">
                         </div>
                     </div>
                     <div class="field">
                         <label for="" class="label">Availability <small class="is-text-7 is-text-light">( days / time )</small></label>
                         <div class="control">
-                            <textarea name="availability" id="" class="textarea" placeholder=" Monday 9:00am - 1:00pm, Tuesday Whole Day">{{ $user->profile->availability }}</textarea>
+                            <textarea name="availability" id="" class="textarea is-small" placeholder=" Monday 9:00am - 1:00pm, Tuesday Whole Day">{{ $user->profile->availability }}</textarea>
                         </div>
                     </div>
                     <div class="field" style="text-align:right;">
@@ -130,7 +130,7 @@
                     <div class="field">
                         <label for="" class="label">Job title</label>
                         <div class="control">
-                            <input type="text" class="input" style="text-transform:capitalize" disabled value="{{ $user->profile->job ?? 'N/a' }}" placeholder="eg. Programmer">
+                            <input type="text" class="input is-small" style="text-transform:capitalize" disabled value="{{ $user->profile->job ?? 'N/a' }}" placeholder="eg. Programmer">
                         </div>
                     </div>
                     <div class="field">

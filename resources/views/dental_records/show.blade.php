@@ -10,14 +10,16 @@
                     <i data-feather="arrow-left"></i>
                 </div>
             </a>
-            <a class="button is-small is-info is-rounded has-icon" href="{{ route('dental-records.create') }}?user_id={{ $user->id }}" >
-                <div class="icon">
-                    <i data-feather="plus"></i>
-                </div>
-                <div>
-                    New Record
-                </div>
-            </a>
+            @if (auth()->user()->hasRole('dentist'))
+                <a class="button is-small is-info is-rounded has-icon" href="{{ route('dental-records.create') }}?user_id={{ $user->id }}" >
+                    <div class="icon">
+                        <i data-feather="plus"></i>
+                    </div>
+                    <div>
+                        New Record
+                    </div>
+                </a>
+            @endif
         </div>
         <h2 class="title is-4" style="text-align: center">Dental Records</h2>
         @if ($latest != null)
