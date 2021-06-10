@@ -52,9 +52,10 @@ class AdminServiceController extends Controller
 
         $data['picture'] = $data['picture']->store('public/photos');
 
-        Service::create($data);
+        $service = Service::create($data);
 
         toast('Service created!', 'success');
+        activity()->causedBy(auth()->user())->on($service)->log('service created');
         return back();
     }
 
@@ -105,6 +106,7 @@ class AdminServiceController extends Controller
         $service->update($data);
 
         toast('Service updated!', 'success');
+        activity()->causedBy(auth()->user())->on($service)->log('service updated');
         return back();
     }
 
@@ -116,7 +118,9 @@ class AdminServiceController extends Controller
      */
     public function destroy($id)
     {
-        Service::findOrFail($id)->delete();
+        $service = Service::findOrFail($id);
+        activity()->causedBy(auth()->user())->on($service)->log('service deleted');
+        $service->delete();
         toast('Service removed!', 'success');
         return back();
     }

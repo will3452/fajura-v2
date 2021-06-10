@@ -5,6 +5,7 @@ use Luigel\Paymongo\Facades\Paymongo;
 use App\Http\Controllers\TeethController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\AdminLogController;
 use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\SchedulesController;
@@ -96,6 +97,10 @@ Route::middleware(['auth'])->prefix('admin/')->name('admin.')->group(function(){
         Route::resource('questions', AdminMedicalQuestionController::class);
     });
     // end of medical queestion management 
+
+    // log 
+    Route::resource('log', AdminLogController::class);
+    // end of log
 
 
 

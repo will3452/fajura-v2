@@ -48,44 +48,13 @@ class AdminMedicalQuestionController extends Controller
             'answers'=>''
         ]);
 
-        MedicalQuestion::create($data);
+        $mq = MedicalQuestion::create($data);
         toast('Question created', 'success');
+        activity()->causedBy(auth()->user())->on($mq)->log('medical question created');
         return back();
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
+    
 
     /**
      * Remove the specified resource from storage.
@@ -95,7 +64,9 @@ class AdminMedicalQuestionController extends Controller
      */
     public function destroy($id)
     {
-        MedicalQuestion::findOrFail($id)->delete();
+        $mq = MedicalQuestion::findOrFail($id);
+        activity()->causedBy(auth()->user())->on($mq)->log('medical question removed');
+        $mq->delete();
         toast('Question was removed', 'success');
         return back();
     }

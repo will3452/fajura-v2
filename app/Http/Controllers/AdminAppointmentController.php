@@ -43,9 +43,10 @@ class AdminAppointmentController extends Controller
 
     public function destroy($id){
         $this->isAdmin();
-
-        Appointment::findOrFail($id)->delete();
+        $app = Appointment::findOrFail($id);
         toast('Appointment removed', 'success');
+        activity()->causedBy(auth()->user())->on($app)->log('appointment removed');
+        $app->delete();
         return back();
     }
 }

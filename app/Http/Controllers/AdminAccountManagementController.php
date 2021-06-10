@@ -43,11 +43,13 @@ class AdminAccountManagementController extends Controller
         if(request()->q == 'd'){
             $user->delete();
             toast('User Declined and Deleted', 'success');
+            activity()->causedBy(auth()->user())->on($user)->log('account declined');
             return back();
         }
 
         $user->profile->update(['approved_at'=>now()]);
         toast('User Approved!', 'success');
+        activity()->causedBy(auth()->user())->on($user)->log('account approved');
         return back();
     }
 // end of list new accounts
@@ -99,6 +101,7 @@ class AdminAccountManagementController extends Controller
             'availability'=>request()->availability
         ]);
         toast('User information updated!', 'success');
+        activity()->causedBy(auth()->user())->on($user)->log('account updated');
         return back();
     }
 // end of patient accounts
@@ -164,8 +167,8 @@ class AdminAccountManagementController extends Controller
         $user->assignRole($request->role);
         toast('User created!', 'success');
         Mail::to($user)->send(new UserInformation($request->password));
+        activity()->causedBy(auth()->user())->on($user)->log('account created');
         return back();
-
     }
 
 

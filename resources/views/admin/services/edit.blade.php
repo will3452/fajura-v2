@@ -8,7 +8,7 @@
         <div class="card-body">
             <form action="{{ route('admin.services.update', $service) }}" method="POST" enctype="multipart/form-data">
                 @csrf
-
+                @method('PUT')
                 <div class="form-group">
                     <label for="">Name</label>
                     <input type="text" class="form-control" name="name" required placeholder="eg. Implants" value="{{ $service->name }}">
