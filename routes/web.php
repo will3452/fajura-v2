@@ -32,13 +32,9 @@ use App\Http\Controllers\AdminAccountManagementController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
-Auth::routes();
 
-Route::get('/home', [DashboardController::class, 'index'])->name('home');
+
 
 Route::middleware(['auth'])->prefix('admin/')->name('admin.')->group(function(){
 
@@ -104,7 +100,12 @@ Route::middleware(['auth'])->prefix('admin/')->name('admin.')->group(function(){
 
 });
 
+Route::get('/', function () {
+    return view('welcome');
+});
 
+Auth::routes();
+Route::get('/home', [DashboardController::class, 'index'])->name('home');
 Route::resource('services', ServiceController::class)->middleware('auth');
 Route::resource('schedules', SchedulesController::class)->middleware('auth');
 Route::resource('appointments', AppointmentController::class)->middleware('auth');
@@ -112,12 +113,11 @@ Route::resource('dentist-appointments', DentistAppointmentController::class)->mi
 Route::resource('profile', ProfileController::class)->middleware('auth');
 Route::post('profile-picture/{id}', ProfilePictureUpdateController::class);
 Route::resource('feedbacks', FeedbackController::class);
-
+Route::resource('dental-records', DentalRecordsController::class);
 // testing
 
 
 
-Route::view('chart', 'chart');
 
 
 //payment

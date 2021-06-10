@@ -17,6 +17,9 @@
                         Time
                     </th>
                     <th>
+                        Dentist
+                    </th>
+                    <th>
                         Booked At
                     </th>
                     <th>
@@ -33,6 +36,9 @@
                         </td>
                         <td>
                             {{ \App\Models\Time::MAKEREADBLE($appointment->time->start) }} - {{ \App\Models\Time::MAKEREADBLE($appointment->time->end) }}
+                        </td>
+                        <td>
+                            {{ $appointment->dentist->name }}
                         </td>
                         <td>
                             {{ $appointment->created_at->format('Y/m/d') }}

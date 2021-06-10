@@ -54,6 +54,11 @@
                         {{$user->created_at->format('m/d/y')}}
                     </div>
                 </div>
+                @if (auth()->user()->hasRole('dentist') || auth()->user()->id == $user->id)
+                    <div>
+                        <a class="button is-small is-success is-rounded" href="{{ route('dental-records.show', $user->id) }}">View Dental Records</a>
+                    </div>
+                @endif
             </div>
             <div class="column is-9">
                 <form action="{{ auth()->user()->id == $user->id ? route('profile.update', $user->id) : '#' }}" method="POST">

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Support\Str;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -84,7 +85,11 @@ class User extends Authenticatable
     }
     
     public function patientDentalRecords(){
-        return $this->hasMany(DentalRecord::class, 'dentist_id');
+        return $this->hasMany(DentalRecords::class, 'dentist_id');
+    }
+
+    public function dentalRecords(){
+        return  $this->hasMany(DentalRecords::class, 'patient_id');
     }
 
 
@@ -95,5 +100,9 @@ class User extends Authenticatable
     public function getPublicPictureAttribute(){
         $path = explode('/', $this->profile->picture);
         return '/storage/profile/'.end($path);
+    }
+
+    public function getUniqueIdAttribute(){
+        return 'FPT'.Str::padleft($this->id, 5, '0');
     }
 }
