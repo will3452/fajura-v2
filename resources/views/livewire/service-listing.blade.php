@@ -4,13 +4,13 @@
     </div>
     @if (count($services))
         @foreach ($services as $service)
-            <article class="media">
-                <figure class="media-left">
+            <div class="columns is-centered">
+                <div class="column is-2 is-flex is-justify-content-center is-mobile">
                     <p class="image is-128x128">
                         <img src="{{ $service->public_picture }}" alt="">
                     </p>
-                </figure>
-                <div class="media-content">
+                </div>
+                <div class="column">
                     <div>
                         <strong>
                             {{ $service->name }} 
@@ -57,7 +57,7 @@
                     </div>
                     
                 </div>
-            </article>
+            </div>
         @endforeach
     @else
         <div class="notification mt-2">

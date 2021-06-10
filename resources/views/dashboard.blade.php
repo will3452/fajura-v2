@@ -7,10 +7,13 @@
             <div class="column is-4 is-hidden-mobile">
                 @livewire('date-card')
             </div>
+            <div class="column is-4 is-hidden-tablet">
+                @livewire('date-card-mobile')
+            </div>
             <div class="column is-8">
-                <div class="columns is-multiline">
+                <div class="columns is-multiline is-mobile">
                     @can('browse services')
-                        <div class="column is-6">
+                        <div class="column is-6 is-half-mobile">
                             <div class="box">
                                 <div class="level">
                                     <div class="level-left">
@@ -33,7 +36,7 @@
                         </div>
                     @endcan
                     @can('read accounts')
-                        <div class="column is-6">
+                        <div class="column is-6 is-half-mobile">
                             <div class="box">
                                 <div class="level">
                                     <div class="level-left">
@@ -56,7 +59,7 @@
                         </div>
                     @endcan
                     @can('add appointments', Model::class)
-                        <div class="column is-6">
+                        <div class="column is-6 is-half-mobile">
                             <div class="box">
                                 <div class="level">
                                     <div class="level-left">
@@ -79,7 +82,7 @@
                         </div>
                     @endcan
                    @can('edit appointments', Model::class)
-                        <div class="column is-6">
+                        <div class="column is-6 is-half-mobile">
                             <div class="box">
                                 <div class="level">
                                     <div class="level-left">
@@ -102,7 +105,7 @@
                         </div>
                     @endcan
                     @can('browse blog')
-                        <div class="column is-6">
+                        <div class="column is-6 is-half-mobile">
                             <div class="box">
                                 <div class="level">
                                     <div class="level-left">
@@ -126,7 +129,7 @@
                     @endcan
 
                     @can('edit schedules', Model::class)
-                        <div class="column is-6">
+                        <div class="column is-6 is-half-mobile">
                             <div class="box">
                                 <div class="level">
                                     <div class="level-left">
@@ -150,7 +153,7 @@
                     @endcan
                    
                     @can('edit accounts')
-                        <div class="column is-6">
+                        <div class="column is-6 is-half-mobile">
                             <div class="box">
                                 <div class="level">
                                     <div class="level-left">
@@ -172,7 +175,7 @@
                             </div>
                         </div>
                     @endcan
-                    <div class="column is-6">
+                    <div class="column is-6 is-half-mobile">
                         <div class="box">
                             <div class="level">
                                 <div class="level-left">
@@ -194,7 +197,7 @@
                         </div>
                     </div>
                    
-                    <div class="column is-6">
+                    <div class="column is-6 is-half-mobile">
                         <div class="box">
                             <div class="level">
                                 <div class="level-left">
