@@ -88,10 +88,27 @@
     </div>
 
     <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsemq"
+            aria-expanded="true" aria-controls="collapseUtilities">
+            <i class="fas fa-fw fa-notes-medical"></i>
+            <span>MQ</span>
+        </a>
+        <div id="collapsemq" class="collapse" aria-labelledby="headingApp"
+            data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item" href="{{ route('admin.medical.questions.index') }}">List</a>
+                <a class="collapse-item" href="{{ route('admin.medical.questions.create') }}">Add new</a>
+            </div>
+        </div>
+    </li>
+
+    <li class="nav-item">
         <a class="nav-link" href="{{ route('admin.permissions.index') }}">
             <i class="fas fa-fw fa-fingerprint"></i>
             <span>Permissions</span></a>
     </li>
+
+    
 
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">

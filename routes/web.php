@@ -15,6 +15,7 @@ use App\Http\Controllers\DentalRecordsController;
 use App\Http\Controllers\AdminPermissionController;
 use App\Http\Controllers\AdminAppointmentController;
 use App\Http\Controllers\DentistAppointmentController;
+use App\Http\Controllers\AdminMedicalQuestionController;
 use App\Http\Controllers\ProfilePictureUpdateController;
 use App\Http\Controllers\AdminPermissionUpdateController;
 use App\Http\Controllers\AdminAccountManagementController;
@@ -90,6 +91,11 @@ Route::middleware(['auth'])->prefix('admin/')->name('admin.')->group(function(){
     });
     // end of appoibntment management
 
+    // Medical question management 
+    Route::prefix('medicals')->name('medical.')->group(function(){
+        Route::resource('questions', AdminMedicalQuestionController::class);
+    });
+    // end of medical queestion management 
 
 
 
