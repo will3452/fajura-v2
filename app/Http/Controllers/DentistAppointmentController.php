@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Appointment;
 use Illuminate\Http\Request;
 
 class DentistAppointmentController extends Controller
@@ -80,7 +81,23 @@ class DentistAppointmentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        if(!auth()->user()->hasRole('dentist') && !auth()->user()->hasRole('staff')){
+            toast('Something went error', 'error');
+            return back();
+        }
+        $appointment = auth()->user()->meetings()->findOrFail($id);
+        $request->validate([
+            'a'=>'required'
+        ]);
+        
+        if($request->a == 'a'){
+            $appointment->update(['status'=>'completed']);
+            toast('Appointment marked as Completed', 'success');
+        }else {
+            $appointment->update(['status'=>'cancelled']);
+            toast('Appointment cancelled', 'success');
+        }
+        return back();
     }
 
     /**

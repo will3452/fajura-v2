@@ -9,7 +9,7 @@
     @forelse ($meetings as $meeting)
         <div class="box mt-2 columns">
             <div class="column is-2" style="display:flex; justify-content:center;">
-                <img src="{{ $meeting->user->profile->picture ? $meeting->user->public_picture : "https://ui-avatars.com/api/?size=128&background=random&name=".$meeting->user->name }}" alt=""  width="100" style="border-radius: 50%" height="100">
+                <img src="{{ $meeting->user->profile->picture ? $meeting->user->public_picture : "https://ui-avatars.com/api/?size=128&background=random&name=".$meeting->user->name }}" alt="" style="border-radius: 50%; height:100px;width:100px;" >
             </div>
             <div style="text-align:center" class="column is-7 has-text-left-desktop">
                 
@@ -20,26 +20,26 @@
                     <div class="is-size-6">
                     {{ $meeting->date }} -  {{\App\Models\Time::MAKEREADBLE($meeting->start_time) }} - {{\App\Models\Time::MAKEREADBLE($meeting->end_time)}}
                     </div>
-                    <i class="is-size-7
-                    @switch($meeting->status)
-                        @case('pending')
-                            tag is-link is-rounded
-                            @break
-                        @case('completed')
-                            tag is-success is-rounded
-                            @break
-                        @default
-                            tag is-danger is-rounded
-                    @endswitch
-
-                    "
-                    >
+                    <i class="is-size-7">
                         {{$meeting->status}}
                     </i>
                     @if ($meeting->status == 'pending')
-                        <div>
-                            <form action="">
-                                <button></button>
+                        <div class="mt-2 is-flex">
+                            <form action="{{ route('dentist-appointments.update', $meeting) }}" class="mx-1" method="POST">
+                                @csrf 
+                                @method('PUT')
+                                <input type="hidden" name="a" value="a">
+                                <button class="button is-small is-rounded is-info">
+                                    Mark as completed
+                                </button>
+                            </form>
+                            <form action="{{ route('dentist-appointments.update', $meeting) }}" class="mx-1" method="POST">
+                                @csrf 
+                                @method('PUT')
+                                <input type="hidden" name="a" value="b">
+                                <button class="button is-small is-danger is-rounded is-info">
+                                    Cancelled
+                                </button>
                             </form>
                         </div>
                     @endif
