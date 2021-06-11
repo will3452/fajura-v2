@@ -1,0 +1,20 @@
+html, body{
+    background: rgb(44, 44, 44) !important;
+}
+.title, .label{
+    color: white !important;
+}
+ .box, .table,.navbar{
+    background: #1D1D1D !important;
+    color:white !important;
+}
+.is-info{
+    background: rgb(225, 225, 43) !important;
+    color: #222 !important;
+}
+.date-card-body{
+    background: #000000 !important;
+}
+.date-card{
+    box-shadow: none !important;
+}

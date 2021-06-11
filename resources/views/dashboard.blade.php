@@ -196,7 +196,6 @@
                             </div>
                         </div>
                     </div>
-                   
                     <div class="column is-6 is-half-mobile">
                         <div class="box">
                             <div class="level">
@@ -210,7 +209,7 @@
                                 </div>
                                 <div class="level-right">
                                     <div class="level-item">
-                                        <a href="#" class="button is-info is-small is-rounded">
+                                        <a href="{{ route('settings') }}" class="button is-info is-small is-rounded">
                                             view
                                         </a>
                                     </div>

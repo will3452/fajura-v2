@@ -165,6 +165,7 @@ class AdminAccountManagementController extends Controller
         ]);
 
         $user->assignRole($request->role);
+        $user->setting()->create([]); // create settings
         toast('User created!', 'success');
         Mail::to($user)->send(new UserInformation($request->password));
         activity()->causedBy(auth()->user())->on($user)->log('account created');

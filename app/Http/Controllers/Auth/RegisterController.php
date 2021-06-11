@@ -100,6 +100,7 @@ class RegisterController extends Controller
             'address'=>$address
         ]);
         $user->assignRole('patient');
+        $user->setting()->create([]); // just to create settings
         return $user;
     }
 }

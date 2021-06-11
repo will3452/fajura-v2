@@ -101,8 +101,21 @@ class User extends Authenticatable
         $path = explode('/', $this->profile->picture);
         return '/storage/profile/'.end($path);
     }
+    
+    public function setting(){
+        return $this->hasOne(Setting::class);
+    }
 
     public function getUniqueIdAttribute(){
         return 'FPT'.Str::padleft($this->id, 5, '0');
+    }
+
+    public function getDarkmodeAttribute(){
+        // dd(session()->all());
+        if(session()->has('darkmode')) return session()->get('darkmode');
+        else {
+            session()->put('darkmode', $this->setting->dark_mode);
+            return session()->get('darkmode');
+        }
     }
 }

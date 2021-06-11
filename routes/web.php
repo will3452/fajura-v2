@@ -5,6 +5,7 @@ use Luigel\Paymongo\Facades\Paymongo;
 use App\Http\Controllers\TeethController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\SettingController;
 use App\Http\Controllers\AdminLogController;
 use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\DashboardController;
@@ -114,6 +115,11 @@ Route::resource('profile', ProfileController::class)->middleware('auth');
 Route::post('profile-picture/{id}', ProfilePictureUpdateController::class);
 Route::resource('feedbacks', FeedbackController::class);
 Route::resource('dental-records', DentalRecordsController::class);
+Route::get('settings', [SettingController::class, 'setting'])->name('settings');
+Route::get('reset-session', function(){
+    session()->put('darkmode', auth()->user()->setting->dark_mode);
+    return back();
+})->name('reset.session');
 // testing
 
 

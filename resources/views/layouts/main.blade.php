@@ -24,8 +24,14 @@
     {{-- <link rel="stylesheet" href="/css/center-simple.css"> --}}
     {{-- <link rel="stylesheet" href="/css/big-counter.css"> --}}
     <link rel="stylesheet" href="/css/flash.css">
+    <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
     <script data-ad-client="ca-pub-5277127680186259" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     @stack('styles')
+   @auth
+        @if (auth()->user()->darkmode)
+            <link rel="stylesheet" href="/css/dark.css">
+        @endif
+   @endauth
 </head>
 <body>
     @include('sweetalert::alert')
