@@ -10,7 +10,7 @@
                     <i data-feather="arrow-left"></i>
                 </div>
             </a>
-            @if (auth()->user()->hasRole('dentist'))
+            @if (auth()->user()->hasRole('dentist') && auth()->user()->id != $user->id)
                 <a class="button is-small is-info is-rounded has-icon" href="{{ route('dental-records.create') }}?user_id={{ $user->id }}" >
                     <div class="icon">
                         <i data-feather="plus"></i>
