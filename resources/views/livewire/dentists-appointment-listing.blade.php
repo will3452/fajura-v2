@@ -35,13 +35,20 @@
                     "
                     >
                         {{$meeting->status}}
-                </i>
+                    </i>
+                    @if ($meeting->status == 'pending')
+                        <div>
+                            <form action="">
+                                <button></button>
+                            </form>
+                        </div>
+                    @endif
                 </div>
             </div>
             <div class="column is-3" style="display:flex; justify-content:center; align-items:center">
                 @if ($meeting->status == 'pending')
-                    <a class="button is-success is-rounded is-small" href="{{ route('dental-records.show', $meeting->user) }}">
-                        Resolve Now
+                    <a class="button is-success is-rounded is-small m-1" href="{{ route('dental-records.show', $meeting->user) }}">
+                        View Dental Records
                     </a>
                 @endif
             </div>

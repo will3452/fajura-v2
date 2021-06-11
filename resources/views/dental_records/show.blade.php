@@ -94,7 +94,7 @@
         </div>
         @endif
         
-        <div class="block">
+        <div class="block table-container">
             <table class="table is-narrow is-bordered is-fullwidth" id="matable">
                 <thead>
                     <tr>
