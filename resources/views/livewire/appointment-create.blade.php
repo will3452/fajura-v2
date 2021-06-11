@@ -45,5 +45,5 @@
         });
     </script>
     @endif
-    <button class="button is-small is-success is-rounded">Check Available</button>
+    <button class="button is-small is-success is-rounded">Check Availability</button>
 </form>
