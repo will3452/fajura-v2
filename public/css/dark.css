@@ -8,6 +8,11 @@ html, body{
     background: #1D1D1D !important;
     color:white !important;
 }
+.button{
+    background: #222 !important;
+    color: #fff !important;
+}
+
 .is-info{
     background: rgb(225, 225, 43) !important;
     color: #222 !important;
@@ -15,6 +20,16 @@ html, body{
 .date-card-body{
     background: #000000 !important;
 }
-.date-card{
+.date-card, .date-card-mobile{
     box-shadow: none !important;
 }
+.input, .textarea{
+    background: #555 !important;
+    color: white !important;
+    border-color: #222 !important;
+}
+.navbar-menu,.navbar-link, .navbar-item, .navbar-dropdown{
+    background: #1D1D1D !important;
+    color: #fff !important;
+}
+
