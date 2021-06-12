@@ -8,6 +8,14 @@
                 <i data-feather="arrow-left"></i>
             </div>
         </a>
+        <a href="{{ route('medical-history.create') }}" class="button is-small is-rounded has-icon">
+            <div class="icon">
+                <i data-feather="plus"></i>
+            </div>
+            <div>
+                New Record
+            </div>
+        </a>
     </div>
     <h2 class="title is-4" style="text-align:center">
         Your Medical Record
