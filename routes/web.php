@@ -14,6 +14,7 @@ use App\Http\Controllers\getDentistController;
 use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\AdminServiceController;
 use App\Http\Controllers\DentalRecordsController;
+use App\Http\Controllers\MedicalAnswerController;
 use App\Http\Controllers\AccountPasswordController;
 use App\Http\Controllers\AdminPermissionController;
 use App\Http\Controllers\AdminAppointmentController;
@@ -117,6 +118,9 @@ Route::post('profile-picture/{id}', ProfilePictureUpdateController::class);
 Route::resource('feedbacks', FeedbackController::class);
 Route::resource('dental-records', DentalRecordsController::class);
 Route::get('settings', [SettingController::class, 'setting'])->name('settings');
+
+//patient medical answers 
+Route::resource('medical-history', MedicalAnswerController::class);
 
 // user spassword changing
 Route::get('change-password', [AccountPasswordController::class, 'showPasswordForm'])->name('show.password.form');

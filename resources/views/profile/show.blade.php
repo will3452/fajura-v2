@@ -71,8 +71,11 @@
                     </div>
                 </div>
                 @if (auth()->user()->hasRole('dentist') || auth()->user()->id == $user->id)
-                    <div>
-                        <a class="button is-small is-success is-rounded" href="{{ route('dental-records.show', $user->id) }}">View Dental Records</a>
+                    <div class="block">
+                        <a class="button is-small is-text is-rounded" href="{{ route('dental-records.show', $user->id) }}">View Dental Records</a>
+                    </div>
+                    <div class="block">
+                        <a class="button is-small is-text is-rounded" href="{{ route('medical-history.show', $user->id) }}">View Medical Records</a>
                     </div>
                 @endif
             </div>

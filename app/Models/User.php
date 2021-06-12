@@ -92,6 +92,10 @@ class User extends Authenticatable
         return  $this->hasMany(DentalRecords::class, 'patient_id');
     }
 
+    public function medicalAnswers(){
+        return $this->hasMany(MedicalAnswer::class, 'patient_id');
+    }
+
 
     public function feedbacks(){
         return $this->hasMany(Feedback::class);
