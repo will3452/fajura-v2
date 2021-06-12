@@ -102,7 +102,7 @@
             }
         }">
             <div class="navbar-brand">
-                <a class="navbar-item" href="/">
+                <a class="navbar-item" href="#">
                   {{-- <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28"> --}}
                   <span class="title">Fajura</span>
                 </a>
@@ -165,12 +165,7 @@
                                 <i data-feather="user" class="mr-1"></i> 
                                 Profile
                               </a>
-                              <a class="navbar-item">
-                                <i data-feather="settings" class="mr-1"></i> 
-                                Setting
-                              </a>
                               <hr class="navbar-divider">
-
                               <a class="navbar-item" href="{{ route('logout') }}"
                                 onclick="event.preventDefault();document.getElementById('logout-form').submit();">
                                 <i data-feather="log-out" class="mr-1"></i>  Logout
