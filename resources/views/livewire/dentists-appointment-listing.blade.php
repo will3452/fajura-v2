@@ -50,6 +50,9 @@
                     <a class="button is-success is-rounded is-small m-1" href="{{ route('dental-records.show', $meeting->user) }}">
                         View Dental Records
                     </a>
+                    <a class="button is-dark is-rounded is-small m-1" href="{{ route('profile.show', $meeting->user) }}">
+                        View Profile
+                    </a>
                 @endif
             </div>
         </div>

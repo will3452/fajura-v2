@@ -25,7 +25,7 @@
                     <th>
                         Status
                     </th>
-                    <td></td>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -63,10 +63,6 @@
                                         </button>
                                     </form>
                                 @endif
-                            @else 
-                                <button class="button is-success is-small is-rounded">
-                                    Details
-                                </button>
                             @endif
                             
                         </td>
