@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="is-flex is-justify-content-space-between">
-        <a href="{{ route('home') }}" class="button is-small is-rounded has-icon">
+        <a href="{{ route(url()->previous()) }}" class="button is-small is-rounded has-icon">
             <div class="icon">
                 <i data-feather="arrow-left"></i>
             </div>
