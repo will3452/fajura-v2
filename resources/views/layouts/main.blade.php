@@ -137,16 +137,6 @@
                             @endif
                         </div>
                         @else 
-                        @if (route('home') != url()->current())
-                            <a href="/home" class="navbar-item has-icon">
-                                <div class="icon mr-2">
-                                    <i data-feather="home"></i>
-                                </div>
-                                <div>
-                                    Home
-                                </div>
-                            </a>
-                        @endif
                         <div class="navbar-item has-dropdown is-hoverable ">
                             <a class="navbar-link has-icon">
                                 <div class="icon mr-2">
