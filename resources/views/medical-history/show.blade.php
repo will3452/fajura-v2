@@ -59,7 +59,7 @@
         </div>
     @endforeach
 
-    @if (!$records)
+    @if (!count($records))
         <div style="text-align: center" class="block">
             No record submitted yet.
         </div>

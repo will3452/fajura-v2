@@ -13,7 +13,7 @@
         New Medical Record
     </h2>
 
-    @if ($questions)
+    @if (count($questions))
         <form action="{{ route('medical-history.store') }}" method="POST">
             @csrf
             @foreach ($questions as $q)
