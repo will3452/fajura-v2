@@ -18,6 +18,7 @@ use App\Http\Controllers\MedicalAnswerController;
 use App\Http\Controllers\AccountPasswordController;
 use App\Http\Controllers\AdminPermissionController;
 use App\Http\Controllers\AdminAppointmentController;
+use App\Http\Controllers\AccountManagementController;
 use App\Http\Controllers\DentistAppointmentController;
 use App\Http\Controllers\AdminMedicalQuestionController;
 use App\Http\Controllers\ProfilePictureUpdateController;
@@ -126,6 +127,8 @@ Route::resource('medical-history', MedicalAnswerController::class);
 Route::get('change-password', [AccountPasswordController::class, 'showPasswordForm'])->name('show.password.form');
 Route::post('change-password', [AccountPasswordController::class, 'storePassword'])->name('store.password');
 
+//staff of dentist 
+Route::resource('account-management', AccountManagementController::class);
 
 
 

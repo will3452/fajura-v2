@@ -41,15 +41,15 @@
                                 <div class="level">
                                     <div class="level-left">
                                         <div class="level-item">
-                                            <i data-feather="user"></i>
+                                            <i data-feather="users"></i>
                                         </div>
                                         <div class="level-item">
-                                        Profile
+                                        Accounts
                                         </div>
                                     </div>
                                     <div class="level-right">
                                         <div class="level-item">
-                                            <a href="#" class="button is-info is-small is-rounded">
+                                            <a href="{{ route('account-management.index') }}" class="button is-info is-small is-rounded">
                                                 view
                                             </a>
                                         </div>
