@@ -36,7 +36,7 @@
                 <div class="help block">
                     {{ $service->feedbacks()->count() }} feedback(s)
                 </div>
-                <div class="block">
+                <div class="block" style="height:70vh;overflow-y:auto;">
                     @foreach ($service->feedbacks as $fb)
                         <div class="box">
                             <div class="is-flex is-justify-content-space-between align-items-center">
