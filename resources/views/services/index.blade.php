@@ -14,6 +14,5 @@
         </h2>
         @livewire('search', ['component'=>'service-listing', 'placeholder'=>'Find service'])
         @livewire('service-listing')
-        
     </div>
 @endsection

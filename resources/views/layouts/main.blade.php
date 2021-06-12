@@ -17,15 +17,14 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
     {{-- date picker --}}
-    <link rel="stylesheet" href="https://unpkg.com/js-datepicker/dist/datepicker.min.css">
+    <link rel="stylesheet" href="/css/dpicker.css">
 
     {{-- loader --}}
     <script src="https://cdn.jsdelivr.net/npm/pace-js@latest/pace.min.js"></script>
     {{-- <link rel="stylesheet" href="/css/center-simple.css"> --}}
     {{-- <link rel="stylesheet" href="/css/big-counter.css"> --}}
     <link rel="stylesheet" href="/css/flash.css">
-    <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
-    <script data-ad-client="ca-pub-5277127680186259" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    {{-- <script data-ad-client="ca-pub-5277127680186259" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> --}}
     @stack('styles')
    @auth
         @if (auth()->user()->darkmode)
@@ -35,61 +34,7 @@
 </head>
 <body>
     @include('sweetalert::alert')
-    <div id="app" >
-        {{-- <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
-
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                            @if (Route::has('login'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                                </li>
-                            @endif
-
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
-                    </ul>
-                </div>
-            </div>
-        </nav> --}}
-
+    <div id="app">
         <nav class="navbar is-spaced" x-data="{
             isActive:false,
             updateIsActive(){
@@ -179,16 +124,9 @@
 
     @livewireScripts()
     
-    <script>
-        document.addEventListener('DOMContentLoad', function(){
-            document.getElementById('app').style.opacity = '0';
-        })
-        window.onload = ()=>{
-            feather.replace();
-            document.getElementById('app').style.opacity = '1';
-        }
-    </script>
-    <script src="https://unpkg.com/js-datepicker"></script>
+    <script src="/js/jsdpicker.js"></script>
+    <script src="/js/feather_init.js"></script>
+    {{-- <script src="https://unpkg.com/js-datepicker"></script> --}}
     @stack('scripts')
 </body>
 </html>
