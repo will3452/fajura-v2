@@ -97,7 +97,7 @@ class AdminServiceController extends Controller
         $data = $request->validate([
             'name'=>'required',
             'price'=>'required',
-            'picture'=>'required',
+            'picture'=>'required|image',
             'remarks'=>'required'
         ]);
 

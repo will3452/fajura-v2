@@ -19,7 +19,7 @@
                 </div>
                 <div class="form-group">
                     <label for="">Picture</label>
-                    <input type="file" name="picture" class="d-block" required>
+                    <input type="file" name="picture" accept="image/*" class="d-block" required>
                 </div>
                 <div class="form-group">
                     <label for="">Remarks</label>

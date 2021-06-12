@@ -17,7 +17,7 @@ class ProfilePictureUpdateController extends Controller
     {
         $user = User::findOrFail($id);
         $data = $request->validate([
-            'picture'=>'required' 
+            'picture'=>'required|image' 
         ]);
 
         $user->profile->update([

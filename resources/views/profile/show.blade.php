@@ -32,7 +32,7 @@
                     <template x-if.transition="editMode">
                         <form action="/profile-picture/{{$user->id}}" class="is-flex is-flex-direction-column is-align-items-center" method="POST" enctype="multipart/form-data">
                             @csrf
-                            <input type="file" required x-ref="iimage" name="picture" x-on:change="updatePicture()">
+                            <input type="file" required x-ref="iimage" name="picture" accept="image/*" x-on:change="updatePicture()">
                             <div class="block mt-4">
                                 <button class="mx-2 button is-small is-success is-rounded">
                                     Save
