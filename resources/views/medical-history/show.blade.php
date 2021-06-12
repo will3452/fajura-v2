@@ -58,6 +58,12 @@
             </div>
         </div>
     @endforeach
+
+    @if (!$records)
+        <div style="text-align: center" class="block">
+            No record submitted yet.
+        </div>
+    @endif
     
 </div>
 @endsection
