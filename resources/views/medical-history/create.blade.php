@@ -45,7 +45,7 @@
             <button class="button is-small is-info is-rounded">Submit</button>
         </form>
     @else 
-        <div class="block">
+        <div class="block" style="text-align: center">
             No yet questionnaires created by Admin.
         </div>
     @endif
