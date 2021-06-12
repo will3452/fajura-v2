@@ -25,7 +25,7 @@
         </div>
     </div>
     <div style="text-align: right">
-        <a href="{{ route('reset.session') }}" class="has-icon 
+        <a href="{{ url()->current() }}" class="has-icon 
             button is-info is-rounded is-small">
             <div class="icon">
                 <i data-feather="refresh-ccw"></i>

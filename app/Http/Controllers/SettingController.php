@@ -11,6 +11,7 @@ class SettingController extends Controller
     }
 
     public function setting(){
+        session()->put('darkmode', auth()->user()->setting->dark_mode);
         return view('setting');
     }
 }
