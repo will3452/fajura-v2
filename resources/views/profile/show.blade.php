@@ -1,6 +1,22 @@
 @extends('layouts.main')
 @section('content')
     <div class="container">
+        <div class="is-flex is-justify-content-space-between">
+           
+            <a href="{{ route('home') }}" class="button is-small is-rounded has-icon">
+                <div class="icon">
+                    <i data-feather="arrow-left"></i>
+                </div>
+            </a>
+            <a class="button is-small is-dark is-rounded has-icon" href="{{ route('settings') }}?user_id={{ $user->id }}" >
+                <div class="icon">
+                    <i data-feather="settings"></i>
+                </div>
+                <div>
+                    Settings
+                </div>
+            </a>
+        </div>
         <div class="columns">
             <div class="column is-3 is-flex is-flex-direction-column is-align-items-center">
                 <img style="border-radius: 50%; object-fit:cover;height:200px; width:200px;" id="image" src="
