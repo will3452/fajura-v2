@@ -30,7 +30,16 @@
                 @livewire('setting-toggle', ['active'=>auth()->user()->setting->notify_by_email, 'setting'=>auth()->user()->setting, 'prop'=>'notify_by_email'])
             </div>
         </div>
+        <div class="is-flex is-justify-content-space-between box">
+            <div class="is-flex align-items-center">
+              <i data-feather="key" class="mx-2"></i>  Account Password
+            </div>
+            <div>
+                <a href="{{ route('show.password.form') }}" class="button is-small is-text is-rounded">Change</a>
+            </div>
+        </div>
     </div>
+    
     <div style="text-align: right">
         <a href="{{ url()->current() }}" class="has-icon 
             button is-info is-rounded is-small">
