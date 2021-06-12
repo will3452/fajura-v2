@@ -29,9 +29,12 @@
                     <div x-data="{
                         write:false
                     }">
-                        <a href="{{ route('feedbacks.show', $service) }}" class="button is-small is-rounded">
-                            {{ $service->feedbacks()->count() }} Feedback 
-                        </a> <a href="#" x-on:click.prevent="write = true" x-show="!write" class="button is-small is-rounded"> Write a feedback</a>
+                        @if ($service->feedbacks()->count())
+                            <a href="{{ route('feedbacks.show', $service) }}" class="button is-small is-rounded">
+                                {{ $service->feedbacks()->count() }} Feedback/s
+                            </a>
+                        @endif
+                        <a href="#" x-on:click.prevent="write = true" x-show="!write" class="button is-small is-rounded"> Write a feedback</a>
                         <div x-show="write">
                             @livewire('star-selector', key($service->id))
                             <form action="{{ route('feedbacks.store') }}" method="POST">

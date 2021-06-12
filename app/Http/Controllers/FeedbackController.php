@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Service;
 use Illuminate\Http\Request;
 
 class FeedbackController extends Controller
@@ -64,7 +65,9 @@ class FeedbackController extends Controller
      */
     public function show($id)
     {
-        //
+        $service = Service::findOrFail($id);
+        $service->with('feedbacks');
+        return view('feedback.show', compact('service'));
     }
 
     /**
