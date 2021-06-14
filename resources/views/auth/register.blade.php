@@ -157,14 +157,124 @@
                     </div>
                 </div>
                 @livewire('register-fields')
-
-                <div class="field">
-                    <div class="control">
-                        <button type="submit" class="button is-info" disabled=true id="submitButton">
-                            <i data-feather="check"></i> <span> {{ __('Submit') }}</span>
-                        </button>
+                <div x-data="{
+                    passwordShow:false,
+                    confirmPasswordShow:false,
+                    updatePasswordShow(){
+                        this.passwordShow = !this.passwordShow;
+                        this.$refs.password.type = this.passwordShow ? 'text':'password';
+                    },
+                    updateConfirmPasswordShow(){
+                        this.confirmPasswordShow = !this.confirmPasswordShow;
+                        this.$refs.passwordConfirm.type = this.confirmPasswordShow ? 'text':'password';
+                    },
+                    hasEspPassword:false,
+                    hasNumPassword:false,
+                    has8Password:false,
+                    passwordMatch:false,
+                    checkPasswordError(){
+                        const password = this.$refs.password.value;
+                        if(/[\W]/.test(password)){
+                            this.hasEspPassword = true;
+                        }else {
+                            this.hasEspPassword = false;
+                        }
+                        if(password.length >= 8){
+                            this.has8Password = true;
+                        }else {
+                            this.has8Password = false;
+                        }
+                        if(/[0-9]/.test(password)) {
+                            this.hasNumPassword = true;
+                        }else {
+                            this.hasNumPassword = false;
+                        }
+                    },
+                    passwordCheck(){
+                        if(this.$refs.passwordConfirm.value === this.$refs.password.value){
+                            this.passwordMatch = true;
+                        }else {
+                            this.passwordMatch = false;
+                        }
+                    },
+                    checkAll(){
+                        return this.hasEspPassword && this.hasNumPassword && this.has8Password && this.passwordMatch;
+                    }
+                }">
+                <div class="field" >
+                    <label for="password" class="label">{{ __('Password') }}</label>
+                    
+                    <div class="field has-addons">
+                        <div class="control is-expanded">
+                            <input x-ref="password" x-on:input="checkPasswordError()" type="password" class="input @error('password') is-danger @enderror" name="password" required autocomplete="new-password">
+                            @error('password')
+                                <span class="help is-danger" role="alert">
+                                    {{ $message }}
+                                </span>
+                            @enderror
+                            {{-- <span class="help is-danger role="alert">
+                                Your email or name should not included to your password.
+                            </span> --}}
+                            <div class="content">
+                                <ul>
+                                    <li x-bind:class="hasEspPassword ? 'has-text-success':'has-text-danger'">
+                                        <small>The password must have atlease special characters.</small>
+                                    </li>
+                                    <li x-bind:class="hasNumPassword ? 'has-text-success':'has-text-danger'">
+                                        <small>The password must have atlease Numeric characters.</small>
+                                    </li>
+                                    <li x-bind:class="has8Password ? 'has-text-success':'has-text-danger'">
+                                        <small>The password must be at least 8 characters.</small>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <p class="control">
+                            <a class="button" x-on:click="updatePasswordShow()">
+                              <i data-feather="eye" x-show="!passwordShow"></i>
+                              <i data-feather="eye-off" x-show="passwordShow"></i>
+                            </a>
+                          </p>
+                    </div>
+                    
+                </div>
+                <div class="field mb-2" >
+                    <label for="password" class="label">{{ __('Confirm Password') }}</label>
+                    <div class="field has-addons">
+                        <div class="control is-expanded">
+                            <input x-ref="passwordConfirm" id="cpassword" x-on:keyup="passwordCheck()" type="password" class="input @error('password_confirmation') is-danger @enderror" name="password_confirmation" required autocomplete="new-password">
+                            @error('password_confirmation')
+                                <span class="help is-danger" role="alert">
+                                    {{ $message }}
+                                </span>
+                            @enderror
+                            <div x-show="!passwordMatch && $refs.passwordConfirm.value.length >= 1" class="has-text-danger">Password isn't matched</div>
+                        </div>
+                        <p class="control">
+                            <a class="button" x-on:click="updateConfirmPasswordShow()">
+                                <i data-feather="eye" x-show="!confirmPasswordShow"></i>
+                                <i data-feather="eye-off" x-show="confirmPasswordShow"></i>
+                            </a>
+                          </p>
                     </div>
                 </div>
+                <div class="field">
+                    <div class="control">
+                        <template x-if="checkAll()">
+                            <button type="submit" class="button is-info is-rounded"  id="submitButton">
+                                 <span> {{ __('Submit') }}</span>
+                            </button>
+                        </template>
+                        <template x-if="!checkAll()">
+                            <button type="button" disabled class="button is-info is-rounded"  >
+                                 <span> {{ __('Submit') }}</span>
+                            </button>
+                        </template>
+                    </div>
+                </div>
+                </div>
+            
+                
             </form>
         </div>
     </div>
