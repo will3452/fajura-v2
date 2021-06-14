@@ -4,7 +4,7 @@
     </div>
     @if (count($services))
         @foreach ($services as $service)
-            <div class="block">
+            <div class="mb-2">
                 <div class="columns is-centered">
                     <div class="column is-2 is-flex is-justify-content-center is-mobile">
                         <p class="image is-128x128">
