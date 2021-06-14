@@ -112,7 +112,7 @@
                     <div class="field">
                         <label for="" class="label">Birthdate</label>
                         <div class="control">
-                            <input type="text" disabled class="input is-small" value="{{\Carbon\Carbon::parse($user->profile->birthdate)->format('m-d-Y')}}">
+                            <input type="text" disabled class="input is-small" value="{{$user->profile->birthdate}}">
                         </div>
                     </div>
                     <div class="field">

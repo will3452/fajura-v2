@@ -19,7 +19,7 @@ class CreateProfilesTable extends Migration
             $table->string('address');
             $table->string('sex');
             $table->string('phone');
-            $table->timestamp('birthdate');
+            $table->string('birthdate');
             $table->timestamp('approved_at')->nullable();
             $table->timestamps();
         });

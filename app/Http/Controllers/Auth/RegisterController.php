@@ -86,7 +86,6 @@ class RegisterController extends Controller
         $this->revalidatePassword($data);
         $name = $data['firstname'].' '.$data['mi'].'. '.$data['lastname'];
         $address = implode(', ', [$data['brgy'], $data['city'], $data['prov']]);
-        $bdate = Carbon::parse($data['birthdate']);
         $user = User::create([
             'name' => $name,
             'email' => $data['email'],
@@ -96,7 +95,7 @@ class RegisterController extends Controller
         $user->profile()->create([
             'sex'=>$data['sex'],
             'phone'=>$data['phone'],
-            'birthdate'=>$bdate,
+            'birthdate'=>$data['birthdate'],
             'address'=>$address
         ]);
         $user->assignRole('patient');
