@@ -248,7 +248,7 @@
                                     {{ $message }}
                                 </span>
                             @enderror
-                            <div x-show="!passwordMatch && $refs.passwordConfirm.value.length >= 1" class="has-text-danger">Password isn't matched</div>
+                            <div x-show="!passwordMatch && $refs.passwordConfirm.value.length >= 1" class="has-text-danger help">Password isn't matched</div>
                         </div>
                         <p class="control">
                             <a class="button" x-on:click="updateConfirmPasswordShow()">
@@ -259,6 +259,7 @@
                     </div>
                 </div>
                 <div class="field">
+                    <label for="" class="label help">By continuing submitting this form, I hereby Agree and consent to the <a href="/privacy-policy" target="_blank">Privacy Policy</a>.</label>
                     <div class="control">
                         <template x-if="checkAll()">
                             <button type="submit" class="button is-info is-rounded"  id="submitButton">

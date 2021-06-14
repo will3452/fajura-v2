@@ -132,6 +132,9 @@ Route::resource('account-management', AccountManagementController::class);
 
 
 
+//privacy and policies
+Route::view('privacy-policy', 'privacy-policy');
+
 
 //payment
 Route::get('/payment', function(){
