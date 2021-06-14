@@ -34,10 +34,10 @@
                                    {{ $activity->id }}
                                </td>
                                <td>
-                                    {{ $activity->causer->name }}
+                                    {{ $activity->causer_id }}
                                 </td>
                                 <td>
-                                    {{ $activity->subject->id }}
+                                    {{ $activity->subject_id}}
                                 </td>
                                 <td>
                                     {{ $activity->description }}
