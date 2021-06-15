@@ -15,7 +15,7 @@
     </h2>
 
     <div class="table-container">
-        <table class="table is-narrow is-bordered is-fullwidth">
+        <table class="table is-narrow is-bordered is-fullwidth" id="dataTable">
             <thead>
                 <tr>
                     <th>
@@ -105,6 +105,15 @@
         </table>
     </div>
     
-    
 </div>
 @endsection
+
+@push('styles')
+    <link rel="stylesheet" href="/vendor/datatables/dataTables.bootstrap4.min.css">
+@endpush
+@push('scripts')
+    <script src="/vendor/jquery/jquery.min.js"></script>
+    <script src="/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+    <script src="/js/demo/datatables-demo.js"></script>
+@endpush
