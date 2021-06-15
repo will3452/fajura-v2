@@ -9,6 +9,13 @@ use App\Models\DentalRecords;
 
 class DentalRecordsController extends Controller
 {
+
+    public function checkUser(){
+        if(!request()->has('user_id') ||  !(auth()->user()->hasRole('dentist') || auth()->user()->hasRole('staff'))){
+            toast('Something went wrong', 'error');
+            return back();
+        }
+    }
     /**
      * Display a listing of the resource.
      *
@@ -26,11 +33,10 @@ class DentalRecordsController extends Controller
      */
     public function create()
     {
-        if(!request()->has('user_id') ||  !auth()->user()->hasRole('dentist')){
-            toast('Something went wrong', 'error');
-            return back();
-        }
+        $this->checkUser();
+        
         $user = User::findOrfail(request()->user_id);
+        
         return view('dental_records.create', compact('user'));
     }
 
@@ -42,10 +48,7 @@ class DentalRecordsController extends Controller
      */
     public function store(Request $request)
     {
-        if(!auth()->user()->hasRole('dentist')){
-            toast('Something went wrong', 'error');
-            return back();
-        }
+        $this->checkUser();
         // dd($request->all());
 
        $data =  $request->validate([
@@ -67,7 +70,17 @@ class DentalRecordsController extends Controller
             toast('Something went wrong', 'error');
             return back();
         }
-        auth()->user()->patientDentalRecords()->create($data);
+        if(!$request->has('dentist_id')){
+            auth()->user()->patientDentalRecords()->create($data);
+        }else {
+            $dentist = User::findOrFail($request->dentist_id);
+            if($dentist->hasRole('dentist')){
+                $dentist->patientDentalRecords()->create($data);
+            }else {
+                toast('Something went wrong!', 'error');
+                return back();
+            }
+        }
         toast('Patient Dental Record Added!', 'success');
         return redirect(route('dental-records.show', $request->patient_id));
     }

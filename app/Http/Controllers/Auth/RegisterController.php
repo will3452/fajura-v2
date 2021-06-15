@@ -99,7 +99,7 @@ class RegisterController extends Controller
             'address'=>$address
         ]);
         $user->assignRole('patient');
-        $user->setting()->create([]); // just to create settings
+        $user->setting()->create(['notify_by_email'=>true]); // just to create settings
         return $user;
     }
 }

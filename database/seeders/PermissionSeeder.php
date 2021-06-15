@@ -14,10 +14,12 @@ class PermissionSeeder extends Seeder
      */
     public function run()
     {
+        // app()['cache']->forget('spatie.permission.cache');
         //schedules
         Permission::create([
             'name'=>'browse schedules'
         ]);
+
         Permission::create([
             'name'=>'edit schedules'
         ]);

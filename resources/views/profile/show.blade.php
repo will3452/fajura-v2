@@ -8,14 +8,16 @@
                     <i data-feather="arrow-left"></i>
                 </div>
             </a>
-            <a class="button is-small is-dark is-rounded has-icon" href="{{ route('settings') }}?user_id={{ $user->id }}" >
-                <div class="icon">
-                    <i data-feather="settings"></i>
-                </div>
-                <div>
-                    Settings
-                </div>
-            </a>
+            @if (auth()->user()->id == $user->id)
+                <a class="button is-small is-dark is-rounded has-icon" href="{{ route('settings') }}?user_id={{ $user->id }}" >
+                    <div class="icon">
+                        <i data-feather="settings"></i>
+                    </div>
+                    <div>
+                        Settings
+                    </div>
+                </a>
+            @endif
         </div>
         <div class="columns">
             <div class="column is-3 is-flex is-flex-direction-column is-align-items-center">
@@ -70,7 +72,7 @@
                         {{$user->created_at->format('m/d/y')}}
                     </div>
                 </div>
-                @if (auth()->user()->hasRole('dentist') || auth()->user()->id == $user->id)
+                @if (auth()->user()->hasRole('dentist') || auth()->user()->id == $user->id || auth()->user()->hasRole('staff'))
                     <div class="block">
                         <a class="button is-small is-text is-rounded" href="{{ route('dental-records.show', $user->id) }}">View Dental Records</a>
                     </div>

@@ -30,6 +30,7 @@
                             <input type="text" disabled value="{{ $user->unique_id }}" class="input is-small">
                         </div>
                     </div>
+                    
                     <input type="hidden" name="patient_id" value="{{ $user->id }}">
                     <input type="hidden" name="patient_secret" value="{{ \Hash::make($user->id) }}">
                     <div class="field">
@@ -38,6 +39,20 @@
                             <input type="text" disabled value="{{ $user->name }}" class="input is-small" required>
                         </div>
                     </div>
+                    @if (auth()->user()->hasRole('staff'))
+                    <div class="field">
+                        <label for="" class="label">Dentist</label>
+                        <div class="select is-fullwidth is-small">
+                            <select name="dentist_id" id="" required>
+                                @foreach (\App\Models\User::role('dentist')->get() as $dentist)
+                                    <option value="{{ $dentist->id }}">
+                                        {{ $dentist->name }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    @endif
                     <div class="field">
                         <label for="" class="label">Date of Initial Symptoms</label>
                         <div class="control">

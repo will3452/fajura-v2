@@ -81,6 +81,29 @@
                             </div>
                         </div>
                     @endcan
+                    @can('browse appointments', Model::class)
+                        <div class="column is-6 is-half-mobile">
+                            <div class="box">
+                                <div class="level">
+                                    <div class="level-left">
+                                        <div class="level-item">
+                                            <i data-feather="calendar"></i>
+                                        </div>
+                                        <div class="level-item">
+                                        All Appointment
+                                        </div>
+                                    </div>
+                                    <div class="level-right">
+                                        <div class="level-item">
+                                            <a href="{{ route('all-appointments.index') }}" class="button is-info is-small is-rounded">
+                                                view
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endcan
                    @can('edit appointments', Model::class)
                         <div class="column is-6 is-half-mobile">
                             <div class="box">
@@ -143,30 +166,6 @@
                                     <div class="level-right">
                                         <div class="level-item">
                                             <a href="{{ route('schedules.index') }}" class="button is-info is-small is-rounded">
-                                                view
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    @endcan
-                   
-                    @can('edit accounts')
-                        <div class="column is-6 is-half-mobile">
-                            <div class="box">
-                                <div class="level">
-                                    <div class="level-left">
-                                        <div class="level-item">
-                                            <i data-feather="users"></i>
-                                        </div>
-                                        <div class="level-item">
-                                        Accounts
-                                        </div>
-                                    </div>
-                                    <div class="level-right">
-                                        <div class="level-item">
-                                            <a href="#" class="button is-info is-small is-rounded">
                                                 view
                                             </a>
                                         </div>

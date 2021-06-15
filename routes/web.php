@@ -15,6 +15,7 @@ use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\AdminServiceController;
 use App\Http\Controllers\DentalRecordsController;
 use App\Http\Controllers\MedicalAnswerController;
+use App\Http\Controllers\AllAppointmentController;
 use App\Http\Controllers\AccountPasswordController;
 use App\Http\Controllers\AdminPermissionController;
 use App\Http\Controllers\AdminAppointmentController;
@@ -130,7 +131,8 @@ Route::post('change-password', [AccountPasswordController::class, 'storePassword
 //staff of dentist 
 Route::resource('account-management', AccountManagementController::class);
 
-
+//all appointemt for staff only 
+Route::resource('all-appointments', AllAppointmentController::class);
 
 //privacy and policies
 Route::view('privacy-policy', 'privacy-policy');
