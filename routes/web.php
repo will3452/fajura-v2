@@ -168,4 +168,4 @@ Route::get('/p/failed', function(){
 });
 
 
-Route::view('pphub', 'pphub')->middleware('auth');
+// Route::view('pphub', 'pphub')->middleware('auth');
