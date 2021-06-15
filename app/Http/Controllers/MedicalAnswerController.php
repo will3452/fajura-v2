@@ -10,7 +10,7 @@ class MedicalAnswerController extends Controller
 {
 
     public function giveError(){
-        toast('Something went wrong', 'toast');
+        toast('Something is wrong', 'toast');
         return back();
     }
 

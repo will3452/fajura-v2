@@ -12,7 +12,7 @@ class DentalRecordsController extends Controller
 
     public function checkUser(){
         if(!request()->has('user_id') ||  !(auth()->user()->hasRole('dentist') || auth()->user()->hasRole('staff'))){
-            toast('Something went wrong', 'error');
+            toast('Something is wrong', 'error');
             return back();
         }
     }
@@ -67,7 +67,7 @@ class DentalRecordsController extends Controller
 
 
         if(!\Hash::check($request->patient_id, $request->patient_secret)){
-            toast('Something went wrong', 'error');
+            toast('Something is wrong', 'error');
             return back();
         }
         if(!$request->has('dentist_id')){
@@ -77,7 +77,7 @@ class DentalRecordsController extends Controller
             if($dentist->hasRole('dentist')){
                 $dentist->patientDentalRecords()->create($data);
             }else {
-                toast('Something went wrong!', 'error');
+                toast('Something is wrong!', 'error');
                 return back();
             }
         }

@@ -42,7 +42,7 @@ class AllAppointmentController extends Controller
             }else if($get == 'cancelled'){
                 $appointments = Appointment::where('status', 'cancelled')->get();
             }else{
-                toast('Something went wrong!', 'error');
+                toast('Something is wrong!', 'error');
                 return redirect()->route('all-appointments.index');
             }
         }else {
@@ -111,7 +111,7 @@ class AllAppointmentController extends Controller
         ]);
 
         if(!in_array($request->a, ['a', 'c'])){
-            toast('Something went wrong', 'error');
+            toast('Something is wrong', 'error');
             return back();
         }else {
             $a = $request->a;
