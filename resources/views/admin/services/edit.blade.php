@@ -5,7 +5,7 @@
         <div class="card-header">
             Service Creation
         </div>
-    <img class="card-img-top" src="{{ $service->public_picture }}" alt="sarvices current image">
+    <img class="card-img-top" src="{{ $service->public_picture }}" style="height:300px !important;" alt="sarvices current image">
         <div class="card-body">
             <form action="{{ route('admin.services.update', $service) }}" method="POST" enctype="multipart/form-data">
                 @csrf
