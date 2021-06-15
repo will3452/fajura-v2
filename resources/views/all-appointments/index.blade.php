@@ -17,8 +17,8 @@
             <a href="{{ route('all-appointments.index') }}?get=tomorrow" class="button is-small is-rounded">
                 Tomorrow
             </a>
-            <a href="{{ route('all-appointments.index') }}?get=incomming" class="button is-small is-rounded">
-                Incomming
+            <a href="{{ route('all-appointments.index') }}?get=incoming" class="button is-small is-rounded">
+                Incoming
             </a>
             <a href="{{ route('all-appointments.index') }}?get=completed" class="button is-small is-rounded">
                 Completed

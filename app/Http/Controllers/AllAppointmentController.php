@@ -35,7 +35,7 @@ class AllAppointmentController extends Controller
                 $appointments = Appointment::where('date', today()->format('Y/m/d'))->get();
             }else if($get == 'tomorrow'){
                 $appointments = Appointment::where('date', today()->addDay()->format('Y/m/d'))->get();
-            }else if($get == 'incomming'){
+            }else if($get == 'incoming'){
                 $appointments = Appointment::where('status', 'pending')->get();
             }else if($get == 'completed'){
                 $appointments = Appointment::where('status', 'completed')->get();
