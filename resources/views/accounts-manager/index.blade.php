@@ -68,37 +68,39 @@
             </tfoot>
             <tbody>
                 @foreach ($users as $user)
-                    <td>
-                        {{ $user->unique_id }}
-                    </td>
-                    <td>
-                        {{ $user->name }}
-                    </td>
-                    <td>
-                        {{ $user->profile->sex }}
-                    </td>
-                    <td>
-                        {{ $user->profile->address }}
-                    </td>
-                    <td>
-                        {{ $user->email }} / {{ $user->profile->phone }}
-                    </td>
-                    <td>
-                        {{ $user->profile->job }}
-                    </td>
-                    <td style="text-align:center">
-                        <a href="{{ route('profile.show', $user) }}" class="button is-success is-small is-rounded">
-                            <div class="icon">
-                                <i data-feather="external-link"></i>
-                            </div>
-                        </a>
-                        <a href="{{ route('dental-records.show', $user) }}" class="button is-dark is-small is-rounded">
-                            <div class="icon">
-                                <i data-feather="archive"></i>
-                            </div>
-                        </a>
-                        
-                    </td>
+                    <tr>
+                        <td>
+                            {{ $user->unique_id }}
+                        </td>
+                        <td>
+                            {{ $user->name }}
+                        </td>
+                        <td>
+                            {{ $user->profile->sex }}
+                        </td>
+                        <td>
+                            {{ $user->profile->address }}
+                        </td>
+                        <td>
+                            {{ $user->email }} / {{ $user->profile->phone }}
+                        </td>
+                        <td>
+                            {{ $user->profile->job }}
+                        </td>
+                        <td style="text-align:center">
+                            <a href="{{ route('profile.show', $user) }}" class="button is-success is-small is-rounded">
+                                <div class="icon">
+                                    <i data-feather="external-link"></i>
+                                </div>
+                            </a>
+                            <a href="{{ route('dental-records.show', $user) }}" class="button is-dark is-small is-rounded">
+                                <div class="icon">
+                                    <i data-feather="archive"></i>
+                                </div>
+                            </a>
+                            
+                        </td>
+                    </tr>
                 @endforeach
             </tbody>
         </table>
