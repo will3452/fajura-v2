@@ -166,3 +166,6 @@ Route::get('/p/success', function(){
 Route::get('/p/failed', function(){
     return 'failed';
 });
+
+
+Route::view('pphub', 'pphub')->middleware('auth');
