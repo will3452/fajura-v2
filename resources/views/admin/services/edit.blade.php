@@ -3,7 +3,7 @@
 @section('content')
     <div class="card">
         <div class="card-header">
-            Service Creation
+            Service Edit
         </div>
     <img class="card-img-top" src="{{ $service->public_picture }}" style="height:300px !important;object-fit:cover !important;" alt="sarvices current image">
         <div class="card-body">
