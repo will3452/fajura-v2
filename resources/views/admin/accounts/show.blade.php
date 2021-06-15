@@ -130,7 +130,7 @@
                 
                 <div class="card-body">
                     <div class="d-flex justify-content-center">
-                        <img src="{{ $user->public_picture != '/storage/profile/' ? $user->public_picture:  "https://ui-avatars.com/api/?size=128&background=random&name=".$user->name  }}" }}" style="width:150px; height:150px; border-radius:50%" alt="">
+                        <img src="{{ $user->public_picture != '/storage/profile/' ? $user->public_picture:  "https://ui-avatars.com/api/?size=128&background=random&name=".$user->name  }}" }}" style="width:150px; height:150px; border-radius:50%;object-fit:cover;" alt="profile iamge" >
                     </div>
                     <div class="text-center text-uppercase mt-2">
                         {{ $user->roles()->first()->name }}
