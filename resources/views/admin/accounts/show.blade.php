@@ -33,7 +33,7 @@
                             <label for="">
                                 Birthdate
                             </label>
-                            <input type="text" required name="birthdate" class="form-control" value="{{ \Carbon\Carbon::parse($user->profile->birthdate)->format('m/d/Y') }}">
+                            <input type="text" required name="birthdate" class="form-control" value="{{ $user->profile->birthdate }}">
                         </div>
                         <div class="form-group row">
                             <div class="col-md-6">
