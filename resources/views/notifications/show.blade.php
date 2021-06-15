@@ -56,7 +56,7 @@
                     <div class="mb-2 is-flex is-justify-content-center has-text-dark">
                         <i data-feather="bell-off"></i>
                     </div>
-                    No notification found :)
+                    No notification found :) 
                 </div>
             </div>
         @endif
