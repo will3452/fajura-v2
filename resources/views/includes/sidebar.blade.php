@@ -84,7 +84,7 @@
 
     <!-- Heading -->
     <div class="sidebar-heading">
-        Administration
+        Admin
     </div>
 
     <li class="nav-item">
