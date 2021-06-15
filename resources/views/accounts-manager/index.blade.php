@@ -11,7 +11,7 @@
     </div>
 
     <h2 class="title is-4" style="text-align:center">
-        Patient Accounts asdasd
+        Patient Accounts
     </h2>
 
     <div class="table-container">
