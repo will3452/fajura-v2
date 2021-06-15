@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use App\Models\Appointment;
 use Illuminate\Http\Request;
+use App\Models\DentalRecords;
 
 class DashboardController extends Controller
 {
@@ -25,7 +28,21 @@ class DashboardController extends Controller
     {
         // dd(auth()->user()->profile);
         if(auth()->user()->profile->approved_at != null){
-            return auth()->user()->is_admin ? view('admin.dashboard'):view('dashboard');
+            if(auth()->user()->is_admin){
+                $patients = User::role('patient')->get();
+                $appointments = Appointment::where('status', 'pending')->get();
+                $annual = DentalRecords::whereYear('created_at', today()->format('Y'))->sum('amount');
+                $monthly = DentalRecords::whereYear('created_at', today()->format('Y'))->whereMonth('created_at', today()->format('m'))->sum('amount');
+                
+                //get all data for charting
+                $data = DentalRecords::whereYear('created_at', request()->year ?? today()->format('Y'))->get()->groupBy(function($val){
+                    return $val->created_at->format('M');
+                });
+                // return $data;
+                return view('admin.dashboard', compact('patients', 'appointments', 'annual', 'monthly','data'));
+            }else {
+                return view('dashboard');
+            }
         }else {
             auth()->logout();
             alert()->info('','Your Profile is under review');
