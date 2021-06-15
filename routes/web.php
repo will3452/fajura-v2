@@ -13,6 +13,7 @@ use App\Http\Controllers\SchedulesController;
 use App\Http\Controllers\getDentistController;
 use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\AdminServiceController;
+use App\Http\Controllers\AdminSettingController;
 use App\Http\Controllers\DentalRecordsController;
 use App\Http\Controllers\MedicalAnswerController;
 use App\Http\Controllers\AllAppointmentController;
@@ -102,6 +103,11 @@ Route::middleware(['auth'])->prefix('admin/')->name('admin.')->group(function(){
     // log 
     Route::resource('log', AdminLogController::class);
     // end of log
+
+    // setting
+    Route::get('setting', [AdminSettingController::class, 'setting'])->name('setting');
+    Route::post('setting/save-account', [AdminSettingController::class, 'AccountSave'])->name('setting.account.save');
+    // end of setting
 
 });
 

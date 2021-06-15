@@ -113,6 +113,18 @@
             <i class="fas fa-fw fa-list"></i>
             <span>Activity Log</span></a>
     </li>
+    <hr class="sidebar-divider">
+
+    <!-- Heading -->
+    <div class="sidebar-heading">
+        Extra
+    </div>
+
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('admin.setting') }}">
+            <i class="fas fa-fw fa-cog"></i>
+            <span>Setting</span></a>
+    </li>
 
 
 
