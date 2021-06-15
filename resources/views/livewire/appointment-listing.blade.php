@@ -7,7 +7,7 @@
         Cancellation of booked appointment will be no longer allowed upon 24 hours.
     </div>
     <div class="table-container">
-        <table class="table is-fullwidth is-bordered is-striped">
+        <table class="table is-fullwidth is-bordered">
             <thead>
                 <tr>
                     <th>
