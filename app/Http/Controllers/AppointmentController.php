@@ -8,6 +8,9 @@ use App\Models\Time;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use App\Notifications\YouBookAnAppointment;
+use App\Notifications\YouHaveANewAppointment;
+use App\Notifications\CancelledBookedAppointment;
 
 class AppointmentController extends Controller
 {
@@ -74,6 +77,13 @@ class AppointmentController extends Controller
                     'start_time'=>$time->start,
                     'dentist_id'=>$request->dentist_id
                     ]);
+
+                    //notify her/him that she/he successfully booked
+                    auth()->user()->notify(new YouBookAnAppointment($appointment));
+
+                    //dentist notify 
+                    $appointment->dentist->notify(new YouHaveANewAppointment($appointment));
+
                     toast('You booked successfully!');
                     return redirect()->route('appointments.index');
             }else {
@@ -117,12 +127,18 @@ class AppointmentController extends Controller
 
         //check if cancellable
         if(!$appointment->is_cancellable){
-            toast('You\' cancel this booked appointment', 'success');
+            toast('You cancelled this booked appointment', 'success');
             return back();
         }
 
         $appointment->status = 'cancelled';
         $appointment->save();
+
+        //notify patient
+        auth()->user()->notify(new CancelledBookedAppointment($appointment, "You cancelled the appointment (ID ".$appointment->unique_id.").", route('appointments.index')));
+
+        $appointment->dentist->notify(new CancelledBookedAppointment($appointment, "Patient cancelled Appointment (ID ".$appointment->unique_id.").", route('dentist-appointments.index')));
+        
         toast('You\'ve successfully cancelled!', 'success');
         return back();
     }

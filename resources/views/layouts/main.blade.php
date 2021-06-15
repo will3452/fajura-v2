@@ -81,6 +81,18 @@
                             @endif
                         </div>
                         @else 
+                        <div class="navbar-item">
+                            <a href="{{ route('notif.show') }}" class="button is-rounded has-icon">
+                                <div class="icon">
+                                    <i data-feather="bell"></i>
+                                </div>
+                                @if (auth()->user()->unreadNotifications()->count())
+                                    <div>
+                                        {{ auth()->user()->unreadNotifications()->count() }}
+                                    </div>
+                                @endif
+                            </a>
+                        </div>
                         <div class="navbar-item has-dropdown is-hoverable ">
                             <a class="navbar-link has-icon">
                                 <div class="icon mr-2">

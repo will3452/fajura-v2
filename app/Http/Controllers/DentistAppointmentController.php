@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Appointment;
 use Illuminate\Http\Request;
+use App\Notifications\CompletedAppointment;
+use App\Notifications\CancelledBookedAppointment;
 
 class DentistAppointmentController extends Controller
 {
@@ -93,8 +95,18 @@ class DentistAppointmentController extends Controller
         if($request->a == 'a'){
             $appointment->update(['status'=>'completed']);
             toast('Appointment marked as Completed', 'success');
+
+            //notify
+            $appointment->dentist->notify(new CompletedAppointment($appointment, "You marked as completed the appointment (ID ".$appointment->unique_id.").", route('dentist-appointments.index')));
+
+            $appointment->user->notify(new CompletedAppointment($appointment, "dentist marked as completed the Appointment (ID ".$appointment->unique_id.").", route('appointments.index')));
         }else {
             $appointment->update(['status'=>'cancelled']);
+
+            //notify
+            $appointment->dentist->notify(new CancelledBookedAppointment($appointment, "You cancelled the appointment (ID ".$appointment->unique_id.").", route('dentist-appointments.index')));
+
+            $appointment->user->notify(new CancelledBookedAppointment($appointment, "dentist cancelled Appointment (ID ".$appointment->unique_id.").", route('appointments.index')));
             toast('Appointment cancelled', 'success');
         }
         return back();

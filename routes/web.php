@@ -14,6 +14,7 @@ use App\Http\Controllers\getDentistController;
 use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\AdminServiceController;
 use App\Http\Controllers\AdminSettingController;
+use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\DentalRecordsController;
 use App\Http\Controllers\MedicalAnswerController;
 use App\Http\Controllers\AllAppointmentController;
@@ -127,6 +128,13 @@ Route::post('profile-picture/{id}', ProfilePictureUpdateController::class);
 Route::resource('feedbacks', FeedbackController::class);
 Route::resource('dental-records', DentalRecordsController::class);
 Route::get('settings', [SettingController::class, 'setting'])->name('settings');
+
+// notifications
+Route::prefix('notifications')->name('notif.')->middleware('auth')->group(function(){
+    Route::get('/', [NotificationController::class, 'showNotifications'])->name('show');
+    Route::get('/{id}', [NotificationController::class, 'updateNotification'])->name('update');
+});
+// endof notifications
 
 //patient medical answers 
 Route::resource('medical-history', MedicalAnswerController::class);

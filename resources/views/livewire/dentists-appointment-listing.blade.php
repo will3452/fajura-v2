@@ -38,7 +38,7 @@
                                 @method('PUT')
                                 <input type="hidden" name="a" value="b">
                                 <button class="button is-small is-danger is-rounded is-info">
-                                    Cancelled
+                                    Cancel
                                 </button>
                             </form>
                         </div>
