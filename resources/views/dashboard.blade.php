@@ -58,7 +58,7 @@
                             </div>
                         </div>
                     @endcan
-                    @can('add appointments', Model::class)
+                    @can('add appointments')
                         <div class="column is-6 is-half-mobile">
                             <div class="box">
                                 <div class="level">
@@ -81,7 +81,7 @@
                             </div>
                         </div>
                     @endcan
-                    @can('browse appointments', Model::class)
+                    @can('browse appointments')
                         <div class="column is-6 is-half-mobile">
                             <div class="box">
                                 <div class="level">
@@ -104,7 +104,7 @@
                             </div>
                         </div>
                     @endcan
-                   @can('edit appointments', Model::class)
+                   @can('edit appointments')
                         <div class="column is-6 is-half-mobile">
                             <div class="box">
                                 <div class="level">
@@ -151,7 +151,7 @@
                         </div>
                     @endcan
 
-                    @can('edit schedules', Model::class)
+                    @can('edit schedules')
                         <div class="column is-6 is-half-mobile">
                             <div class="box">
                                 <div class="level">
