@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
             DaySeeder::class,
             PermissionSeeder::class,
             RoleSeeder::class,
+            AppSettingSeeder::class,
         ]);
     }
 }

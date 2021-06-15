@@ -48,7 +48,7 @@
             <div class="navbar-brand">
                 <a class="navbar-item" href="#">
                   {{-- <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28"> --}}
-                  <span class="title">Fajura</span>
+                  <span class="title">{{ \App\Models\AppSetting::first()->brand_name }}</span>
                 </a>
                 <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" x-on:click="updateIsActive()" >
                   <span aria-hidden="true"></span>

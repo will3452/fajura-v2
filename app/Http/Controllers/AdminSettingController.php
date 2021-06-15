@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AppSetting;
 use Illuminate\Http\Request;
 
 class AdminSettingController extends Controller
@@ -11,8 +12,8 @@ class AdminSettingController extends Controller
     }
     public function setting(){
         $this->isAdmin();
-
-        return view('admin.setting');
+        $appSetting = AppSetting::first();
+        return view('admin.setting', compact('appSetting'));
     }
 
     public function AccountSave(){
@@ -32,6 +33,24 @@ class AdminSettingController extends Controller
         auth()->user()->save();
 
         toast('Account changes saved!', 'success');
+
+        return back();
+    }
+
+    public function AppSave(){
+        $this->isAdmin();
+
+        $data = request()->validate([
+            'brand_name'=>'required',
+            'brand_saying'=>'required',
+            'map_url'=>'',
+            'fb_page_url'=>'',
+            'messenger_url'=>''
+        ]);
+
+        AppSetting::first()->update($data);
+
+        toast('Application changes saved!', 'success');
 
         return back();
     }

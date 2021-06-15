@@ -5,7 +5,7 @@
         <div class="sidebar-brand-icon rotate-n-15">
             <i class="fas fa-crown"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">FAJURA</div>
+        <div class="sidebar-brand-text mx-3">{{ \App\Models\AppSetting::first()->brand_name }}</div>
     </a>
 
     <!-- Divider -->

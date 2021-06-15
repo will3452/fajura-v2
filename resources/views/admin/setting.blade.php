@@ -40,6 +40,46 @@
             </form>
         </div>
     </div>
+    <div class="card mt-2">
+        <div class="card-header">
+            App Setting
+        </div>
+        <div class="card-body">
+            <form action="{{ route('admin.setting.app.save') }}" method="POST">
+                @csrf
+                <div class="form-group">
+                    <label for="">Brand Name</label>
+                    <input type="text" class="form-control" required name="brand_name" value="{{ $appSetting->brand_name }}">
+                </div>
+                <div class="form-group">
+                    <label for="">Brand Tagline</label>
+                    <input type="text" class="form-control" required name="brand_saying" value="{{ $appSetting->brand_saying }}">
+                </div>
+                <div class="form-group">
+                    <label for="">Google Map Link</label>
+                    <input type="text" class="form-control" name="map_url" value="{{ $appSetting->map_url }}">
+                </div>
+                <div class="form-group">
+                    <label for="">Facebook Page Link</label>
+                    <input type="text" class="form-control" name="fb_page_url" value="{{ $appSetting->fb_page_url }}">
+                </div>
+                <div class="form-group">
+                    <label for="">Messenger Link</label>
+                    <input type="text" class="form-control" name="messenger_url" value="{{ $appSetting->messenger_url }}">
+                </div>
+                <button class="form-group">
+                    <button class="btn btn-success mr-2">
+                        <i class="fa fa-check"></i>
+                        Submit
+                    </button>
+                    <button type="reset" class="btn btn-secondary">
+                        <i class="fa fa-sync"></i>
+                        Reset
+                    </button>
+                </button>
+            </form>
+        </div>
+    </div>
 @endsection
 
 @push('scripts')

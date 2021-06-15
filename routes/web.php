@@ -107,6 +107,7 @@ Route::middleware(['auth'])->prefix('admin/')->name('admin.')->group(function(){
     // setting
     Route::get('setting', [AdminSettingController::class, 'setting'])->name('setting');
     Route::post('setting/save-account', [AdminSettingController::class, 'AccountSave'])->name('setting.account.save');
+    Route::post('setting/save-app', [AdminSettingController::class, 'AppSave'])->name('setting.app.save');
     // end of setting
 
 });
