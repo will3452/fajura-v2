@@ -11,7 +11,7 @@
     </div>
 
     <h2 class="title is-4" style="text-align:center">
-        Patient Accounts
+        Patient Accounts asdasd
     </h2>
 
     <div class="table-container">
@@ -98,7 +98,6 @@
                                     <i data-feather="archive"></i>
                                 </div>
                             </a>
-                            
                         </td>
                     </tr>
                 @endforeach
