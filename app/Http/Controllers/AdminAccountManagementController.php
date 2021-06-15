@@ -94,7 +94,7 @@ class AdminAccountManagementController extends Controller
 
         $user->profile()->update([
             'address'=>request()->address, 
-            'birthdate'=>\Carbon\Carbon::parse(request()->birthdate),
+            'birthdate'=>request()->birthdate,
             'phone'=>request()->phone,
             'sex'=>request()->sex,
             'job'=>request()->job,
