@@ -1,0 +1,46 @@
+#mobile-hero{
+    display:flex;
+    justify-content:center;
+    flex-direction: column;
+    align-items: center;
+    height: 70vh;
+}
+.no-border{
+    border:none !important;
+}
+
+#app_btn{
+    animation: pulse;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+}
+.sidebar{
+    position: fixed;
+    background: #eee;
+    width:100%;
+    max-width:400px;
+    height: 100vh;
+    top: 0px;
+    right: left;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* padding-top: 2.5em; */
+}
+.sidebar ul {
+    width: 100%;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.sidebar ul li {
+    padding: 0px;
+    text-align: center;
+    margin: 0.5em 0;
+    font-size: 24px;
+}
+.sidebar ul li a{
+    color: #222;
+}

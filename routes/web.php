@@ -114,7 +114,8 @@ Route::middleware(['auth'])->prefix('admin/')->name('admin.')->group(function(){
 });
 
 Route::get('/', function () {
-    return view('welcome');
+    $app = \App\Models\AppSetting::first();
+    return view('welcome', compact('app'));
 });
 
 Auth::routes();
