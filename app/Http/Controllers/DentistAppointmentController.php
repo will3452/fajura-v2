@@ -96,7 +96,7 @@ class DentistAppointmentController extends Controller
             $appointment->update(['status'=>'completed']);
             toast('Appointment marked as Completed', 'success');
 
-            //notify
+            //notify dentist
             $appointment->dentist->notify(new CompletedAppointment($appointment, "You marked as completed the appointment (ID ".$appointment->unique_id.").", route('dentist-appointments.index')));
 
             $appointment->user->notify(new CompletedAppointment($appointment, "dentist marked as completed the Appointment (ID ".$appointment->unique_id.").", route('appointments.index')));
