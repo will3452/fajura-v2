@@ -23,6 +23,11 @@ class NotificationController extends Controller
             toast('Mark as read, succesfully !', 'success');
             return back();
         }
+    }
 
+    public function clearNotification(){
+        auth()->user()->notifications()->delete();
+        toast('Notifications cleared!', 'success');
+        return back();
     }
 }

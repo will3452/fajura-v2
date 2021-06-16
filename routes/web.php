@@ -133,6 +133,7 @@ Route::get('settings', [SettingController::class, 'setting'])->name('settings');
 Route::prefix('notifications')->name('notif.')->middleware('auth')->group(function(){
     Route::get('/', [NotificationController::class, 'showNotifications'])->name('show');
     Route::get('/{id}', [NotificationController::class, 'updateNotification'])->name('update');
+    Route::post('/clear', [NotificationController::class, 'clearNotification'])->name('clear');
 });
 // endof notifications
 

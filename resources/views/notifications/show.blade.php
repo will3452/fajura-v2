@@ -47,9 +47,7 @@
                 </div>
             </div>
         @endforeach
-        <div class="is-flex justify-content-center">
-            {{ $notifications->render("pagination::simple-bootstrap-4") }}
-        </div>
+        
         @if (!count($notifications))
             <div class="is-flex is-justify-content-center has-text-dark">
                 <div>
@@ -59,6 +57,25 @@
                     No notification found :) 
                 </div>
             </div>
+        @else 
+        <div class="is-flex" style="align-items: center;width:100%; justify-content:space-between">
+            <div>
+                {{ $notifications->render("pagination::simple-bootstrap-4") }}
+            </div>
+            <div class="mt-2">
+                <form action="{{ route('notif.clear') }}" method="POST">
+                    @csrf
+                    <button class="button is-danger is-rounded has-icon">
+                        <div class="icon">
+                            <i data-feather="trash"></i>
+                        </div>
+                        <div>
+                            Clear Notification
+                        </div>
+                    </button>
+                </form>
+            </div>
+        </div>
         @endif
     </div>
 @endsection
