@@ -16,16 +16,16 @@
         <div class="sidebar animate__animated" :class="!sidebarShow ? 'animate__bounceOutLeft':'animate__bounceInLeft'">
             <ul>
                 <li>
-                    <a href="">About Us</a>
+                    <a href="#" onclick="alert('comming soon')">About Us</a>
                 </li>
                 <li>
-                    <a href="">Contact Us</a>
+                    <a href="#" onclick="alert('comming soon')">Contact Us</a>
                 </li>
                 <li>
-                    <a href="">Login</a>
+                    <a href="{{ route('login') }}">Login</a>
                 </li>
                 <li>
-                    <a href="">Register</a>
+                    <a href="{{ route('register') }}">Register</a>
                 </li>
                 <li>
                     <a href="#" x-on:click.prevent="sidebarShow = !sidebarShow" class="button is-rounded">

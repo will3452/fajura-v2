@@ -45,5 +45,8 @@
     color: #222;
 }
 .is-justify-content-right{
-    justify-content: flex-end !important;
+    position: fixed;
+    right:1em !important;
+    top:1em !important;
+    z-index: 1;
 }
