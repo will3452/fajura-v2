@@ -44,7 +44,7 @@
 .sidebar ul li a{
     color: #222;
 }
-.is-justify-content-right{
+.fixedme{
     position: fixed;
     right:1em !important;
     top:1em !important;

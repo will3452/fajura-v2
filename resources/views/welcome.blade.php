@@ -35,7 +35,7 @@
             </ul>
         </div>
         <div class="container mobile" >
-            <div class="is-flex is-justify-content-right p-2">
+            <div class=" fixedme p-2">
                 <button x-on:click="sidebarShow = !sidebarShow" class="no-border button is-rounded">
                     <i data-feather="menu"
                     x-show="!sidebarShow"></i>
