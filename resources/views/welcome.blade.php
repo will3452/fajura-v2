@@ -34,8 +34,8 @@
                 </li>
             </ul>
         </div>
-        <div class=" fixedme p-2">
-            <button x-on:click="sidebarShow = !sidebarShow" class="no-border button is-rounded">
+        <div class="fixedme">
+            <button x-on:click="sidebarShow = !sidebarShow" class="no-border button is-rounded is-info">
                 <i data-feather="menu"
                 x-show="!sidebarShow"></i>
                 <i data-feather="x"
