@@ -11,12 +11,16 @@
 </head>
 <body>
     <div id="app" x-data="{
-        sidebarShow:false
+        sidebarShow:false,
+        selected:'hero'
     }">
         <div class="sidebar animate__animated" :class="!sidebarShow ? 'animate__bounceOutLeft':'animate__bounceInLeft'">
             <ul>
                 <li>
-                    <a href="#" onclick="alert('comming soon')">About Us</a>
+                    <a href="#" x-on:click.prevent="selected = 'hero'">Home</a>
+                </li>
+                <li>
+                    <a href="#" x-on:click.prevent="selected = 'about'">About Us</a>
                 </li>
                 <li>
                     <a href="#" onclick="alert('comming soon')">Contact Us</a>
@@ -42,24 +46,38 @@
                 x-show="sidebarShow"></i>
             </button>
         </div>
-        <div class="container mobile" >
+        <div
+        x-show="selected=='hero'"
+        class="block mobile bg-info animate__animated"
+        :class="selected == 'hero' ? 'animate__bounceInUp':'animate__bounceOutDown'">
             <div id="mobile-hero">
-                <h1 class="title is-2">
+                <h1 class="title is-1">
                     {{ $app->brand_name }}
                 </h1>
-                <h2 class="subtitle is-5">
+                <h2 class="subtitle is-4">
                     {{ $app->brand_saying }}
                 </h2>
-                <a href="#" id="app_btn" class="button is-rounded is-info" >
-                    Book An Appointment
+                <a href="#" id="app_btn" class="button is-rounded is-info" x-on:click="selected='about'">
+                    Get started
                 </a>
             </div>
-            <div class="block">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cupiditate nesciunt repellat fuga voluptates eos cumque nostrum odio sed. Dolorem illum odio molestias omnis similique quis? Alias dignissimos provident dicta eius debitis, eveniet cum quaerat. Animi incidunt inventore, cumque officia optio sit magnam sint nesciunt? Quisquam vel, pariatur molestiae fugiat obcaecati dolores dolorem ipsa reprehenderit eius dolore sunt unde consectetur impedit. Cumque ea sunt numquam suscipit doloremque vel impedit atque perspiciatis natus quisquam repudiandae quas saepe, voluptas magni repellat vero dolores voluptate et nihil, libero quae ab inventore qui. Praesentium quos sed modi dicta cumque assumenda fugiat eveniet culpa nobis. Sapiente, iusto! Quae velit ratione odio similique fugit, accusamus, placeat, vero expedita quidem optio pariatur esse laudantium dolor eum molestiae unde quia blanditiis voluptates minus consectetur deserunt nostrum impedit officia? Atque, adipisci! Consectetur, dicta dolore. Magni excepturi ipsum consequatur ratione atque accusantium est asperiores facilis error eaque architecto, sunt, voluptas veniam. Obcaecati similique commodi repellendus et, odit pariatur? Dignissimos fuga adipisci voluptates, libero eum vel expedita blanditiis error magnam nostrum reprehenderit quo accusamus harum maiores nulla voluptatum, similique ratione eius placeat et optio fugiat est! Cumque cum ex repudiandae saepe consectetur impedit, dignissimos voluptatibus recusandae ullam praesentium hic, odit obcaecati. Magni omnis veniam unde aliquid laboriosam! Perferendis illum ad minima, voluptatum nisi numquam quidem animi repellendus aut esse, accusantium labore ducimus sint sit veritatis voluptate porro quae laboriosam molestiae. Libero nam in aperiam fugiat voluptatem labore aspernatur ipsum dolor, accusamus delectus odit perspiciatis ad eius recusandae vero nihil ipsam fuga dicta fugit non ut? Incidunt nostrum debitis itaque beatae rem velit quos nobis harum distinctio, doloribus asperiores qui aspernatur, fugit non. Omnis, cumque. Aliquid qui blanditiis, repellendus suscipit praesentium nesciunt molestiae quas enim voluptatibus odio possimus rem ipsam repellat ipsa nulla explicabo provident doloribus nobis ab rerum. Cumque aliquid velit consectetur.
-            </div>
-    
-            
         </div>
+        {{-- about page --}}
+        <div
+        x-show="selected=='about'"
+        class="block p-5 container animate__animated"
+        id="about"
+        :class="selected == 'about' ? 'animate__bounceInUp':'animate__bounceOutDown'"
+        >
+            <h1 class="title is-2 is-text-center">
+                About us
+            </h1>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus maxime sequi tenetur ipsam fugiat aliquam debitis eligendi adipisci tempora! Vero blanditiis, assumenda excepturi, distinctio reprehenderit minus soluta ab voluptatem quaerat sint fugit iste modi cupiditate aut? Fugiat eaque numquam quasi, ratione placeat, modi, velit corrupti facilis nobis consequatur soluta quam! Dolorem hic reprehenderit nesciunt? Quo eveniet labore ex veritatis adipisci ut deserunt voluptas impedit enim. Maxime vel nihil voluptatem, blanditiis placeat aliquid, ipsum vero temporibus quis explicabo officia delectus tempora incidunt possimus harum est expedita odio eveniet totam eos ab nesciunt laboriosam voluptatum animi. Reprehenderit corrupti labore adipisci esse magni?
+            </p>
+        </div>
+        {{-- end of about --}}
+        
     </div>
     <script src="/js/app.js" defer></script>
     <script src="/js/feather_init.js" defer></script>
