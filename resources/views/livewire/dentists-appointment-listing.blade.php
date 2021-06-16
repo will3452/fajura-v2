@@ -14,6 +14,9 @@
             <div style="text-align:center" class="column is-7 has-text-left-desktop">
                 
                 <div  style="">
+                    <div class="is-size-5 " style="color:#777;">
+                        {{ $meeting->unique_id }}
+                    </div>
                     <div class="is-size-5 ">
                     {{ $meeting->user->name }}
                     </div>
