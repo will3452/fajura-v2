@@ -17,13 +17,17 @@
         <div class="sidebar animate__animated" :class="!sidebarShow ? 'animate__bounceOutLeft':'animate__bounceInLeft'">
             <ul>
                 <li>
-                    <a href="#" x-on:click.prevent="selected = 'hero'">Home</a>
+                    <a href="#" x-on:click.prevent="selected = 'hero'; sidebarShow = false">Home</a>
                 </li>
                 <li>
-                    <a href="#" x-on:click.prevent="selected = 'about'">About Us</a>
+                    <a href="#"
+                    x-on:click.prevent="selected = 'about';sidebarShow = false"
+                    >About Us</a>
                 </li>
                 <li>
-                    <a href="#" onclick="alert('comming soon')">Contact Us</a>
+                    <a href="#"
+                    x-on:click.prevent="selected = 'contact';sidebarShow = false"
+                    >Contact Us</a>
                 </li>
                 <li>
                     <a href="{{ route('login') }}">Login</a>
@@ -77,6 +81,21 @@
             </p>
         </div>
         {{-- end of about --}}
+
+        {{-- contact --}}
+        <div
+        x-show="selected=='contact'"
+        class="block p-5 container animate__animated"
+        id="about"
+        :class="selected == 'contact' ? 'animate__bounceInUp':'animate__bounceOutDown'"
+        >
+            <h1 class="title is-2 is-text-center">
+                Contact us
+            </h1>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus maxime sequi tenetur ipsam fugiat aliquam debitis eligendi adipisci tempora! Vero blanditiis, assumenda excepturi, distinctio reprehenderit minus soluta ab voluptatem quaerat sint fugit iste modi cupiditate aut? Fugiat eaque numquam quasi, ratione placeat, modi, velit corrupti facilis nobis consequatur soluta quam! Dolorem hic reprehenderit nesciunt? Quo eveniet labore ex veritatis adipisci ut deserunt voluptas impedit enim. Maxime vel nihil voluptatem, blanditiis placeat aliquid, ipsum vero temporibus quis explicabo officia delectus tempora incidunt possimus harum est expedita odio eveniet totam eos ab nesciunt laboriosam voluptatum animi. Reprehenderit corrupti labore adipisci esse magni?
+            </p>
+        </div>
         
     </div>
     <script src="/js/app.js" defer></script>
