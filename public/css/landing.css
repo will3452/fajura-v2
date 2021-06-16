@@ -44,3 +44,6 @@
 .sidebar ul li a{
     color: #222;
 }
+.is-justify-content-right{
+    justify-content: flex-end;
+}
