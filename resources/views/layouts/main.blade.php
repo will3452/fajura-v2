@@ -7,7 +7,16 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    
+    @auth
+    @if (auth()->user()->unreadNotifications()->count())
+            <title>({{  auth()->user()->unreadNotifications()->count() }}) {{ config('app.name') }}</title>
+        @else 
+            <title>{{ config('app.name') }}</title>
+        @endif
+    @else 
+        <title>{{ config('app.name') }}</title>
+    @endauth
     @include('includes.favicons')
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
