@@ -12,6 +12,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\SchedulesController;
 use App\Http\Controllers\getDentistController;
 use App\Http\Controllers\AppointmentController;
+use App\Http\Controllers\AdminConcernController;
 use App\Http\Controllers\AdminServiceController;
 use App\Http\Controllers\AdminSettingController;
 use App\Http\Controllers\NotificationController;
@@ -73,6 +74,8 @@ Route::middleware(['auth'])->prefix('admin/')->name('admin.')->group(function(){
         // end account create
 
         
+
+        
     });
 
     // end of admin account management
@@ -111,6 +114,11 @@ Route::middleware(['auth'])->prefix('admin/')->name('admin.')->group(function(){
     // blocking account 
     Route::get('/blocking', [AdminBlockingController::class, 'blockedList'])->name('blocked.list');
     // end of blocking
+
+    // concerns
+    Route::get('/concerns', [AdminConcernController::class, 'listOfConcerns'])->name('concerns.list');
+    Route::put('/concerns/{id}', [AdminConcernController::class, 'markAsSolved'])->name('concerns.update');
+    // endof concerns
 
     // setting
     Route::get('setting', [AdminSettingController::class, 'setting'])->name('setting');
@@ -167,7 +175,7 @@ Route::post('send-message', function(){
         'message'=>'required|max:200',
         'concern_type'=>'required|in:'.implode(',',['Registration related', 'Appointment related', 'Account related', 'Others'])
     ]);
-    
+
     if(Message::where('email', $data['email'])->where('is_resolved', false)->count()){
         toast('Oooops! You have sent already a message to us!', 'error');
         return redirect('/#contact');

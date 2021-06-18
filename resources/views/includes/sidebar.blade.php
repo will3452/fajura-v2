@@ -86,7 +86,11 @@
     <div class="sidebar-heading">
         Admin
     </div>
-
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('admin.concerns.list') }}">
+            <i class="fas fa-fw fa-comment-alt"></i>
+            <span>Concerns</span></a>
+    </li>
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsemq"
             aria-expanded="true" aria-controls="collapseUtilities">
@@ -112,7 +116,6 @@
             <i class="fas fa-fw fa-ban"></i>
             <span>Blocking</span></a>
     </li>
-
     <li class="nav-item">
         <a class="nav-link" href="{{ route('admin.log.index') }}">
             <i class="fas fa-fw fa-list"></i>
