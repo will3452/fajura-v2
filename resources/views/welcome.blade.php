@@ -5,21 +5,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Landing Page</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
+    <link rel="stylesheet" href="/css/app.css">
     <link rel="stylesheet" href="/main.css">
-    <script defer src="https://unpkg.com/alpinejs@3.0.6/dist/cdn.min.js"></script>
-    <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-  />
+    <script src="/js/app.js"></script>
 </head>
 <body>
    <div x-data="{
        active:1
    }">
         <div id="login-control">
-            <button class="button is-rounded is-white is-small">Login</button>
-            <button class="button is-rounded is-warning is-small">Sign In</button>
+            <a class="button is-rounded is-white is-small" href="{{ route('login') }}">Login</a>
+            <a class="button is-rounded is-warning is-small" href="{{ route('register') }}">Sign Up</a>
         </div>
         <nav >
             <ul>
@@ -37,13 +33,13 @@
                         <img src="/crown.png" id="crown" alt="">
                     </div>
                     <h1 class="title is-1 animate__animated animate__bounceIn">
-                        FAJURA
+                        {{ $app->brand_name }}
                     </h1>
                     <h2 class="subtitle is-4">
-                        Smile with confidence!
+                        {{ $app->brand_saying }}
                     </h2>
                     <div>
-                        <a href="#" class="button is-large is-rounded is-info animate__animated animate__pulse animate__infinite">Appointment Now</a>
+                        <a href="{{ route('appointments.index') }}" class="button is-large is-rounded is-info animate__animated animate__pulse animate__infinite">Book Now</a>
                     </div>
                 </div>
             </section>
@@ -72,144 +68,40 @@
                             <div class="column is-4  is-hidden-touch">
                                 <img src="/pexels-cottonbro-6529056.jpg" alt="" id="service-image"  :class="active == 3 ? 'service-image-animate':''">
                                 <div class="has-text-centered mt-2">
-                                    <a href="#" class="button is-warning is-rounded" :class="active == 3 ? 'pulseme':''">
+                                    <a href="{{ route('register') }}" class="button is-warning is-rounded" :class="active == 3 ? 'pulseme':''">
                                         Sign Up Now
                                     </a>
                                 </div>
                             </div>
                             <div class="column height-80">
+                                @foreach (\App\Models\Service::limit(5)->get() as $service)
                                 <div class="box mb-2">
                                     <div class="columns">
                                         <div class="column is-6">
                                             <div class="columns">
                                                 <div class="column is-flex is-justify-content-center is-align-items-center">
-                                                    <img src="/pexels-cottonbro-6529056.jpg" alt="" class="service-image mr-2">
+                                                    <img src="{{ $service->public_picture }}" alt="" class="service-image mr-2">
                                                 </div>
                                                 <div class="column has-text-centered-mobile">
                                                     <span class="subtitle is-5">
-                                                        Service Name
+                                                        {{ $service->name }}
                                                     </span>
                                                     <div>
+                                                        @for ($i = 0; $i < $service->feedbacks()->avg('stars'); $i++)
                                                         <img src="/star.svg" alt="">
-                                                        <img src="/star.svg" alt="">
-                                                        <img src="/star.svg" alt="">
-                                                        <img src="/star.svg" alt="">
-                                                        <img src="/star.svg" alt="">
+                                                        @endfor
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="column has-text-right-desktop has-text-centered-touch">
-                                            <a href="#" class="button is-rounded is-info">Read more</a>
+                                            <a href="{{ route('feedbacks.show', $service) }}" class="button is-rounded is-info">Read more</a>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="box mb-2">
-                                    <div class="columns">
-                                        <div class="column is-6">
-                                            <div class="columns">
-                                                <div class="column is-flex is-justify-content-center is-align-items-center">
-                                                    <img src="/pexels-cottonbro-6529056.jpg" alt="" class="service-image mr-2">
-                                                </div>
-                                                <div class="column has-text-centered-mobile">
-                                                    <span class="subtitle is-5">
-                                                        Service Name
-                                                    </span>
-                                                    <div>
-                                                        <img src="/star.svg" alt="">
-                                                        <img src="/star.svg" alt="">
-                                                        <img src="/star.svg" alt="">
-                                                        <img src="/star.svg" alt="">
-                                                        <img src="/star.svg" alt="">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="column has-text-right-desktop has-text-centered-touch">
-                                            <a href="#" class="button is-rounded is-info">Read more</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="box mb-2">
-                                    <div class="columns">
-                                        <div class="column is-6">
-                                            <div class="columns">
-                                                <div class="column is-flex is-justify-content-center is-align-items-center">
-                                                    <img src="/pexels-cottonbro-6529056.jpg" alt="" class="service-image mr-2">
-                                                </div>
-                                                <div class="column has-text-centered-mobile">
-                                                    <span class="subtitle is-5">
-                                                        Service Name
-                                                    </span>
-                                                    <div>
-                                                        <img src="/star.svg" alt="">
-                                                        <img src="/star.svg" alt="">
-                                                        <img src="/star.svg" alt="">
-                                                        <img src="/star.svg" alt="">
-                                                        <img src="/star.svg" alt="">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="column has-text-right-desktop has-text-centered-touch">
-                                            <a href="#" class="button is-rounded is-info">Read more</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="box mb-2">
-                                    <div class="columns">
-                                        <div class="column is-6">
-                                            <div class="columns">
-                                                <div class="column is-flex is-justify-content-center is-align-items-center">
-                                                    <img src="/pexels-cottonbro-6529056.jpg" alt="" class="service-image mr-2">
-                                                </div>
-                                                <div class="column has-text-centered-mobile">
-                                                    <span class="subtitle is-5 ">
-                                                        Service Name
-                                                    </span>
-                                                    <div>
-                                                        <img src="/star.svg" alt="">
-                                                        <img src="/star.svg" alt="">
-                                                        <img src="/star.svg" alt="">
-                                                        <img src="/star.svg" alt="">
-                                                        <img src="/star.svg" alt="">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="column has-text-right-desktop has-text-centered-touch">
-                                            <a href="#" class="button is-rounded is-info">Read more</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="box mb-2">
-                                    <div class="columns">
-                                        <div class="column is-6">
-                                            <div class="columns">
-                                                <div class="column is-flex is-justify-content-center is-align-items-center">
-                                                    <img src="/pexels-cottonbro-6529056.jpg" alt="" class="service-image mr-2">
-                                                </div>
-                                                <div class="column has-text-centered-mobile">
-                                                    <span class="subtitle is-5">
-                                                        Service Name
-                                                    </span>
-                                                    <div>
-                                                        <img src="/star.svg" alt="">
-                                                        <img src="/star.svg" alt="">
-                                                        <img src="/star.svg" alt="">
-                                                        <img src="/star.svg" alt="">
-                                                        <img src="/star.svg" alt="">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="column has-text-right-desktop has-text-centered-touch">
-                                            <a href="#" class="button is-rounded is-info">Read more</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="has-text-centered">
-                                    <button class="button is-info is-rounded is-light" >Show more</button>
+                                @endforeach
+                                <div class="has-text-centered mt-5">
+                                    <a href="{{ route('services.index') }}" class="button is-info is-rounded is-light" >Show more</a>
                                 </div>
                             </div>
                         </div>
@@ -224,12 +116,12 @@
                     <div class="columns">
                         <div class="column is-flex is-justify-content-center is-align-items-center ">
                             <div class="is-flex is-justify-content-center">
-                                <a href="#">
+                                <a href="{{ $app->messenger_url }}">
                                     <img src="/facebook.svg" alt="" class="contact-image">
                                 </a>
-                                <a href="#">
+                                <a href="mailto:admin@fajura.site">
                                     <img src="/mail.svg" alt="" class="contact-image">
-                                </a><a href="#">
+                                </a><a href="tel:09096524461">
                                     <img src="/phone.svg" alt="" class="contact-image">
                                 </a>
                             </div>
@@ -266,17 +158,17 @@
                         </div>
                     </div>
                     <div class="box">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d30758.7524625306!2d120.59334900000002!3d15.492818000000002!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x5245366b15dc8ec4!2sLoving%20Mother%20General%20hospital%20%26%20Diagnostic%20Center!5e0!3m2!1sen!2sph!4v1623973219829!5m2!1sen!2sph" id="map" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                        <iframe src="{{ $app->map_url ?? 'https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d30758.7524625306!2d120.59334900000002!3d15.492818000000002!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x5245366b15dc8ec4!2sLoving%20Mother%20General%20hospital%20%26%20Diagnostic%20Center!5e0!3m2!1sen!2sph!4v1623973219829!5m2!1sen!2sph'}}" id="map" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                     </div>
                 </div>
                 <footer class="container px-2 mt-6 pt-6">
                     <div class="columns">
                         <div class="column has-text-centered-touch">
                             <h2 class="title is-3">
-                                Fajura
+                                {{ $app->brand_name }}
                             </h2>
                             <h3 class="subtitle is-4">
-                                Smile with confidence!
+                                {{ $app->brand_saying }}
                             </h3>
                         </div>
                         <div class="column has-text-centered-touch">
@@ -284,12 +176,13 @@
                                 Quick Links
                             </h4>
                             <div class="content">
-                                <a href="#">Services</a>
-                                <a href="#">Sign In</a>
-                                <a href="#">Sign Up</a>
+                                <a href="{{ route('services.index') }}">Services</a>
+                                <a href="{{ route('login') }}">Sign In</a>
+                                <a href="{{ route('register') }}">Sign Up</a>
                             </div>
                         </div>
                     </div>
+                    {{--  --}}
                     <div class="has-text-centered">
                         <small class="help">
                             &copy; Fajura - <span x-text="new Date().getFullYear()"></span> | Developed by <a style="display: inline;padding:0px;margin:0px" href="https://www.williamgalas.tech" targe="_blank">WSG</a>

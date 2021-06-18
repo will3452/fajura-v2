@@ -241,7 +241,7 @@ body .service-image {
   right: 1em;
 }
 
-#login-control button {
+#login-control a {
   margin: 0px 0.5em;
   text-transform: uppercase;
   -webkit-animation: bounceInRight;

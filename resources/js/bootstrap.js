@@ -11,6 +11,7 @@ window.axios = require('axios');
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 require('alpinejs');
 require('bulma/css/bulma.css');
+require('animate.css');
 
 window.feather = require('feather-icons');
 
