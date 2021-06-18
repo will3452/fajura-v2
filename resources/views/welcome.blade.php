@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="/main.css">
     <script src="/js/app.js"></script>
     @include('includes.favicons')
+    @include('includes.meta')
 </head>
 <body>
    <div x-data="{
