@@ -12,6 +12,7 @@
     @include('includes.meta')
 </head>
 <body>
+    @include('sweetalert::alert')
    <div x-data="{
        active:1
    }">
@@ -137,15 +138,44 @@
                                 }
                             }
                         }">
-                            <div class="form">
+                            <form action="{{ url('send-message') }}" method="POST">
+                                @csrf
                                 <div class="field">
                                     <div class="control">
-                                        <input type="email" class="input is-large" placeholder="Your Email Here">
+                                        <input type="email" name="email" required class="input @error('email') is-danger @enderror" placeholder="Your Email Here">
+                                        @error('email')
+                                        <small class="help is-danger">
+                                            {{ $message }}
+                                        </small>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="field">
+                                    <div class="select is-fullwidth @error('concern_type') is-danger @enderror">
+                                        <select name="concern_type" id="" >
+                                            @foreach (['Registration related', 'Appointment related', 'Account related', 'Others'] as $option)
+                                                <option value="{{ $option }}">
+                                                    {{ $option }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    @error('concern_type')
+                                    <small class="help is-danger">
+                                        {{ $message }}
+                                    </small>
+                                    @enderror
+                                </div>
+                                <div class="field">
                                     <div class="control">
-                                        <textarea name="" class="textarea is-large" placeholder="Your Message Here" id="" x-ref="textarea" x-on:input="updateCount()" ></textarea>
+                                        <textarea name="message" required class="textarea @error('message')
+                                        is-danger
+                                        @enderror" placeholder="Your Message Here" id="" x-ref="textarea" x-on:input="updateCount()" ></textarea>
+                                        @error('message')
+                                        <small class="help is-danger">
+                                            {{ $message }}
+                                        </small>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="is-flex is-justify-content-space-between is-align-items-center">
@@ -156,7 +186,7 @@
                                         <span x-text="textCount"></span>/200
                                     </div>
                                 </div>
-                            </div>
+                            </form>
                         </div>
                     </div>
                     <div class="box">

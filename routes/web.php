@@ -1,7 +1,7 @@
 <?php
 
+use App\Models\Message;
 use Illuminate\Support\Facades\Route;
-use Luigel\Paymongo\Facades\Paymongo;
 use App\Http\Controllers\TeethController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ServiceController;
@@ -161,28 +161,20 @@ Route::resource('all-appointments', AllAppointmentController::class);
 //privacy and policies
 Route::view('privacy-policy', 'privacy-policy');
 
-
-//payment
-Route::get('/payment', function(){
-        $gcashSource = Paymongo::source()->create([
-            'type' => request()->type ?? 'gcash',
-            'amount' => intval(request()->amount) ?? 100.00,
-            'currency' => 'PHP',
-            'redirect' => [
-                'success' => url('/p/success'),
-                'failed' => url('/p/failed')
-            ]
-        ]);
-        return redirect($gcashSource->getRedirect()['checkout_url']);
+Route::post('send-message', function(){
+    $data = request()->validate([
+        'email'=>'required|email',
+        'message'=>'required|max:200',
+        'concern_type'=>'required|in:'.implode(',',['Registration related', 'Appointment related', 'Account related', 'Others'])
+    ]);
+    
+    if(Message::where('email', $data['email'])->where('is_resolved', false)->count()){
+        toast('Oooops! You have sent already a message to us!', 'error');
+        return redirect('/#contact');
+    }
+    
+    Message::create($data);
+    toast('Message sent!', 'success');
+    return redirect('/#contact');
+    
 });
-
-Route::get('/p/success', function(){
-    return 'success';
-});
-
-Route::get('/p/failed', function(){
-    return 'failed';
-});
-
-
-// Route::view('pphub', 'pphub')->middleware('auth');
