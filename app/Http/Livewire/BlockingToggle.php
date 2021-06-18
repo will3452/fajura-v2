@@ -2,22 +2,26 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\User;
 use Livewire\Component;
+use App\Mail\ProfileBlocked;
+use Illuminate\Support\Facades\Mail;
 
 class BlockingToggle extends Component
 {
     public $active;
-    public $profile;
+    public $user;
 
-    public function mounted($active, $profile){
+    public function mounted($active,User $user){
         $this->active = $active;
-        $this->profile = $profile;
+        $this->user = $user;
     }
 
     public function clicked(){
         $this->active = !$this->active;
-        $this->profile->update(['is_blocked'=>$this->active]);
-        activity()->causedBy(auth()->user())->on($this->profile)->log($this->active  ? 'Profile blocked':'Profile Unblocked');
+        $this->user->profile->update(['is_blocked'=>$this->active]);
+        Mail::to($this->user)->send(new ProfileBlocked($this->user->profile));
+        activity()->causedBy(auth()->user())->on($this->user->profile)->log($this->active  ? 'Profile blocked':'Profile Unblocked');
     }
 
     public function render()

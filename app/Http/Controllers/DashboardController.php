@@ -27,7 +27,12 @@ class DashboardController extends Controller
     public function index()
     {
         // dd(auth()->user()->profile);
-        if(auth()->user()->profile->approved_at != null){
+        if(auth()->user()->profile->is_blocked){
+            auth()->logout();
+            alert()->info('','You\'ve been blocked, Contact us to resolve the issue.');
+            return redirect(route('login'));
+        }
+        elseif(auth()->user()->profile->approved_at != null){
             if(auth()->user()->is_admin){
                 $patients = User::role('patient')->get();
                 $appointments = Appointment::where('status', 'pending')->get();

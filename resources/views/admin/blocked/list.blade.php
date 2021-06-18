@@ -27,16 +27,16 @@
                         </tr>
                     </tfoot>
                     <tbody>
-                        @foreach ($profiles as $profile)
+                        @foreach ($users as $user)
                             <tr>
                                 <td>
-                                    {{ $profile->user->unique_id }}
+                                    {{ $user->unique_id }}
                                 </td>
                                 <td>
-                                    {{ $profile->user->name }}
+                                    {{ $user->name }}
                                 </td>
                                 <td>
-                                    @livewire('blocking-toggle', ['active'=>$profile->is_blocked, 'profile'=>$profile])
+                                    @livewire('blocking-toggle', ['active'=>$user->profile->is_blocked, 'user'=>$user])
                                 </td>
                             </tr>
                         @endforeach

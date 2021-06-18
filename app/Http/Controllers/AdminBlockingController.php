@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Profile;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\Builder;
 
 class AdminBlockingController extends Controller
 {
     public function blockedList(){
-        $profiles = Profile::get();
-        return view('admin.blocked.list',  compact('profiles'));
+        $users = User::where('is_admin', false)->get();
+        return view('admin.blocked.list',  compact('users'));
     }
 }

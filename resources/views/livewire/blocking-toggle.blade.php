@@ -35,16 +35,21 @@
 
 
     </style>
-    @if ($active)
-        <div class="toggle active" wire:click="clicked()">
-            <div>
+    <div wire:loading.remove target="clicked">
+        @if ($active)
+            <div class="toggle active" wire:click="clicked()">
+                <div>
+                </div>
             </div>
-        </div>
-    @else
-        <div class="toggle not-active" wire:click="clicked()">
-            <div>
-            </div>
-        </div>
-    @endif
+            @else
+                <div class="toggle not-active" wire:click="clicked()">
+                    <div>
+                    </div>
+                </div>
+        @endif
+    </div>
+    <div wire:loading target="clicked">
+        <img src="/img/loading-buffering.gif" style="width:20px; height:20px" alt="">
+    </div>
     
 </div>
