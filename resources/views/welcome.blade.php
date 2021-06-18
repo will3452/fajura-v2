@@ -118,7 +118,7 @@
                     <div class="columns">
                         <div class="column is-flex is-justify-content-center is-align-items-center ">
                             <div class="is-flex is-justify-content-center">
-                                <a href="{{ $app->messenger_url }}">
+                                <a href="{{ $app->facebook_url??'#' }}">
                                     <img src="/facebook.svg" alt="" class="contact-image">
                                 </a>
                                 <a href="mailto:admin@fajura.site">
