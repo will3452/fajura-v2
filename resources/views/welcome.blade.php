@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="/css/app.css">
     <link rel="stylesheet" href="/main.css">
     <script src="/js/app.js"></script>
+    @include('includes.favicons')
 </head>
 <body>
    <div x-data="{
