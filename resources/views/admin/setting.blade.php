@@ -67,15 +67,13 @@
                     <label for="">Messenger Link</label>
                     <input type="text" class="form-control" name="messenger_url" value="{{ $appSetting->messenger_url }}">
                 </div>
-                <button class="form-group">
-                    <button class="btn btn-success mr-2">
-                        <i class="fa fa-check"></i>
-                        Submit
-                    </button>
-                    <button type="reset" class="btn btn-secondary">
-                        <i class="fa fa-sync"></i>
-                        Reset
-                    </button>
+                <button class="btn btn-success mr-2">
+                    <i class="fa fa-check"></i>
+                    Submit
+                </button>
+                <button type="reset" class="btn btn-secondary">
+                    <i class="fa fa-sync"></i>
+                    Reset
                 </button>
             </form>
         </div>

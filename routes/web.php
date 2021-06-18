@@ -15,6 +15,7 @@ use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\AdminServiceController;
 use App\Http\Controllers\AdminSettingController;
 use App\Http\Controllers\NotificationController;
+use App\Http\Controllers\AdminBlockingController;
 use App\Http\Controllers\DentalRecordsController;
 use App\Http\Controllers\MedicalAnswerController;
 use App\Http\Controllers\AllAppointmentController;
@@ -70,6 +71,8 @@ Route::middleware(['auth'])->prefix('admin/')->name('admin.')->group(function(){
         Route::get('/create', [AdminAccountManagementController::class, 'create'])->name('create');
         Route::post('/', [AdminAccountManagementController::class, 'store'])->name('store');
         // end account create
+
+        
     });
 
     // end of admin account management
@@ -104,6 +107,10 @@ Route::middleware(['auth'])->prefix('admin/')->name('admin.')->group(function(){
     // log 
     Route::resource('log', AdminLogController::class);
     // end of log
+
+    // blocking account 
+    Route::get('/blocking', [AdminBlockingController::class, 'blockedList'])->name('blocked.list');
+    // end of blocking
 
     // setting
     Route::get('setting', [AdminSettingController::class, 'setting'])->name('setting');

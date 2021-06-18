@@ -107,6 +107,11 @@
             <i class="fas fa-fw fa-fingerprint"></i>
             <span>Permissions</span></a>
     </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('admin.blocked.list') }}">
+            <i class="fas fa-fw fa-ban"></i>
+            <span>Blocking</span></a>
+    </li>
 
     <li class="nav-item">
         <a class="nav-link" href="{{ route('admin.log.index') }}">
