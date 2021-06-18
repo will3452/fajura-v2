@@ -55,7 +55,7 @@
             }
         }">
             <div class="navbar-brand">
-                <a class="navbar-item" href="#">
+                <a class="navbar-item" href="/">
                   {{-- <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28"> --}}
                   <span class="title">{{ \App\Models\AppSetting::first()->brand_name }}</span>
                 </a>
