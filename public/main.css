@@ -1,0 +1,252 @@
+body {
+  background: #FEFFC3 !important;
+}
+
+body nav {
+  position: fixed;
+  width: 10%;
+  height: 100vh;
+  right: 0px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  z-index: 999;
+}
+
+body nav ul {
+  width: 100%;
+  height: 30%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+body nav ul li {
+  width: 100%;
+  height: 20%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+body nav ul li a {
+  width: 1em;
+  height: 1em;
+  background: #ddd;
+  border-radius: 50%;
+  -webkit-transition: all 500ms;
+  transition: all 500ms;
+}
+
+body nav ul li .active {
+  background: #3298DC;
+  border: 2px solid #fff;
+}
+
+body #crown {
+  position: absolute;
+  top: -35px;
+  left: -35px;
+  -webkit-transform: rotate(-20deg);
+          transform: rotate(-20deg);
+  width: 100px;
+  -webkit-animation: fadeIn;
+          animation: fadeIn;
+  -webkit-animation-duration: 2000ms;
+          animation-duration: 2000ms;
+}
+
+body .main-container {
+  width: 100vw;
+  height: 100vh;
+  scroll-behavior: smooth;
+  -ms-scroll-snap-type: y mandatory;
+      scroll-snap-type: y mandatory;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+body .main-container section {
+  width: 100vw;
+  height: 100vh;
+  scroll-snap-align: start;
+}
+
+body .main-container #home {
+  color: #222;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+}
+
+body .main-container #home .box {
+  width: 90%;
+  max-width: 500px;
+  height: 50vh;
+  background-image: url("insidebox.png");
+  background-position: right top;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+body .main-container #about {
+  background: #fff;
+}
+
+body .main-container #services {
+  background: #3298DC;
+}
+
+body .main-container #services .pulseme {
+  -webkit-animation: pulse;
+          animation: pulse;
+  -webkit-animation-duration: 2000ms;
+          animation-duration: 2000ms;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+}
+
+body .main-container #contact {
+  background: #fff;
+  overflow-y: auto;
+}
+
+body .main-container #contact #map {
+  width: 100%;
+  height: 400px;
+}
+
+body .main-container #contact a {
+  padding: 0.5em;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  background: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 0px 1em;
+}
+
+body .main-container #contact a .contact-image {
+  width: 60px;
+  height: 60px;
+  margin: 0px 2em;
+}
+
+body .main-container #contact a .contact-image:hover {
+  -webkit-animation: rubberBand;
+          animation: rubberBand;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+}
+
+body #swirl {
+  background: url("bg.svg");
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 70vh;
+  position: absolute;
+  background-repeat: no-repeat;
+  top: 0px;
+}
+
+body .z-index-upper {
+  z-index: 99;
+}
+
+body #service-image {
+  width: 100%;
+  height: 400px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+  border: 15px solid #fff;
+}
+
+body .service-image-animate {
+  -webkit-animation: flipInY;
+          animation: flipInY;
+  -webkit-animation-duration: 1500ms;
+          animation-duration: 1500ms;
+}
+
+body .height-80 {
+  height: 80vh;
+  overflow-y: auto;
+}
+
+body .service-image {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+}
+
+.content a {
+  padding: 0 !important;
+  height: 0 !important;
+  display: inline !important;
+}
+
+#login-control {
+  position: fixed;
+  top: 1em;
+  z-index: 9999;
+  right: 1em;
+}
+
+#login-control button {
+  margin: 0px 0.5em;
+  text-transform: uppercase;
+  -webkit-animation: bounceInRight;
+          animation: bounceInRight;
+  -webkit-animation-duration: 2s;
+          animation-duration: 2s;
+}
+/*# sourceMappingURL=main.css.map */
