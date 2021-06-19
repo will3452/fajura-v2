@@ -32,7 +32,7 @@
                             <th>ID</th>
                             <th>Service Name</th>
                             <th>Orig. Price</th>
-                            <th>Price</th>
+                            <th>Discounted Price</th>
                             <th>Option</th>
                         </tr>
                     </thead>
