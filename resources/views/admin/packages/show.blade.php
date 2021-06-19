@@ -15,7 +15,7 @@
                             <input type="hidden" name="package_id" value="{{ $package->id }}">
                             <select name="id" id="" class="custom-select" required>
                                 @foreach ($services as $service)
-                                    <option value="{{ $service->id }}">{{ $service->name }}</option>
+                                    <option value="{{ $service->id }}">{{ $service->name.' - '.$service->price }}</option>
                                 @endforeach
                             </select>
                             <div class="input-group-append">
