@@ -11,7 +11,7 @@
                         class="banner"
                         style="position:absolute; text-align:center;width:200px;top:30px;left:-60px;padding:0px 1em;background:red;color:yellow;transform:rotate(-45deg)"
                         >
-                            {{ $service->packages()->first()->discount_rate }}% discount
+                            {{ $service->packages()->first()->discount_rate }}% OFF
                         </div>
                     @endif
                     <div class="column is-2 is-flex is-justify-content-center is-mobile">
