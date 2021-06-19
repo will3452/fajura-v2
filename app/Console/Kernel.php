@@ -28,8 +28,8 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         // $schedule->command('inspire')->hourly();
-        // $schedule->command(NotifyTodaysAppointment::class)->dailyAt('05:00')->timezone('Asia/Manila');
-        $schedule->command(NotifyTodaysAppointment::class)->everyMinute();
+        $schedule->command(NotifyTodaysAppointment::class)->dailyAt('05:00')->timezone('Asia/Manila');
+        // $schedule->command(NotifyTodaysAppointment::class)->everyMinute();
     }
 
     /**
