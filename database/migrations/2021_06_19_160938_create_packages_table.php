@@ -25,8 +25,8 @@ class CreatePackagesTable extends Migration
 
         Schema::create('package_service', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('package_id');
-            $table->foreignId('service_id');
+            $table->foreignId('package_id')->onDelete('constrain');
+            $table->foreignId('service_id')->onDelete('constrain');
             $table->timestamps();
         });
     }

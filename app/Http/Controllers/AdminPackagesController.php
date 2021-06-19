@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Package;
 use App\Models\Service;
 use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\Builder;
 
 class AdminPackagesController extends Controller
 {
@@ -19,7 +20,8 @@ class AdminPackagesController extends Controller
 
     public function showPackage($id){
         $package = Package::findOrFail($id);
-        $services = Service::doesntHave('packages')->get();
+        $ids = $package->services->pluck('id')->all();
+        $services = Service::whereNotIn('id',  $ids)->get();
         return view('admin.packages.show', compact('package', 'services'));
     }
 
