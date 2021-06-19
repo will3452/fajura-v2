@@ -4,20 +4,38 @@
     </div>
     @if (count($services))
         @foreach ($services as $service)
-            <div class="mb-2">
-                <div class="columns is-centered">
+            <div class="mb-6">
+                <div class="box columns is-centered" style="position:relative;overflow:hidden;">
+                    @if ($service->packages()->count())
+                        <div
+                        class="banner"
+                        style="position:absolute; text-align:center;width:200px;top:30px;left:-60px;padding:0px 1em;background:red;color:yellow;transform:rotate(-45deg)"
+                        >
+                            {{ $service->packages()->first()->discount_rate }}% discount
+                        </div>
+                    @endif
                     <div class="column is-2 is-flex is-justify-content-center is-mobile">
-                        <img src="{{ $service->public_picture }}" alt="" style="width:100px;height:100px;object-fit:cover;">
+                        <img src="{{ $service->public_picture }}" alt="" style="width:100px;height:100px;object-fit:cover;border-radius:50%">
                     </div>
-                    <div class="column">
-                        <div>
-                            <strong>
-                                {{ $service->name }} 
-                            </strong>
-                            <div>
-                               P {{ $service->price_formatted }} / Ratings {{ $service->ratings() }}
+                    <div class="column has-text-centered-touch">
+                        <strong>
+                            {{ $service->name }}
+                        </strong>
+                        <div >
+                            
+                            <div class="is-size-7">
+                               <span
+                               @if ($service->packages()->count())
+                               style="text-decoration:line-through"
+                               class="has-text-grey-light"
+                               @endif
+                               P 
+                               > {{ $service->price_formatted }}</span>
+                               @if ($service->packages()->count())
+                                P {{ number_format($service->discountPrice($service->packages()->first()->id), 2) }}
+                               @endif
                             </div>
-                            <div>
+                            <div class="is-size-7">
                             &OpenCurlyDoubleQuote;
                                 <i>
                                     {{ $service->remarks }}
@@ -25,9 +43,14 @@
                                 &CloseCurlyDoubleQuote;
                             </div>
                         </div>
+                    </div>
+                    <div class="column has-text-right-desktop has-text-centered">
                         <div x-data="{
                             write:false
                         }">
+                            <div x-show="!write" class="mb-2 is-size-7">
+                                Rating: {{ $service->ratings() }}
+                            </div>
                             @if ($service->feedbacks()->count())
                                 <a href="{{ route('feedbacks.show', $service) }}" class="button is-small is-rounded">
                                     {{ $service->feedbacks()->count() }} Feedback/s
@@ -57,7 +80,6 @@
                                 </form>
                             </div>
                         </div>
-                        
                     </div>
                 </div>
             </div>
@@ -68,22 +90,3 @@
         </div>
     @endif
 </div>
-{{--  <div x-data="{
-                            write:false
-                        }">
-                            <a href="#" x-on:click.prevent="write = true" x-show="!write" class="button is-small is-rounded">Write a feedback</a>
-                            <div x-show="write">
-                                <div class="control">
-                                    <label for="" class="label">Enter Feedback Here</label>
-                                    <textarea class="textarea"></textarea>
-                                </div>
-                                <div style="text-align:right" class="mt-2">
-                                    <button class="button is-small is-info is-rounded">
-                                        Submit
-                                    </button>
-                                    <button x-on:click.prevent="write = false" class="button is-small is-rounded">
-                                        Close
-                                    </button>
-                                </div>
-                            </div>
-                        </div> --}}
