@@ -58,7 +58,7 @@
                                     P {{ number_format($p->price , 2)}}
                                 </td>
                                 <td>
-                                    P {{ number_format($p->discount_price, 2) }}
+                                    P {{ number_format($p->discountPrice($package->id), 2) }}
                                 </td>
                                 <td>
                                     <form action="{{ route('admin.update.service.package') }}" method="POST">

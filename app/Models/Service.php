@@ -34,8 +34,8 @@ class Service extends Model
         return $this->belongsToMany(Package::class);
     }
 
-    public function getDiscountPriceAttribute(){
-        $discount = $this->packages()->first()->discount_rate / 100;
+    public function discountPrice($id){
+        $discount = $this->packages()->find($id)->discount_rate / 100;
         return $this->price - ($this->price * $discount);
     }
 }
