@@ -16,7 +16,7 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         NotifyTodaysAppointment::class,
-        TestingCommand::class
+        // TestingCommand::class
     ];
 
     /**
