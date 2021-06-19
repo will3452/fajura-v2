@@ -3,6 +3,7 @@
 namespace App\Console;
 
 use App\Console\Commands\NotifyTodaysAppointment;
+use App\Console\Commands\TestingCommand;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -14,7 +15,8 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        NotifyTodaysAppointment::class
+        NotifyTodaysAppointment::class,
+        TestingCommand::class
     ];
 
     /**
@@ -26,6 +28,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         // $schedule->command('inspire')->hourly();
+        $schedule->command(TestingCommand::class)->everyMinute();
         $schedule->command(NotifyTodaysAppointment::class)->dailyAt('04:00')->timezone('Asia/Manila');
     }
 
