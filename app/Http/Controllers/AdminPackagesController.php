@@ -34,21 +34,33 @@ class AdminPackagesController extends Controller
             'discount_rate'=>'required'
         ]);
 
-        Package::create($data);
+        $package = Package::create($data);
         toast('Package created!', 'success');
+        activity()->causedBy(auth()->user())->on($package)->log('package added');
         return back();
     }
 
-    public function updateServicePacakge(){
+    public function updateServicePackage(){
         request()->validate([
             'package_id'=>'required',
             'id'=>'required'
         ]);
+        
 
         $package = Package::findOrFail(request()->package_id);
         $package->services()->toggle(request()->id);
+        activity()->causedBy(auth()->user())->on($package)->log('package update');
         toast('Done!', 'success');
 
+        return back();
+    }
+
+    public function removePackage($id){
+        $package = Package::findOrFail($id);
+        $package->services()->detach(); // remove all services before deleting it
+        toast('Package '.$package->unique_id.' deleted', 'success');
+        activity()->causedBy(auth()->user())->on($package)->log('package deleted');
+        $package->delete();
         return back();
     }
 }

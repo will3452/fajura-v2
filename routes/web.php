@@ -125,9 +125,10 @@ Route::middleware(['auth'])->prefix('admin/')->name('admin.')->group(function(){
 
     // packages
     Route::get('/packages/create', [AdminPackagesController::class, 'createPackage'])->name('create.package');
-    Route::post('/packages/updateService', [AdminPackagesController::class, 'updateServicePacakge'])->name('update.service.package');
+    Route::post('/packages/updateService', [AdminPackagesController::class, 'updateServicePackage'])->name('update.service.package');
     Route::post('/packages', [AdminPackagesController::class, 'savePackage'])->name('save.package');
     Route::get('/packages', [AdminPackagesController::class, 'listOfPackages'])->name('packages');
+    Route::delete('/packages/{id}', [AdminPackagesController::class, 'removePackage'])->name('remove.package');
     Route::get('/packages/{id}', [AdminPackagesController::class, 'showPackage'])->name('show.package');
     // end of packages
     // setting

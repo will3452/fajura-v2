@@ -53,7 +53,9 @@
                                     {{ $package->end_date }}
                                 </td>
                                 <td>
-                                    <form action="">
+                                    <form action="{{ route('admin.remove.package', $package) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
                                         <a href="{{ route('admin.show.package', $package) }}" class="btn btn-success">
                                             show
                                         </a>
