@@ -87,6 +87,20 @@
         Admin
     </div>
     <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsepkg"
+            aria-expanded="true" aria-controls="collapseUtilities">
+            <i class="fas fa-fw fa-cubes"></i>
+            <span>Packages</span>
+        </a>
+        <div id="collapsepkg" class="collapse" aria-labelledby="headingApp"
+            data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item" href="{{ route('admin.packages') }}">List</a>
+                <a class="collapse-item" href="{{ route('admin.create.package') }}">Add new</a>
+            </div>
+        </div>
+    </li>
+    <li class="nav-item">
         <a class="nav-link" href="{{ route('admin.concerns.list') }}">
             <i class="fas fa-fw fa-comment-alt"></i>
             <span>Concerns</span></a>
@@ -105,7 +119,6 @@
             </div>
         </div>
     </li>
-
     <li class="nav-item">
         <a class="nav-link" href="{{ route('admin.permissions.index') }}">
             <i class="fas fa-fw fa-fingerprint"></i>
@@ -127,7 +140,7 @@
     <div class="sidebar-heading">
         Extra
     </div>
-
+    
     <li class="nav-item">
         <a class="nav-link" href="{{ route('admin.setting') }}">
             <i class="fas fa-fw fa-cog"></i>

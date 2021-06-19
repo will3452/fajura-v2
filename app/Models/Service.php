@@ -29,4 +29,13 @@ class Service extends Model
     public function ratings(){
         return \number_format($this->feedbacks()->average('stars'), 1);
     }
+
+    public function packages(){
+        return $this->belongsToMany(Package::class);
+    }
+
+    public function getDiscountPriceAttribute(){
+        $discount = $this->packages()->first()->discount_rate / 100;
+        return $this->price - ($this->price * $discount);
+    }
 }

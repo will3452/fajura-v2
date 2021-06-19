@@ -1,6 +1,8 @@
 <?php
 
 use App\Models\Message;
+use App\Models\AppSetting;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TeethController;
 use App\Http\Controllers\ProfileController;
@@ -17,6 +19,7 @@ use App\Http\Controllers\AdminServiceController;
 use App\Http\Controllers\AdminSettingController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\AdminBlockingController;
+use App\Http\Controllers\AdminPackagesController;
 use App\Http\Controllers\DentalRecordsController;
 use App\Http\Controllers\MedicalAnswerController;
 use App\Http\Controllers\AllAppointmentController;
@@ -48,7 +51,7 @@ use App\Http\Controllers\AdminAccountManagementController;
 Route::middleware(['auth'])->prefix('admin/')->name('admin.')->group(function(){
 
     // admin account management
-    Route::prefix('accounts')->name('account.')->group(function(){\
+    Route::prefix('accounts')->name('account.')->group(function(){
         // list of new accounts
         Route::get('/list-new-patients', [AdminAccountManagementController::class, 'listOfNewAccounts'])->name('list_of_all_new_patients');
         Route::post('/list-new-patients/{id}/update', [AdminAccountManagementController::class, 'updateListOfNewAccounts'])->name('list_of_all_new_patients.update');
@@ -120,6 +123,13 @@ Route::middleware(['auth'])->prefix('admin/')->name('admin.')->group(function(){
     Route::put('/concerns/{id}', [AdminConcernController::class, 'markAsSolved'])->name('concerns.update');
     // endof concerns
 
+    // packages
+    Route::get('/packages/create', [AdminPackagesController::class, 'createPackage'])->name('create.package');
+    Route::post('/packages/updateService', [AdminPackagesController::class, 'updateServicePacakge'])->name('update.service.package');
+    Route::post('/packages', [AdminPackagesController::class, 'savePackage'])->name('save.package');
+    Route::get('/packages', [AdminPackagesController::class, 'listOfPackages'])->name('packages');
+    Route::get('/packages/{id}', [AdminPackagesController::class, 'showPackage'])->name('show.package');
+    // end of packages
     // setting
     Route::get('setting', [AdminSettingController::class, 'setting'])->name('setting');
     Route::post('setting/save-account', [AdminSettingController::class, 'AccountSave'])->name('setting.account.save');
@@ -129,11 +139,12 @@ Route::middleware(['auth'])->prefix('admin/')->name('admin.')->group(function(){
 });
 
 Route::get('/', function () {
-    $app = \App\Models\AppSetting::first();
+    $app = AppSetting::first();
     return view('welcome', compact('app'));
 });
 
 Auth::routes();
+
 Route::get('/home', [DashboardController::class, 'index'])->name('home');
 Route::resource('services', ServiceController::class)->middleware('auth');
 Route::resource('schedules', SchedulesController::class)->middleware('auth');
