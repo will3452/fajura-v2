@@ -16,6 +16,7 @@ class AdminConcernController extends Controller
         $concern = Message::findOrFail($id);
         $concern->update(['is_resolved'=>true]);
         toast('Concern '.$concern->unique_id.' marked as Solved!');
+        activity()->causedBy(auth()->user())->on($concern)->log('concern solved');
         return back();
     }
 }
