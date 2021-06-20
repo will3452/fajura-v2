@@ -7,7 +7,7 @@
     </h2>
     <div class="columns">
         <div class="column is-8 is-offset-2">
-            <form method="POST" action="{{ route('register') }}">
+            <form method="POST" class="c-form" action="{{ route('register') }}">
                 @csrf
         
                 <div class="field">
@@ -262,7 +262,13 @@
                     <label for="" class="label help">By continuing submitting this form, I hereby Agree and consent to the <a href="/privacy-policy" target="_blank">Privacy Policy</a>.</label>
                     <div class="control">
                         <template x-if="checkAll()">
-                            <button type="submit" class="button is-info is-rounded"  id="submitButton">
+                            <button type="button"
+                             class="button is-info is-rounded g-recaptcha"
+                               id="submitButton"
+                               data-sitekey="6LfGhkYbAAAAANQrJMTF8dsVij6lQeGWNjAaztKR" 
+                                data-callback='onSubmit' 
+                                data-action='submit'
+                               >
                                  <span> {{ __('Submit') }}</span>
                             </button>
                         </template>
@@ -283,6 +289,7 @@
 @endsection
 
 @push('scripts')
+    @include('includes.recaptcha_v3')
     <script>
         const picker = datepicker('#bdate', {minDate: new Date(1951, 0, 1), maxDate: new Date(2010, 0, 1), formatter: (input, date, instance) => {
     const value = date.toLocaleDateString()
