@@ -17,8 +17,12 @@
        active:1
    }">
         <div id="login-control">
+            @auth
+            <a class="button is-rounded is-white is-small" href="{{ route('home') }}">Home</a>
+            @else 
             <a class="button is-rounded is-white is-small" href="{{ route('login') }}">Login</a>
             <a class="button is-rounded is-warning is-small" href="{{ route('register') }}">Sign Up</a>
+            @endauth
         </div>
         <nav >
             <ul>
