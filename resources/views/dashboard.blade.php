@@ -127,7 +127,7 @@
                             </div>
                         </div>
                     @endcan
-                    @can('browse blog')
+                    @can('browse pages')
                         <div class="column is-6 is-half-mobile">
                             <div class="box">
                                 <div class="level">
