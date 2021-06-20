@@ -8,16 +8,14 @@
                 <i data-feather="arrow-left"></i>
             </div>
         </a>
-        @auth
-            <a href="{{ route('blogs.create') }}" class="button is-small is-rounded has-icon">
-                <div class="icon">
-                    <i data-feather="edit-2"></i>
-                </div>
-                <div>
-                    Write New
-                </div>
-            </a>
-        @endauth
+        <a href="{{ route('blogs.create') }}" class="button is-small is-rounded has-icon">
+            <div class="icon">
+                <i data-feather="edit-2"></i>
+            </div>
+            <div>
+                Write New
+            </div>
+        </a>
     </div>
     <div class="columns is-justify-content-center">
         <div class="column is-8 content makeTimesNewRoman">
@@ -41,6 +39,7 @@
                     <p class="text-light mt-4">{{ \Str::limit($blog->excerpt, 150)}} <a href="{{ route('blogs.show', $blog) }}">read more</a></p>
                 </div>
             @endforeach
+            {{ $blogs->render("pagination::simple-bootstrap-4") }}
         </div>
     </div>
 </div>
@@ -68,5 +67,10 @@
         .make-flex{
             display: flex;
         }
+        .pagination, .pagination>ul {
+            list-style-type: none !important;
+            padding: 0px !important;
+        }
+
     </style>
 @endpush
