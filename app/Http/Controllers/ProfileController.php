@@ -51,7 +51,7 @@ class ProfileController extends Controller
         if(!auth()->user()->hasRole(['dentist', 'staff']) && $user->id != auth()->user()->id){
             if(!$user->setting->is_public){
                 toast('This account is in private!', 'error');
-                return abort(401);
+                abort(401);
             }
         }
         return view('profile.show', compact('user'));
