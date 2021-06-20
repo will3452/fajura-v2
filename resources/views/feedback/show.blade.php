@@ -16,9 +16,7 @@
         <div class="columns">
             <div class="column is-4">
                 <div class="box">
-                    <h4 class="title is-5" style="color: #aaa">
-                        #{{ $service->uniq_id }}
-                    </h4>
+                    
                     <div class="is-flex is-justify-content-center">
                         <img src="{{ $service->public_picture }}" alt="" style="height:200px;">
                     </div>
@@ -48,6 +46,41 @@
                         >
                         @endif
                         
+                    </div>
+                </div>
+                <div class="mt-2" x-data="{
+                    isCopied:false,
+                    copyUrl(){
+                        const link = document.getElementById('url_link');
+                        link.select();
+                        document.execCommand('copy');
+                        this.isCopied = true;
+                    }
+                }">
+                    <div class="box">
+                        <label for="" class="label">Share to friends</label>
+                        <div class="field has-addons" >
+                            <div class="control is-expanded">
+                                @auth
+                                <input type="text" id="url_link" readonly class="input is-small" value="{{ url()->current() }}?referrer={{ auth()->user()->id }}&referrer_code={{ \Hash::make(auth()->user()->id) }}">
+                                @else
+                                <input type="text" id="url_link" readonly class="input is-small" value="{{ url()->current() }}">
+                                @endauth
+                            </div>
+                            <div class="control">
+                                <button class="button is-small has-icon" x-on:click="copyUrl()">
+                                    <div class="icon">
+                                        <i data-feather="copy"></i>
+                                    </div>
+                                    <div >
+                                        Copy Link 
+                                    </div>
+                                </button>
+                            </div>
+                        </div>
+                        <small x-show="isCopied" class="help is-success">
+                            Link copied
+                        </small>
                     </div>
                 </div>
             </div>
