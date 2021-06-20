@@ -15,7 +15,7 @@
             <title>{{ config('app.name') }}</title>
         @endif
     @else 
-        <title>{{ config('app.name') }}</title>
+        <title>{{ config('app.name') }} Dental Clinic Online Sytem In Tarlac Philippines</title>
     @endauth
     @include('includes.favicons')
     <!-- Scripts -->
