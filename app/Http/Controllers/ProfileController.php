@@ -49,7 +49,7 @@ class ProfileController extends Controller
     {
         $user = User::with('profile')->findOrFail($id);
         if($user->id != auth()->user()->id){
-            if(!$user->setting->is_public && (!auth()->user->is_admin || !auth()->user()->hasRole(['staff', 'dentist']))){
+            if(!$user->setting->is_public && !auth()->user->is_admin){
                 toast('This is profile is in private :)', 'error');
                 abort(401);
             }
