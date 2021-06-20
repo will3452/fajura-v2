@@ -120,7 +120,7 @@
                     <ul class="">
                         <li>
                             <input type="checkbox" @if($role->hasPermissionTo('browse pages')) checked @endif class="page{{ $role->id }}" x-on:click="updatePermission({name:'browse pages', status:$event.target.checked})">
-                            Read and Write new blog
+                            Write blogs
                         </li>
                         {{-- <li>
                             <input type="checkbox" @if($role->hasPermissionTo('read pages')) checked @endif class="page{{ $role->id }}" x-on:click="updatePermission({name:'read pages', status:$event.target.checked})"> Read
