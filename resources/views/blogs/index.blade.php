@@ -17,11 +17,11 @@
             </div>
         </a>
     </div>
-    @empty($blogs)
+    @if(!count($blogs))
         <div class="has-text-centered">
             No Blog Found :(
         </div>
-    @endempty
+    @endif
     <div class="columns is-justify-content-center">
         <div class="column is-8 content makeTimesNewRoman">
             
