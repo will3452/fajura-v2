@@ -12,8 +12,14 @@ class BlogController extends Controller
         return $id == auth()->user()->id ? true:abort(401);
     }
     public function createNewBlog(){
-        if(!auth()->user()->roles()->first()->hasPermissionTo('browse pages')) abort(401);
-        return view('blogs.create');
+
+        if(auth()->user()->is_admin){
+            return view('blogs.create');
+        }
+        elseif(auth()->user()->roles()->first()->hasPermissionTo('browse pages')) return view('blogs.create');
+
+        abort(401);
+        
     }
 
     public function saveBlog(){
