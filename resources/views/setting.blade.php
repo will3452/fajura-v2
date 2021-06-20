@@ -24,6 +24,15 @@
         </div>
         <div class="is-flex is-justify-content-space-between box">
             <div class="is-flex align-items-center">
+              <i data-feather="users" class="mx-2"></i>  Public Profile
+            </div>
+           
+            <div>
+                @livewire('setting-toggle', ['active'=>auth()->user()->setting->is_public, 'setting'=>auth()->user()->setting,'prop'=>'is_public'])
+            </div>
+        </div>
+        <div class="is-flex is-justify-content-space-between box">
+            <div class="is-flex align-items-center">
               <i data-feather="mail" class="mx-2"></i>  Email Notification
             </div>
             <div>

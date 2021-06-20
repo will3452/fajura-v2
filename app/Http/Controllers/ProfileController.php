@@ -47,7 +47,14 @@ class ProfileController extends Controller
      */
     public function show($id)
     {
-        return view('profile.show', ['user'=>User::with('profile')->findOrFail($id)]);
+        $user = User::with('profile')->findOrFail($id);
+        if($user->id != auth()->user()->id){
+            if(!$user->setting->is_public && (!auth()->user->is_admin || !auth()->user()->hasRole(['staff', 'dentist']))){
+                toast('This is profile is in private :)', 'error');
+                abort(401);
+            }
+        }
+        return view('profile.show', compact('user'));
     }
 
     /**
