@@ -121,20 +121,28 @@
                         Contact  Us
                     </h2>
                     <div class="columns">
-                        <div class="column is-flex is-justify-content-center is-align-items-center ">
-                            <div class="is-flex is-justify-content-center">
-                                <a href="{{ $app->fb_page_url??'#' }}" target="_blank">
-                                    <img src="/facebook.svg" alt="" class="contact-image">
-                                </a>
-                                <a href="mailto:admin@fajura.site">
-                                    <img src="/mail.svg" alt="" class="contact-image">
-                                </a>
-                                <a href="tel:{{ $app->tel }}">
-                                    <img src="/phone.svg" alt="" class="contact-image">
-                                </a>
-                                <a href="tel:{{ $app->phone }}">
-                                    <img src="/smartphone.svg" alt="" class="contact-image">
-                                </a>
+                        <div class="column is-flex is-flex-wrap-wrap is-justify-content-center is-align-items-center ">
+                            <div class="columns">
+                                <div class="column">
+                                    <a href="{{ $app->fb_page_url??'#' }}" target="_blank">
+                                        <img src="/facebook.svg" alt="" class="contact-image">
+                                    </a>
+                                </div>
+                                <div class="column">
+                                    <a href="mailto:admin@fajura.site">
+                                        <img src="/mail.svg" alt="" class="contact-image">
+                                    </a>
+                                </div>
+                                <div class="column">
+                                    <a href="tel:{{ $app->tel }}">
+                                        <img src="/phone.svg" alt="" class="contact-image">
+                                    </a>
+                                </div>
+                                <div class="column">
+                                    <a href="tel:{{ $app->phone }}">
+                                        <img src="/smartphone.svg" alt="" class="contact-image">
+                                    </a>
+                                </div>
                             </div>
                         </div>
                         <div class="column px-6" x-data="{
