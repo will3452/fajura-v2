@@ -90,6 +90,15 @@
                             @endif
                         </div>
                         @else 
+                        @if (url()->current() != route('home'))
+                            <div class="navbar-item">
+                                <a href="{{ route('home') }}" class="button is-rounded has-icon">
+                                    <div class="icon">
+                                        <i data-feather="home"></i>
+                                    </div>
+                                </a>
+                            </div>
+                        @endif
                         <div class="navbar-item">
                             <a href="{{ route('notif.show') }}" class="button is-rounded has-icon">
                                 <div class="icon">
