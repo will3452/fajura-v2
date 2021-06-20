@@ -17,8 +17,14 @@
             </div>
         </a>
     </div>
+    @empty($blogs)
+        <div class="has-text-centered">
+            No Blog Found :(
+        </div>
+    @endempty
     <div class="columns is-justify-content-center">
         <div class="column is-8 content makeTimesNewRoman">
+            
             @foreach ($blogs as $blog)
                 <div class="box">
                     <h1>{{ $blog->title }}</h1>
