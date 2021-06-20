@@ -28,7 +28,26 @@
                     </div>
                     <div>
                         <label for="" class="label">Price</label>
-                        <input type="text" disabled value="P {{ $service->price_formatted }}" class="input is-small">
+                        <input
+                        type="text"
+                        disabled 
+                        value="PHP {{ $service->price_formatted }}"
+                        @if ($service->packages()->count())
+                        style="text-decoration:line-through"
+                        class="has-text-grey-light input is-small"
+                        @else 
+                        class="input is-small"
+                        @endif
+                        >
+                        @if ($service->packages()->count())
+                        <input
+                        type="text"
+                        disabled 
+                        value="PHP {{ number_format($service->discountPrice($service->packages()->first()->id), 2) }}"
+                        class="input is-small"
+                        >
+                        @endif
+                        
                     </div>
                 </div>
             </div>

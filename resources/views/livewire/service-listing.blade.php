@@ -29,7 +29,7 @@
                                style="text-decoration:line-through"
                                class="has-text-grey-light"
                                @endif
-                               > {{ $service->price_formatted }}</span>
+                               >P {{ $service->price_formatted }}</span>
                                @if ($service->packages()->count())
                                 P {{ number_format($service->discountPrice($service->packages()->first()->id), 2) }}
                                @endif
