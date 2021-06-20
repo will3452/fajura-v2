@@ -45,7 +45,10 @@ class AdminSettingController extends Controller
             'brand_saying'=>'required',
             'map_url'=>'',
             'fb_page_url'=>'',
-            'messenger_url'=>''
+            'messenger_url'=>'',
+            'tel'=>'',
+            'phone'=>'',
+            'about_url'=>'',
         ]);
 
         AppSetting::first()->update($data);

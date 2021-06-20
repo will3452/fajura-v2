@@ -67,6 +67,18 @@
                     <label for="">Messenger Link</label>
                     <input type="text" class="form-control" name="messenger_url" value="{{ $appSetting->messenger_url }}">
                 </div>
+                <div class="form-group">
+                    <label for="">Telephone</label>
+                    <input type="text" class="form-control" name="tel" value="{{ $appSetting->tel }}">
+                </div>
+                <div class="form-group">
+                    <label for="">Mobile number</label>
+                    <input type="text" class="form-control" name="phone" value="{{ $appSetting->phone }}">
+                </div>
+                <div class="form-group">
+                    <label for="">About Page Link</label>
+                    <input type="text" class="form-control" name="about_url" value="{{ $appSetting->about_url }}">
+                </div>
                 <button class="btn btn-success mr-2">
                     <i class="fa fa-check"></i>
                     Submit
