@@ -48,7 +48,7 @@ class ProfileController extends Controller
     public function show($id)
     {
         $user = User::with('profile')->findOrFail($id);
-        if(!auth()->user()->hasRoles(['dentist', 'staff']) && $user->id != auth()->user()->id){
+        if(!auth()->user()->hasRole(['dentist', 'staff']) && $user->id != auth()->user()->id){
             if(!$user->setting->is_public){
                 toast('This account is in private!', 'error');
                 return abort(401);
