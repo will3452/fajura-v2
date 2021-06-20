@@ -6,9 +6,15 @@ use Carbon\Carbon;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\DentalRecords;
+use App\Notifications\NewDentalRecordHasBeenAdded;
 
 class DentalRecordsController extends Controller
 {
+
+    public function sendNotificationToPatient($id){
+        $user = User::findOrFail($id);
+        $user->notify(new NewDentalRecordHasBeenAdded('New Dental Record has beed added!', route('dental-records.show', $id)));
+    }
 
     public function checkUser(){
         if(!request()->has('user_id') ||  !(auth()->user()->hasRole('dentist') || auth()->user()->hasRole('staff'))){
@@ -81,7 +87,10 @@ class DentalRecordsController extends Controller
                 return back();
             }
         }
-        toast('Patient Dental Record Added!', 'success');
+
+        $this->sendNotificationToPatient($request->patient_id);
+        
+        toast('Patient Dental Record added!', 'success');
         return redirect(route('dental-records.show', $request->patient_id));
     }
 
