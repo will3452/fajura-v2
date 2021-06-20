@@ -55,4 +55,5 @@ class BlogController extends Controller
         $blogs = Blog::latest()->paginate(10);
         return view('blogs.index', compact('blogs'));
     }
+
 }

@@ -140,7 +140,20 @@
     <div class="sidebar-heading">
         Extra
     </div>
-    
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsetut"
+            aria-expanded="true" aria-controls="collapseUtilities">
+            <i class="fas fa-fw fa-book"></i>
+            <span>Tutorials</span>
+        </a>
+        <div id="collapsetut" class="collapse" aria-labelledby="headingApp"
+            data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item" href="{{ route('admin.tutorial.index') }}">List</a>
+                <a class="collapse-item" href="{{ route('admin.tutorial.create') }}">Create new</a>
+            </div>
+        </div>
+    </li>
     <li class="nav-item">
         <a class="nav-link" href="{{ route('admin.setting') }}">
             <i class="fas fa-fw fa-cog"></i>

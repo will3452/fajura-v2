@@ -32,6 +32,7 @@ use App\Http\Controllers\AdminMedicalQuestionController;
 use App\Http\Controllers\ProfilePictureUpdateController;
 use App\Http\Controllers\AdminPermissionUpdateController;
 use App\Http\Controllers\AdminAccountManagementController;
+use App\Http\Controllers\AdminHelpController;
 
 /*
 |--------------------------------------------------------------------------
@@ -146,6 +147,15 @@ Route::middleware(['auth'])->prefix('admin/')->name('admin.')->group(function(){
     Route::post('setting/save-account', [AdminSettingController::class, 'AccountSave'])->name('setting.account.save');
     Route::post('setting/save-app', [AdminSettingController::class, 'AppSave'])->name('setting.app.save');
     // end of setting
+    
+    // tutorials
+    Route::get('/tutorials/create', [AdminHelpController::class, 'create'])->name('tutorial.create');
+    Route::get('/tutorials', [AdminHelpController::class, 'index'])->name('tutorial.index');
+    Route::post('/tutorials', [AdminHelpController::class, 'store'])->name('tutorial.store');
+    Route::delete('/tutorials/{id}', [AdminHelpController::class, 'destroy'])->name('tutorial.destroy');
+    Route::get('/tutorials/{id}', [AdminHelpController::class, 'edit'])->name('tutorial.edit');
+    Route::put('/tutorials/{id}', [AdminHelpController::class, 'update'])->name('tutorial.update');
+    // end of tutorials
 
 });
 
