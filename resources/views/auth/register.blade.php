@@ -263,11 +263,7 @@
                     <div class="control">
                         <template x-if="checkAll()">
                             <button type="button"
-                             class="button is-info is-rounded g-recaptcha"
-                               id="submitButton"
-                               data-sitekey="6LfGhkYbAAAAANQrJMTF8dsVij6lQeGWNjAaztKR" 
-                                data-callback='onSubmit' 
-                                data-action='submit'
+                             class="button is-info is-rounded"
                                >
                                  <span> {{ __('Submit') }}</span>
                             </button>
@@ -289,7 +285,6 @@
 @endsection
 
 @push('scripts')
-    @include('includes.recaptcha_v3')
     <script>
         const picker = datepicker('#bdate', {minDate: new Date(1951, 0, 1), maxDate: new Date(2010, 0, 1), formatter: (input, date, instance) => {
     const value = date.toLocaleDateString()
