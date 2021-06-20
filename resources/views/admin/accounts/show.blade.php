@@ -145,6 +145,23 @@
                             </button>
                         </form>
                     </div>
+                    
+                </div>
+            </div>
+            <div class="card mt-2">
+                <div class="card-header">
+                    Mail
+                </div>
+                <div class="card-body">
+                    <form action="/admin/send-email" method="POST">
+                        @csrf
+                        <input type="hidden" name="email" required value="{{ $user->email }}">
+                        <textarea name="message" required id="message"></textarea>
+                        <button class="btn btn-success btn-sm mt-2">
+                            <i class="fa fa-paper-plane"></i>
+                            Send
+                        </button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -160,6 +177,10 @@
         $(function(){
             $('#schedTable').DataTable();
         })
+    </script>
+    @include('includes.trumbowg')
+    <script>
+        $('#message').trumbowyg()
     </script>
 @endpush
 

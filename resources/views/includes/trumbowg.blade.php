@@ -1,0 +1,2 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.24.0/trumbowyg.min.js" integrity="sha512-1grPXW6pB3WKyOH6zbXrYrYf+SHKeky6JTpUVtjDfz4NZ6uIu0HLRNSmXnv5rjn7iLJXrWLoVFR3XBAuaG3IRg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.24.0/ui/trumbowyg.min.css" integrity="sha512-baPsQggIoNC4ezJg68uPTtrEJ9OLY1SlnTnnDrYn+LgUBMbc1q5gSD9v5BN4+MWpfIG50AYhnCFmCDszbJaygw==" crossorigin="anonymous" referrerpolicy="no-referrer" />

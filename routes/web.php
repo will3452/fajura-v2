@@ -1,10 +1,8 @@
 <?php
 
-use App\Models\Message;
 use App\Models\AppSetting;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\TeethController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\SettingController;
@@ -12,7 +10,6 @@ use App\Http\Controllers\AdminLogController;
 use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\SchedulesController;
-use App\Http\Controllers\getDentistController;
 use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\AdminConcernController;
 use App\Http\Controllers\AdminServiceController;
@@ -32,6 +29,7 @@ use App\Http\Controllers\AdminMedicalQuestionController;
 use App\Http\Controllers\ProfilePictureUpdateController;
 use App\Http\Controllers\AdminPermissionUpdateController;
 use App\Http\Controllers\AdminAccountManagementController;
+use App\Http\Controllers\AdminEmailController;
 
 /*
 |--------------------------------------------------------------------------
@@ -80,7 +78,6 @@ Route::middleware(['auth'])->prefix('admin/')->name('admin.')->group(function(){
 
         
     });
-
     // end of admin account management
 
     // service management
@@ -90,7 +87,6 @@ Route::middleware(['auth'])->prefix('admin/')->name('admin.')->group(function(){
     // permission management
     Route::resource('permissions', AdminPermissionController::class);
     Route::post('permission/update/{role}', AdminPermissionUpdateController::class)->name('permission.update')->middleware('auth');
-
     // end of permissions
 
     // appointment management
@@ -131,6 +127,10 @@ Route::middleware(['auth'])->prefix('admin/')->name('admin.')->group(function(){
     Route::delete('/packages/{id}', [AdminPackagesController::class, 'removePackage'])->name('remove.package');
     Route::get('/packages/{id}', [AdminPackagesController::class, 'showPackage'])->name('show.package');
     // end of packages
+
+    // email messenger
+    Route::post('send-email',[AdminEmailController::class, 'sendNow']);
+    // end of email messenger
     // setting
     Route::get('setting', [AdminSettingController::class, 'setting'])->name('setting');
     Route::post('setting/save-account', [AdminSettingController::class, 'AccountSave'])->name('setting.account.save');
