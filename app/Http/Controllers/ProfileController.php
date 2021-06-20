@@ -8,6 +8,10 @@ use Illuminate\Http\Request;
 
 class ProfileController extends Controller
 {
+
+    public function checkIfPrivate(User $user){
+        return !$user->setting->is_public && $user->id != auth()->user()->id && !auth()->user()->hasRole(['dentist', 'staff']) ? abort(401) : true;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -48,11 +52,7 @@ class ProfileController extends Controller
     public function show($id)
     {
         $user = User::with('profile')->findOrFail($id);
-        if(!auth()->user()->hasAnyRole(['dentist', 'staff']) && $user->id != auth()->user()->id){
-            if(!$user->setting->is_public){
-                abort(419);
-            }
-        }
+        $this->checkIfPrivate($user);
         return view('profile.show', compact('user'));
     }
 
