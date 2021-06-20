@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use App\Console\Commands\GenerateSitemap;
 use App\Console\Commands\MakeAdminSetting;
 use App\Console\Commands\NotifyTodaysAppointment;
 use App\Console\Commands\TestingCommand;
@@ -18,6 +19,7 @@ class Kernel extends ConsoleKernel
     protected $commands = [
         NotifyTodaysAppointment::class,
         MakeAdminSetting::class,
+        GenerateSitemap::class
         // TestingCommand::class
     ];
 
@@ -31,6 +33,7 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')->hourly();
         $schedule->command(NotifyTodaysAppointment::class)->dailyAt('05:00')->timezone('Asia/Manila');
+        $schedule->command(GenerateSitemap::class)->daily();
         // $schedule->command(NotifyTodaysAppointment::class)->everyMinute();
     }
 
