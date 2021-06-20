@@ -1,8 +1,10 @@
 <?php
 
+use App\Models\Message;
 use App\Models\AppSetting;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\SettingController;
@@ -10,6 +12,7 @@ use App\Http\Controllers\AdminLogController;
 use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\SchedulesController;
+use App\Http\Controllers\AdminEmailController;
 use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\AdminConcernController;
 use App\Http\Controllers\AdminServiceController;
@@ -29,7 +32,6 @@ use App\Http\Controllers\AdminMedicalQuestionController;
 use App\Http\Controllers\ProfilePictureUpdateController;
 use App\Http\Controllers\AdminPermissionUpdateController;
 use App\Http\Controllers\AdminAccountManagementController;
-use App\Http\Controllers\AdminEmailController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,6 +45,14 @@ use App\Http\Controllers\AdminEmailController;
 */
 
 
+
+Route::get('/', function () {
+    $app = AppSetting::first();
+    return view('welcome', compact('app'));
+});
+
+Auth::routes();
+Route::get('/home', [DashboardController::class, 'index'])->name('home');
 
 
 
@@ -139,23 +149,17 @@ Route::middleware(['auth'])->prefix('admin/')->name('admin.')->group(function(){
 
 });
 
-Route::get('/', function () {
-    $app = AppSetting::first();
-    return view('welcome', compact('app'));
-});
 
-Auth::routes();
 
-Route::get('/home', [DashboardController::class, 'index'])->name('home');
+
 Route::resource('services', ServiceController::class)->middleware('auth');
 Route::resource('schedules', SchedulesController::class)->middleware('auth');
 Route::resource('appointments', AppointmentController::class)->middleware('auth');
 Route::resource('dentist-appointments', DentistAppointmentController::class)->middleware('auth');
 Route::resource('profile', ProfileController::class)->middleware('auth');
-Route::post('profile-picture/{id}', ProfilePictureUpdateController::class);
-Route::resource('feedbacks', FeedbackController::class);
-Route::resource('dental-records', DentalRecordsController::class);
-Route::get('settings', [SettingController::class, 'setting'])->name('settings');
+Route::post('profile-picture/{id}', ProfilePictureUpdateController::class)->middleware('auth');
+Route::resource('dental-records', DentalRecordsController::class)->middleware('auth');
+Route::get('settings', [SettingController::class, 'setting'])->name('settings')->middleware('auth');
 
 // notifications
 Route::prefix('notifications')->name('notif.')->middleware('auth')->group(function(){
@@ -165,18 +169,34 @@ Route::prefix('notifications')->name('notif.')->middleware('auth')->group(functi
 });
 // endof notifications
 
+// blog
+Route::prefix('blogs')->name('blogs.')->group(function(){
+    Route::get('/create', [BlogController::class, 'createNewBlog'])->name('create')->middleware('auth');
+    Route::get('/', [BlogController::class, 'index'])->name('index');
+    Route::post('/', [BlogController::class, 'saveBlog'])->name('store')->middleware('auth');
+    Route::get('/{blog:slug}/edit', [BlogController::class, 'editBlog'])->name('edit')->middleware('auth');
+    Route::put('/{blog:slug}', [BlogController::class, 'updateBlog'])->name('update')->middleware('auth');
+    Route::get('/{blog:slug}', [BlogController::class, 'showBlog'])->name('show');
+});
+// endof blog
+
 //patient medical answers 
-Route::resource('medical-history', MedicalAnswerController::class);
+Route::resource('medical-history', MedicalAnswerController::class)->middleware('auth');
 
 // user spassword changing
 Route::get('change-password', [AccountPasswordController::class, 'showPasswordForm'])->name('show.password.form');
 Route::post('change-password', [AccountPasswordController::class, 'storePassword'])->name('store.password');
 
 //staff of dentist 
-Route::resource('account-management', AccountManagementController::class);
+Route::resource('account-management', AccountManagementController::class)->middleware('auth');
 
 //all appointemt for staff only 
-Route::resource('all-appointments', AllAppointmentController::class);
+Route::resource('all-appointments', AllAppointmentController::class)->middleware('auth');
+
+
+#####PURE PUBLIC
+
+Route::resource('feedbacks', FeedbackController::class);
 
 //privacy and policies
 Route::view('privacy-policy', 'privacy-policy');
@@ -196,5 +216,4 @@ Route::post('send-message', function(){
     Message::create($data);
     toast('Message sent!', 'success');
     return redirect('/#contact');
-    
 });

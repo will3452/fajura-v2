@@ -99,6 +99,15 @@
                                 </a>
                             </div>
                         @endif
+                        @if (url()->current() != route('blogs.index'))
+                            <div class="navbar-item">
+                                <a href="{{ route('blogs.index') }}" class="button is-rounded has-icon">
+                                    <div class="icon">
+                                        <i data-feather="message-circle"></i>
+                                    </div>
+                                </a>
+                            </div>
+                        @endif
                         <div class="navbar-item">
                             <a href="{{ route('notif.show') }}" class="button is-rounded has-icon">
                                 <div class="icon">

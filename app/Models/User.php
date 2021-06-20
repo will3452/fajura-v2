@@ -122,4 +122,8 @@ class User extends Authenticatable
             return session()->get('darkmode');
         }
     }
+
+    public function blogs(){
+        return $this->hasMany(Blog::class);
+    }
 }

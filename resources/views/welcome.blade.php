@@ -209,6 +209,7 @@
                             </h4>
                             <div class="content">
                                 <a href="{{ route('services.index') }}" targe="_blank">Services</a>
+                                <a href="{{ route('blogs.index') }}" targe="_blank">Blogs</a>
                                 <a href="{{ route('login') }}" targe="_blank">Sign In</a>
                                 <a href="{{ route('register') }}" targe="_blank">Sign Up</a>
                             </div>
