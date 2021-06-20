@@ -127,29 +127,7 @@
                             </div>
                         </div>
                     @endcan
-                    @can('browse pages')
-                        <div class="column is-6 is-half-mobile">
-                            <div class="box">
-                                <div class="level">
-                                    <div class="level-left">
-                                        <div class="level-item">
-                                            <i data-feather="layout"></i>
-                                        </div>
-                                        <div class="level-item">
-                                        Blog
-                                        </div>
-                                    </div>
-                                    <div class="level-right">
-                                        <div class="level-item">
-                                            <a href="#" class="button is-info is-small is-rounded">
-                                                view
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    @endcan
+                    
 
                     @can('edit schedules')
                         <div class="column is-6 is-half-mobile">
