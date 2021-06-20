@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use App\Console\Commands\MakeAdminSetting;
 use App\Console\Commands\NotifyTodaysAppointment;
 use App\Console\Commands\TestingCommand;
 use Illuminate\Console\Scheduling\Schedule;
@@ -16,6 +17,7 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         NotifyTodaysAppointment::class,
+        MakeAdminSetting::class,
         // TestingCommand::class
     ];
 
