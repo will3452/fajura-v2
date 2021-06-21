@@ -15,6 +15,10 @@ class Package extends Model
         return $this->belongsToMany(Service::class);
     }
 
+    public function getServiceNamesAttribute(){
+        return implode(", ", $this->services()->pluck('name')->toArray());
+    }
+
     public function getUniqueIdAttribute(){
         return 'PKG'.Str::padleft($this->id, 5, '0');
     }

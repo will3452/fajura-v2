@@ -157,7 +157,7 @@
                 </div>
             </div>
         </nav>
-
+        @yield('top')
         <main class="py-4 mx-2">
             @yield('content')
         </main>
