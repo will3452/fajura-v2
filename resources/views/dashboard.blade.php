@@ -207,7 +207,7 @@
     @if (count($packages))
         <div class="marquee">
             @foreach ($packages as $package)
-                <strong>{{ $package->name }}</strong> * {{ $package->remarks }} * Inclusive Services: {{ $package->service_names }}
+                <strong>{{ $package->name }}</strong> - {{ $package->remarks }} - Inclusive Services: {{ $package->service_names }}
                 @if (!$loop->last)
                     |
                 @endif
