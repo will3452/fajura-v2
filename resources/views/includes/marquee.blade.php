@@ -110,7 +110,9 @@
     $(function(){
         $('.marquee').marquee({
             pauseOnHover:true,
-            duration:15000,
+            duration:23000,
+            duplicated:true,
+            gap:10
         });
     })
 </script>
