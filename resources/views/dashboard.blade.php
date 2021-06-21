@@ -205,7 +205,7 @@
     $packages = App\Models\Package::latest()->get();
 @endphp
     @if (count($packages))
-        <div class="marquee">
+        <div class="marquee mb-5">
             @foreach ($packages as $package)
                 <strong>{{ $package->name }}</strong> - {{ $package->remarks }} - Inclusive Services: {{ $package->service_names }}
                 @if (!$loop->last)
