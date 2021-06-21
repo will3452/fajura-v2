@@ -8,7 +8,11 @@ use Illuminate\Http\Request;
 class TutorialController extends Controller
 {
     public function index(){
-        $helps = Help::latest()->paginate(10);
+        if(request()->has('q')){
+            $helps = Help::where('title', 'LIKE', '%'.request()->q.'%')->paginate(10);
+        }else {
+            $helps = Help::latest()->paginate(10);
+        }
         return view('helps.index', compact('helps'));
     }
 
