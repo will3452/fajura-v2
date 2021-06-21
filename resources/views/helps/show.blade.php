@@ -29,7 +29,7 @@
             </div>
             @else 
             <div>
-                <iframe style="width: 100%" height="315" src="{{ $help->body }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <a href="{{ $help->body }}">{{ \Str::limit($help->body, 100) }}</a>
             </div>
             @endif
         </div>
