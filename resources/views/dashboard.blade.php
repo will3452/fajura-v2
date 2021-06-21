@@ -160,7 +160,7 @@
                                         <i data-feather="help-circle"></i>
                                     </div>
                                     <div class="level-item">
-                                       Help
+                                       Helps &amp; Tutorials
                                     </div>
                                 </div>
                                 <div class="level-right">
