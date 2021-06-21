@@ -29,7 +29,7 @@
             </div>
             @else 
             <div>
-                <a href="{{ $help->body }}">{{ \Str::limit($help->body, 100) }}</a>
+                <a target="_blank" href="{{ $help->body }}">{{ \Str::limit($help->body, 100) }}</a>
             </div>
             @endif
         </div>
