@@ -155,6 +155,11 @@
         </div>
     </li>
     <li class="nav-item">
+        <a class="nav-link" href="{{ route('blogs.index') }}">
+            <i class="fas fa-fw fa-newspaper"></i>
+            <span>Blogs</span></a>
+    </li>
+    <li class="nav-item">
         <a class="nav-link" href="{{ route('admin.setting') }}">
             <i class="fas fa-fw fa-cog"></i>
             <span>Setting</span></a>
