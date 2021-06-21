@@ -33,6 +33,7 @@ use App\Http\Controllers\ProfilePictureUpdateController;
 use App\Http\Controllers\AdminPermissionUpdateController;
 use App\Http\Controllers\AdminAccountManagementController;
 use App\Http\Controllers\AdminHelpController;
+use App\Http\Controllers\TutorialController;
 
 /*
 |--------------------------------------------------------------------------
@@ -203,6 +204,10 @@ Route::resource('account-management', AccountManagementController::class)->middl
 //all appointemt for staff only 
 Route::resource('all-appointments', AllAppointmentController::class)->middleware('auth');
 
+// help/turorial
+Route::get('/helps', [TutorialController::class, 'index'])->name('helps.index');
+Route::get('/helps/{id}', [TutorialController::class, 'show'])->name('helps.show');
+// end of help/tutorial
 
 #####PURE PUBLIC
 

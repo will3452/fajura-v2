@@ -165,7 +165,7 @@
                                 </div>
                                 <div class="level-right">
                                     <div class="level-item">
-                                        <a href="#" class="button is-info is-small is-rounded">
+                                        <a href="{{ route('helps.index') }}" class="button is-info is-small is-rounded">
                                             view
                                         </a>
                                     </div>
