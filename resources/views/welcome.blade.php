@@ -154,9 +154,9 @@
                                 }
                             }
                         }">
-                            <form action="{{ url('send-message') }}" method="POST">
+                            <form action="{{ url('send-message') }}" method="POST" class="box">
                                 @csrf
-                                <h4>Inquiry form</h4>
+                                <h4 class="title is-5">Inquiry form</h4>
                                 <div class="field">
                                     <div class="control">
                                         <input type="email" name="email" required class="input @error('email') is-danger @enderror" placeholder="Your Email Here">
