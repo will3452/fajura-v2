@@ -6,8 +6,6 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    
     @auth
     @if (auth()->user()->unreadNotifications()->count())
             <title>({{  auth()->user()->unreadNotifications()->count() }}) {{ config('app.name') }}</title>
@@ -39,6 +37,7 @@
             <link rel="stylesheet" href="/css/dark.css">
         @endif
    @endauth
+   @include('includes.meta')
 </head>
 <body>
     @include('sweetalert::alert')
