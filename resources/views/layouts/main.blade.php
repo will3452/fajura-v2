@@ -12,7 +12,7 @@
     @if (auth()->user()->unreadNotifications()->count())
             <title>({{  auth()->user()->unreadNotifications()->count() }}) {{ config('app.name') }}</title>
         @else 
-            <title>{{ config('app.name') }}</title>
+            <title>{{ config('app.name') }} Dental Clinic Online Sytem In Tarlac Philippines</title>
         @endif
     @else 
         <title>{{ config('app.name') }} Dental Clinic Online Sytem In Tarlac Philippines</title>
