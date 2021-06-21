@@ -17,14 +17,27 @@
             </div>
         </a>
     </div>
-    @if(!count($blogs))
-        <div class="has-text-centered">
-            No Blog Found :(
-        </div>
-    @endif
+    
     <div class="columns is-justify-content-center">
         <div class="column is-8 content makeTimesNewRoman">
-            
+            <form action="{{ route('blogs.index') }}" class="block">
+                <div class="field">
+                    <input type="search" name="q" required class="input is-fullwidth is-rounded is-small" placeholder="Search Blog">
+                </div>
+            </form>
+            @if (request()->has('q'))
+                <strong>
+                    Seach keyword: 
+                </strong>
+                <em>
+                    "{{ request()->q }}"
+                </em>
+            @endif
+            @if(!count($blogs))
+                <div class="has-text-centered">
+                    No Blog Found :(
+                </div>
+            @endif
             @foreach ($blogs as $blog)
                 <div class="box">
                     <h1>{{ $blog->title }}</h1>

@@ -59,7 +59,12 @@ class BlogController extends Controller
     }
 
     public function index(){
-        $blogs = Blog::latest()->paginate(10);
+        
+        if(request()->has('q')){
+            $blogs = Blog::where('title', 'LIKE', '%'.request()->q.'%')->paginate(10);
+        }else {
+            $blogs = Blog::latest()->paginate(10);
+        }
         return view('blogs.index', compact('blogs'));
     }
 
