@@ -2,22 +2,19 @@
 
 @section('content')
 <div class="container">
-    <div class="columns">
+    <div class="columns is-justify-content-center is-vcentered">
         <div class="column is-hidden-mobile">
             <img src="/img/undraw_doctors_hwty.svg" alt="" style="display:block;margin:auto;width:60%">
         </div>
-        <div class="column is-4">
-            <div class="box">
-                <h2 class="title">
-                    Login Here
-                </h2>
+        <div class="column is-4 box p-5">
+            <div class="">
                 <form method="POST" action="{{ route('login') }}">
                     @csrf
+                    <h1 class="has-text-left mb-2">Login Here</h1>
                     <div class="field">
-                        <label for="email" class="label">{{ __('E-Mail Address') }}</label>
             
                         <div class="control">
-                            <input id="email" type="email" class="input @error('email') is-danger @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                            <input id="email" placeholder="Email" type="email" class="input @error('email') is-danger @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
             
                             @error('email')
                                 <span class="help is-danger" role="alert">
@@ -28,10 +25,9 @@
                     </div>
             
                     <div class="field">
-                        <label for="password" class="label">{{ __('Password') }}</label>
             
                         <div class="field">
-                            <input id="password" type="password" class="input @error('password') is-danger @enderror" name="password" required autocomplete="current-password">
+                            <input id="password" placeholder="Password" type="password" class="input @error('password') is-danger @enderror" name="password" required autocomplete="current-password">
             
                             @error('password')
                                 <span class="help is-danger" role="alert">
@@ -57,7 +53,7 @@
                     </div>
                     <div class="field">
                         @if (Route::has('password.request'))
-                                <a class="btn btn-link" href="{{ route('password.request') }}">
+                                <a class="help is-dark" href="{{ route('password.request') }}">
                                     {{ __('Forgot Your Password?') }}
                                 </a>
                         @endif
