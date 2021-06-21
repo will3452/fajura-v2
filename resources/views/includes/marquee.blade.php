@@ -111,7 +111,6 @@
         $('.marquee').marquee({
             pauseOnHover:true,
             duration:25000,
-            duplicated:true
         });
     })
 </script>
