@@ -20,26 +20,13 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('/webhook/paymongo', function(Request $request){
-    $data = Arr::get($request->all(), 'data.attributes');
-
-        if ($data['type'] !== 'source.chargeable') {
-            return response()->noContent();
-        }
-
-        $source = Arr::get($data, 'data');
-        $sourceData = $source['attributes'];
-
-        if ($sourceData['status'] === 'chargeable') {
-            $payment = Paymongo::payment()->create([
-                'amount' => $sourceData['amount'] / 100,
-                'currency' => $sourceData['currency'],
-                'description' => $sourceData['type'].' test from src ' . $source['id'],
-                'source' => [
-                    'id' => $source['id'],
-                    'type' => $source['type'],
-                ]
-            ]);
-        }
-        return response()->noContent();
+Route::get('v1/packages', function(Request $request){
+    
+    if($request->has('q')){
+        $packages = Package::where('name', 'LIKE', '%'.$request->q.'%')->get();
+    }else {
+        $packages = Package::get();
+    }
+    
+    return $packages; 
 });
