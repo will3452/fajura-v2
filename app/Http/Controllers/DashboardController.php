@@ -48,7 +48,7 @@ class DashboardController extends Controller
             }else {
                 // dd(auth()->user()->medicalAnswers()->count());
                 if(auth()->user()->hasRole('patient') && !(auth()->user()->medicalAnswers()->count())){
-                    return view('medical-history.create');
+                   return redirect()->route('medical-history.create');
                 }
                 return view('dashboard');
             }
