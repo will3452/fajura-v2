@@ -17,7 +17,6 @@
                             <th>Time</th>
                             <th>Date</th>
                             <th>Date Cancelled</th>
-                            <th>Option</th>
                         </tr>
                     </thead>
                     <tfoot>
@@ -28,7 +27,6 @@
                             <th>Time</th>
                             <th>Date</th>
                             <th>Date Cancelled</th>
-                            <th>Option</th>
                         </tr>
                     </tfoot>
                     <tbody>
@@ -50,7 +48,7 @@
                                 <td>
                                     {{ $app->updated_at->format('Y/m/d') }}
                                 </td>
-                                <td>
+                                {{-- <td>
                                     <form action="{{ route('admin.appointments.destroy', $app) }}" method="POST">
                                         @method('DELETE')
                                         @csrf
@@ -59,7 +57,7 @@
                                             Remove
                                         </button>
                                     </form>
-                                </td>
+                                </td> --}}
                             </tr>
                         @endforeach
                     </tbody>

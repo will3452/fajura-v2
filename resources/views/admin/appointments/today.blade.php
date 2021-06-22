@@ -15,7 +15,7 @@
                             <th>Patient</th>
                             <th>Dentist Incharge</th>
                             <th>Time</th>
-                            <th>Option</th>
+                            {{-- <th>Option</th> --}}
                         </tr>
                     </thead>
                     <tfoot>
@@ -24,7 +24,7 @@
                             <th>Patient</th>
                             <th>Dentist Incharge</th>
                             <th>Time</th>
-                            <th>Option</th>
+                            {{-- <th>Option</th> --}}
                         </tr>
                     </tfoot>
                     <tbody>
@@ -40,12 +40,12 @@
                                 <td>
                                     {{ $app->time ? \App\Models\Time::MAKEREADBLE($app->start_time).' - '.\App\Models\Time::MAKEREADBLE($app->end_time) : 'N/a' }}
                                 </td>
-                                <td>
+                                {{-- <td>
                                     <button class="btn btn-success btn-sm">
                                         <i class="fa fa-check-circle"></i>
                                         Resolve
                                     </button>
-                                </td>
+                                </td> --}}
                             </tr>
                         @endforeach
                     </tbody>

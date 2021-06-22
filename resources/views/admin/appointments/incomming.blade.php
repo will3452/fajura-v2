@@ -16,7 +16,7 @@
                             <th>Dentist Incharge</th>
                             <th>Time</th>
                             <th>Date</th>
-                            <th>Option</th>
+                            {{-- <th>Option</th> --}}
                         </tr>
                     </thead>
                     <tfoot>
@@ -26,7 +26,7 @@
                             <th>Dentist Incharge</th>
                             <th>Time</th>
                             <th>Date</th>
-                            <th>Option</th>
+                            {{-- <th>Option</th> --}}
                         </tr>
                     </tfoot>
                     <tbody>
@@ -45,9 +45,9 @@
                                 <td>
                                     {{ $app->date }}
                                 </td>
-                                <td>
+                                {{-- <td>
                                     
-                                </td>
+                                </td> --}}
                             </tr>
                         @endforeach
                     </tbody>
