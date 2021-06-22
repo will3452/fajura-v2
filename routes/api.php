@@ -28,6 +28,7 @@ Route::get('v1/packages', function(Request $request){
     }else {
         $packages = Package::get();
     }
+    $packages->with('services');
     
     return $packages; 
 });
