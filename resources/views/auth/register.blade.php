@@ -218,10 +218,10 @@
                             <div class="content">
                                 <ul>
                                     <li x-bind:class="hasEspPassword ? 'has-text-success':'has-text-danger'">
-                                        <small>The password must have atlease special characters.</small>
+                                        <small>The password must have at least 1 special character</small>
                                     </li>
                                     <li x-bind:class="hasNumPassword ? 'has-text-success':'has-text-danger'">
-                                        <small>The password must have atlease Numeric characters.</small>
+                                        <small>The password must have at lease Numeric characters.</small>
                                     </li>
                                     <li x-bind:class="has8Password ? 'has-text-success':'has-text-danger'">
                                         <small>The password must be at least 8 characters.</small>
