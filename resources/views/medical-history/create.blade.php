@@ -10,7 +10,7 @@
         </a>
     </div>
     <h2 class="title is-4" style="text-align:center">
-        New Medical Record
+        Medical History Record Form
     </h2>
 
     @if (count($questions))
