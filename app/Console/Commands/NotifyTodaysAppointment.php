@@ -40,7 +40,10 @@ class NotifyTodaysAppointment extends Command
      */
     public function handle()
     {
-        $todayApp = Appointment::where('date', today()->format('Y/m/d'))->get();
+        $todayApp = Appointment::where([
+            ['date', '=', today()->format('Y/m/d')],
+            ['status','=','pending']
+            ])->get();
         
         foreach($todayApp as $app){
             Mail::to($app->user)->send(new YouHaveAnAppointmentToday($app->user));
