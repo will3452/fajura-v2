@@ -33,7 +33,7 @@
             </ul>
         </nav>
         <div class="main-container">
-            <section id="home" x-on:touchmove="active = 1"x-on:mouseover="active = 1">
+            <section id="home" x-on:touchstart="active = 1"x-on:mouseover="active = 1">
                 <div id="swirl"></div>
                 <div class="box is-flex is-flex-direction-column is-justify-content-center is-align-items-center z-index-upper">
                     <div >
@@ -50,7 +50,7 @@
                     </div>
                 </div>
             </section>
-            <section id="about" x-on:touchmove="active = 2"x-on:mouseover="active = 2">
+            <section id="about" x-on:touchstart="active = 2"x-on:mouseover="active = 2">
                 <div class="container has-text-centered pt-6 px-6">
                     <div class="block mt-6">
                         <h2 class="title is-2 animate__animated" :class="active == 2 ? 'animate__fadeIn':''">
@@ -65,7 +65,7 @@
                     </div>
                 </div>
             </section>
-            <section id="services" x-on:touchmove="active = 3"x-on:mouseover="active = 3">
+            <section id="services" x-on:touchstart="active = 3"x-on:mouseover="active = 3">
                 <div class="container px-2 pt-6 ">
                     <h2 class="title is-2 has-text-white has-text-centered mb-4">
                         Our Services
@@ -115,7 +115,7 @@
                     </div>
                 </div>
             </section>
-            <section id="contact" x-on:touchmove="active = 4"x-on:mouseover="active = 4">
+            <section id="contact" x-on:touchstart="active = 4"x-on:mouseover="active = 4">
                 <div class="container pt-6 mb-6">
                     <h2 class="title has-text-centered is-2 animate__animated mb-6" :class="active == 4 ? 'animate__rotateInDownLeft':''">
                         Contact  Us
