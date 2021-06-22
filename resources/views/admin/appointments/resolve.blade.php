@@ -17,7 +17,7 @@
                             <th>Time</th>
                             <th>Date</th>
                             <th>Date Completed</th>
-                            <th>Option</th>
+                            {{-- <th>Option</th> --}}
                         </tr>
                     </thead>
                     <tfoot>
@@ -28,7 +28,7 @@
                             <th>Time</th>
                             <th>Date</th>
                             <th>Date Completed</th>
-                            <th>Option</th>
+                            {{-- <th>Option</th> --}}
                         </tr>
                     </tfoot>
                     <tbody>
@@ -50,9 +50,9 @@
                                 <td>
                                     {{ $app->updated_at->format('Y/m/d') }}
                                 </td>
-                                <td>
+                                {{-- <td>
                                     
-                                </td>
+                                </td> --}}
                             </tr>
                         @endforeach
                     </tbody>
