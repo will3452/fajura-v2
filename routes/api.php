@@ -24,11 +24,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('v1/packages', function(Request $request){
     
     if($request->has('q')){
-        $packages = Package::where('name', 'LIKE', '%'.$request->q.'%')->get();
+        $packages = Package::with('services')->where('name', 'LIKE', '%'.$request->q.'%')->get();
     }else {
-        $packages = Package::get();
+        $packages = Package::with('services')->get();
     }
-    $packages->with('services');
     
     return $packages; 
 });
