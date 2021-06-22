@@ -111,7 +111,7 @@
                         @endcan
                         
                         <div class="navbar-item">
-                            <a href="{{ route('notif.show') }}" class="button is-rounded has-icon">
+                            <a href="{{ route('notif.show') }}"  id="notif_box" class="button is-rounded has-icon">
                                 <div class="icon">
                                     <i data-feather="bell"></i>
                                 </div>
@@ -122,7 +122,7 @@
                                 @endif
                             </a>
                         </div>
-                        <div class="navbar-item has-dropdown is-hoverable ">
+                        <div class="navbar-item has-dropdown is-hoverable " id="profile_box">
                             <a class="navbar-link has-icon">
                                 <div class="icon mr-2">
                                     <img style="border-radius: 50%; width:25px;height:25px;" src="{{ auth()->user()->profile->picture ? auth()->user()->public_picture : "https://ui-avatars.com/api/?size=128&background=random&name=".auth()->user()->name  }}" alt="">
@@ -136,7 +136,7 @@
                               {{-- <a class="navbar-item">
                                 text here
                               </a> --}}
-                              <a class="navbar-item" href="{{route('profile.show', auth()->user()->id)}}">
+                              <a class="navbar-item"  href="{{route('profile.show', auth()->user()->id)}}">
                                 <i data-feather="user" class="mr-1"></i> 
                                 Profile
                               </a>

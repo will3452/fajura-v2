@@ -70,7 +70,7 @@ class MedicalAnswerController extends Controller
             ]);
         }
         toast('Medical History Recorded');
-        return redirect()->route('home');
+        return request()->has('first') ? redirect(route('home').'?tut=true') : redirect(route('home'));
     }
 
     /**

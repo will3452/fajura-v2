@@ -1,7 +1,6 @@
 @extends('layouts.main')
 
 @section('content')
-{{session()->get('appointment_id')}}
     <div class="container">
         <div class="columns">
             <div class="column is-4 is-hidden-mobile">
@@ -13,7 +12,7 @@
             <div class="column is-8">
                 <div class="columns is-multiline is-mobile">
                     @can('browse services')
-                        <div class="column is-6 is-half-mobile">
+                        <div class="column is-6 is-half-mobile" id="service_box">
                             <div class="box">
                                 <div class="level">
                                     <div class="level-left">
@@ -59,7 +58,7 @@
                         </div>
                     @endcan
                     @can('add appointments')
-                        <div class="column is-6 is-half-mobile">
+                        <div class="column is-6 is-half-mobile" id="appointment_box">
                             <div class="box">
                                 <div class="level">
                                     <div class="level-left">
@@ -152,7 +151,7 @@
                             </div>
                         </div>
                     @endcan
-                    <div class="column is-6 is-half-mobile">
+                    <div class="column is-6 is-half-mobile" id="help_box">
                         <div class="box">
                             <div class="level">
                                 <div class="level-left">
@@ -173,7 +172,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="column is-6 is-half-mobile">
+                    <div class="column is-6 is-half-mobile" id="setting_box">
                         <div class="box">
                             <div class="level">
                                 <div class="level-left">
@@ -218,4 +217,41 @@
 @push('scripts')
     @include('includes.jquery')
     @include('includes.marquee')
+    @if (request()->has('tut'))
+    @include('includes.introjs')
+    <script>
+        introJs().setOptions({
+        steps: [{
+            intro: "Hello {{ auth()->user()->profile->sex == 'Male' ? 'Mr.':'Ms.' }} {{ auth()->user()->name }}, Since your first time to use our system, let me guide you :)"
+        }, {
+            element: document.querySelector('#service_box'),
+            intro: "This is Services menu, If you want to browse all of our services go here."
+        },
+        {
+            element: document.querySelector('#appointment_box'),
+            intro: "This is Appointment menu, If you want to book an appointment go here."
+        },
+        {
+            element: document.querySelector('#help_box'),
+            intro: "This is Helps & Tutorials menu, If you need some help just go here."
+        },
+        {
+            element: document.querySelector('#setting_box'),
+            intro: "This is Settings menu, If you want to change your account password, turn your display into dark mode go here."
+        },
+        {
+            element: document.querySelector('#notif_box'),
+            intro: "All of your Notifications goes here."
+        },
+        {
+            element: document.querySelector('#profile_box'),
+            intro: "If you want to check your profile Just hover here and click the profile :)"
+        }
+        ]
+        }).onbeforeexit(function () {
+            window.location.href="{{ route('home') }}"
+            return true;
+        }).start();
+    </script>
+    @endif
 @endpush

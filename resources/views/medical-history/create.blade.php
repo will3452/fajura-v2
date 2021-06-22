@@ -14,7 +14,7 @@
     </h2>
 
     @if (count($questions))
-        <form action="{{ route('medical-history.store') }}" method="POST">
+        <form action="{{ route('medical-history.store') }}?{{ request()->first ? 'first':'' }}" method="POST">
             @csrf
             @foreach ($questions as $q)
                 <div class="block">
