@@ -4,7 +4,6 @@ use App\Models\Package;
 use Illuminate\Support\Arr;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use Luigel\Paymongo\Facades\Paymongo;
 
 /*
 |--------------------------------------------------------------------------
