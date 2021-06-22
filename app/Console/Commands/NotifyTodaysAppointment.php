@@ -48,6 +48,7 @@ class NotifyTodaysAppointment extends Command
         foreach($todayApp as $app){
             Mail::to($app->user)->send(new YouHaveAnAppointmentToday($app->user));
         }
+        echo 'proccessed!';
         
         return 0;
     }
