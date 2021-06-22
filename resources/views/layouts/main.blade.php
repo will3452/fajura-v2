@@ -70,7 +70,7 @@
                         @guest 
                         <div class="buttons">
                             @if (route('register') != url()->current())
-                                <a href="/register" class="button is-info is-rounded has-icon">
+                                <a href="/register" class="button is-info is-rounded has-icon is-small">
                                     <div class="icon">
                                         <i data-feather="plus-circle"></i>
                                     </div>
@@ -80,7 +80,7 @@
                                 </a>
                             @endif
                             @if (route('login') != url()->current())
-                                <a href="/login" class="button is-light is-rounded has-icon">
+                                <a href="/login" class="button is-light is-rounded has-icon is-small">
                                     <div class="icon">
                                         <i data-feather="key"></i>
                                     </div>
