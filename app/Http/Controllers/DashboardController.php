@@ -46,7 +46,8 @@ class DashboardController extends Controller
                 // return $data;
                 return view('admin.dashboard', compact('patients', 'appointments', 'annual', 'monthly','data'));
             }else {
-                if(!auth()->user()->medicalAnswers()->count()){
+                dd(auth()->user()->medicalAnswers()->count());
+                if(auth()->user()->hasRole('patient') && !(auth()->user()->medicalAnswers()->count())){
                     return view('medical-history.create');
                 }
                 return view('dashboard');
