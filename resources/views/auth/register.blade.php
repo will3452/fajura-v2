@@ -262,7 +262,7 @@
                     <label for="" class="label help">By continuing submitting this form, I hereby Agree and consent to the <a href="/privacy-policy" target="_blank">Privacy Policy</a>.</label>
                     <div class="control">
                         <template x-if="checkAll()">
-                            <button type="button"
+                            <button 
                              class="button is-info is-rounded"
                                >
                                  <span> {{ __('Submit') }}</span>
