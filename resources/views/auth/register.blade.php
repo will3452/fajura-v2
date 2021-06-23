@@ -269,7 +269,7 @@
                             </button>
                         </template>
                         <template x-if="!checkAll()">
-                            <button type="button" disabled class="button is-info is-rounded"  >
+                            <button  disabled class="button is-info is-rounded"  >
                                  <span> {{ __('Submit') }}</span>
                             </button>
                         </template>
