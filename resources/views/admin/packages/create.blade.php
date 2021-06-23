@@ -3,7 +3,7 @@
 @section('content')
     <div class="card">
         <div class="card-header">
-            Add new Packages
+            Add new Promo
         </div>
         <div class="card-body">
             <form action="{{ route('admin.save.package') }}" method="POST">

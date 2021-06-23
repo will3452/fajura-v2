@@ -90,7 +90,7 @@
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsepkg"
             aria-expanded="true" aria-controls="collapseUtilities">
             <i class="fas fa-fw fa-cubes"></i>
-            <span>Packages</span>
+            <span>Promo</span>
         </a>
         <div id="collapsepkg" class="collapse" aria-labelledby="headingApp"
             data-parent="#accordionSidebar">
