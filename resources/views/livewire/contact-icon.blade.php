@@ -1,12 +1,12 @@
 <div style="position: fixed;bottom:10px;right:10px;z-index:9999;">
     @if ($active)
-    <a href="{{ \App\Models\AppSetting::first()->messenger_url ?? ''}} " class="button is-small is-info is-rounded">
+    <a title="Facebook" href="{{ \App\Models\AppSetting::first()->messenger_url ?? ''}} " class="button is-small is-info is-rounded">
         <i data-feather="facebook"></i>
     </a>
-    <a href="tel:{{ \App\Models\AppSetting::first()->phone ?? ''}} " class="button is-small is-primary is-rounded">
+    <a title="Phone" href="tel:{{ \App\Models\AppSetting::first()->phone ?? ''}} " class="button is-small is-primary is-rounded">
         <i data-feather="phone"></i>
     </a>
-    <a href="mailto:{{ \App\Models\User::where('is_admin', true)->first()->email ?? ''}} " class="button is-small is-success is-rounded">
+    <a title="Email" href="mailto:{{ \App\Models\User::where('is_admin', true)->first()->email ?? ''}} " class="button is-small is-success is-rounded">
         <i data-feather="mail"></i>
     </a>
     <script>
