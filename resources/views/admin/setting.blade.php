@@ -52,6 +52,15 @@
                     <input type="text" class="form-control" required name="brand_name" value="{{ $appSetting->brand_name }}">
                 </div>
                 <div class="form-group">
+                    <label for="">Brand Logo link</label>
+                    <input type="text"
+                    class="form-control"
+                    
+                    name="brand_logo"
+                    placeholder="your uploaded logo over your social media account, please copy the image link and paste on it"
+                    value="{{ $appSetting->brand_logo }}">
+                </div>
+                <div class="form-group">
                     <label for="">Brand Tagline</label>
                     <input type="text" class="form-control" required name="brand_saying" value="{{ $appSetting->brand_saying }}">
                 </div>
@@ -78,6 +87,13 @@
                 <div class="form-group">
                     <label for="">About Page Link</label>
                     <input type="text" class="form-control" name="about_url" value="{{ $appSetting->about_url }}">
+                </div>
+                <div class="form-group">
+                    <label for="">About Page Excerpt</label>
+                    <textarea name="about_excerpt"
+                    class="form-control"
+                    placeholder="eg. XXXX Clinic started operating in 2017 and it is located inside of Loving Mother General Hospital and Diagnostic Inc. in San Nicolas, Tarlac City."
+                    >{{ $appSetting->about_excerpt??'' }}</textarea>
                 </div>
                 <button class="btn btn-success mr-2">
                     <i class="fa fa-check"></i>

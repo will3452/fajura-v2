@@ -49,6 +49,8 @@ class AdminSettingController extends Controller
             'tel'=>'',
             'phone'=>'',
             'about_url'=>'',
+            'about_excerpt'=>'',
+            'brand_logo'=>'',
         ]);
 
         AppSetting::first()->update($data);

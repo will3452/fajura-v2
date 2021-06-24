@@ -57,7 +57,7 @@
                             About us
                         </h2>
                         <div class="block is-size-2-desktop animate__animated" :class="active == 2 ? 'animate__fadeIn':''">
-                            Fajura Dental Clinic started operating in 2017 and it is located inside of Loving Mother General Hospital and Diagnostic Inc. in San Nicolas, Tarlac City.
+                            {{ $app->about_excerpt }}
                         </div>
                         <div class="block">
                             <a href="{{ $app->about_url }}" class="button is-rounded animate__animated" :class="active == 2 ? 'animate__bounce':''">Know more</a>
