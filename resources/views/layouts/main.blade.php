@@ -41,6 +41,9 @@
 </head>
 <body>
     @include('sweetalert::alert')
+    <a href="/#contact" class="button is-rounded is-dark is-small" style="position: fixed;bottom:10px;right:10px;z-index:9999;">
+        Contact Us
+    </a>
     <div id="app">
         <nav class="navbar is-spaced" x-data="{
             isActive:false,
