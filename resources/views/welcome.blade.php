@@ -235,7 +235,7 @@
                     {{--  --}}
                     <div class="has-text-centered">
                         <small class="help">
-                            &copy; Fajura - <span x-text="new Date().getFullYear()"></span> | Developed by <a style="display: inline;padding:0px;margin:0px" href="https://www.williamgalas.tech" targe="_blank">WSG</a>
+                            &copy; {{ $app->brand_name }} - <span x-text="new Date().getFullYear()"></span> | Developed by <a style="display: inline;padding:0px;margin:0px" href="https://www.williamgalas.tech" targe="_blank">WSG</a>
                         </small>
                     </div>
                 </footer>
