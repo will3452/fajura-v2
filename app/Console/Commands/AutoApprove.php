@@ -12,14 +12,14 @@ class AutoApprove extends Command
      *
      * @var string
      */
-    protected $signature = 'command:name';
+    protected $signature = 'auto:approve';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'auto approve';
 
     /**
      * Create a new command instance.
