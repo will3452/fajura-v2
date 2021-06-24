@@ -41,7 +41,7 @@
             @foreach ($helps as $help)
                 <div class="box">
                     <h1>{{ $help->title }}</h1>
-                    <p class="text-light mt-4">{{ \Str::limit($help->body, 150)}} <a href="{{ route('helps.show', $help) }}">read more</a></p>
+                    <p class="text-light mt-4">{!! \Str::limit($help->body, 150) !!} <a href="{{ route('helps.show', $help) }}">read more</a></p>
                 </div>
             @endforeach
             {{ $helps->render("pagination::simple-bootstrap-4") }}
