@@ -2,11 +2,12 @@
 
 namespace App\Console;
 
+use App\Console\Commands\AutoApprove;
+use App\Console\Commands\TestingCommand;
 use App\Console\Commands\GenerateSitemap;
 use App\Console\Commands\MakeAdminSetting;
-use App\Console\Commands\NotifyTodaysAppointment;
-use App\Console\Commands\TestingCommand;
 use Illuminate\Console\Scheduling\Schedule;
+use App\Console\Commands\NotifyTodaysAppointment;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
 class Kernel extends ConsoleKernel
@@ -19,7 +20,8 @@ class Kernel extends ConsoleKernel
     protected $commands = [
         NotifyTodaysAppointment::class,
         MakeAdminSetting::class,
-        GenerateSitemap::class
+        GenerateSitemap::class,
+        AutoApprove::class
         // TestingCommand::class
     ];
 
@@ -34,6 +36,7 @@ class Kernel extends ConsoleKernel
         // $schedule->command('inspire')->hourly();
         $schedule->command(NotifyTodaysAppointment::class)->dailyAt('05:00')->timezone('Asia/Manila');
         $schedule->command(GenerateSitemap::class)->daily();
+        $schedule->command(AutoApprove::class)->everyMinute();
         // $schedule->command(NotifyTodaysAppointment::class)->everyMinute();
     }
 
