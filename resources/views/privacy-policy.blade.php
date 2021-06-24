@@ -57,7 +57,7 @@
 
 <h2>CCPA Privacy Rights (Do Not Sell My Personal Information)</h2>
 
-<p>Under the CCPA, among other rights, California consumers have the right to:</p>
+<p>Under the CCPA, among other rights, Philippines consumers have the right to:</p>
 <p>Request that a business that collects a consumer's personal data disclose the categories and specific pieces of personal data that a business has collected about consumers.</p>
 <p>Request that a business delete any personal data about the consumer that a business has collected.</p>
 <p>Request that a business that sells a consumer's personal data, not sell the consumer's personal data.</p>
