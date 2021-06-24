@@ -39,9 +39,9 @@
                 </div>
             @endif
             @foreach ($helps as $help)
-                <div class="box">
+                <div class="box is-flex is-justify-content-space-between is-align-items-center">
                     <h1>{{ $help->title }}</h1>
-                    <p class="text-light mt-4">{!! \Str::limit($help->body, 150) !!} <a href="{{ route('helps.show', $help) }}">read more</a></p>
+                    <a href="{{ route('helps.show', $help) }}" class="button is-info is-small is-rounded">View Tutorial</a>
                 </div>
             @endforeach
             {{ $helps->render("pagination::simple-bootstrap-4") }}
