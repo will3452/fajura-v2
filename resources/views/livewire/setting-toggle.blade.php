@@ -46,5 +46,5 @@
             </div>
         </div>
     @endif
-    
+    {!! $prop == 'dark_mode' && $active ? "<link rel='stylesheet' href='/css/dark.css'/>":"" !!}
 </div>

@@ -48,17 +48,5 @@
             </div>
         </div>
     </div>
-    
-    <div style="text-align: right">
-        <a href="{{ url()->current() }}" class="has-icon 
-            button is-info is-rounded is-small">
-            <div class="icon">
-                <i data-feather="refresh-ccw"></i>
-            </div>
-            <div>
-                Reload is required
-            </div>
-        </a>
-    </div>
 </div>
 @endsection

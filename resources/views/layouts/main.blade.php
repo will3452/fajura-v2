@@ -41,6 +41,7 @@
 </head>
 <body>
     @include('sweetalert::alert')
+    @livewire('contact-icon')
     <div id="app">
         <nav class="navbar is-spaced" x-data="{
             isActive:false,
