@@ -40,8 +40,7 @@ class EraseCancelledAppointment extends Command
     {
         $appointments = Appointment::where('status', 'cancelled')->get();
         foreach($appointments as $app){
-            $app->user->notify(new AppointmentCancelledWasRemoveByTheSystem($app));
-            $app->delete();
+            echo $appointments;
         }
         return 0;
     }
