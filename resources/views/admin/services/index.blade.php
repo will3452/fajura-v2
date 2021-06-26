@@ -57,7 +57,7 @@
                                         @csrf
                                         @method('DELETE')
                                     </form>
-                                    <form action="#" onsubmit="function(){
+                                    <form action="#" onsubmit="function(e){
                                         e.preventDefault();
                                         let ans = confirm('Are you sure do you want to delete this service?');
                                         $('#form{{ $service->id }}').submit();
