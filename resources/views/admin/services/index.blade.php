@@ -57,14 +57,14 @@
                                         @csrf
                                         @method('DELETE')
                                     </form>
-                                    <form action="#" onsubmit="function(e){
-                                        e.preventDefault();
-                                        let ans = confirm('Are you sure do you want to delete this service?');
-                                        $('#form{{ $service->id }}').submit();
-                                    }"  class="d-flex justify-content-between">
+                                    <form action="#"  class="d-flex justify-content-between">
                                         
                                         <a href="{{ route('admin.services.edit', $service) }}" class="btn  btn-sm btn-primary">Edit</a>
-                                        <button class="btn btn-danger btn-sm ">Delete</button>
+                                        <button class="btn btn-danger btn-sm " onclick="function(e){
+                                            e.preventDefault();
+                                            let ans = confirm('Are you sure do you want to delete this service?');
+                                            $('#form{{ $service->id }}').submit();
+                                        }">Delete</button>
                                     </form>
                                 </td>
                             </tr>
