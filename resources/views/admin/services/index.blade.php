@@ -59,13 +59,13 @@
                                     </form>
                                     <form action="#"  class="d-flex justify-content-between">
                                         <a href="{{ route('admin.services.edit', $service) }}" class="btn  btn-sm btn-primary">Edit</a>
-                                        <button class="btn btn-danger btn-sm " onclick="deleteS()">Delete</button>
+                                        <button class="btn btn-danger btn-sm " id="delete{{ $service->id }}">Delete</button>
                                         <script>
-                                            function deleteS(e){
+                                            $('#delete{{ $service->id }}').click(function(e){
                                                 e.preventDefault();
                                                 let ans = confirm('Are you sure do you want to delete this service?');
                                                 $('#form{{ $service->id }}').submit();
-                                            }
+                                            });
                                         </script>
                                     </form>
                                 </td>
