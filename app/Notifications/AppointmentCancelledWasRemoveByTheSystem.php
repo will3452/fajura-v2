@@ -52,7 +52,7 @@ class AppointmentCancelledWasRemoveByTheSystem extends Notification
     {
         return [
             'icon'=>'x-circle',
-            'message'=>'Your cancelled appointment had been removed.',
+            'message'=>'Your cancelled appointment has been removed.',
             'action'=>'#'
         ];
     }
