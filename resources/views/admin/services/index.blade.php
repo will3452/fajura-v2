@@ -65,7 +65,7 @@
                                                 $('#delete{{ $service->id }}').click(function(e){
                                                     e.preventDefault();
                                                     let ans = confirm('Are you sure do you want to delete this service?');
-                                                    $('#form{{ $service->id }}').submit();
+                                                    ans ? $('#form{{ $service->id }}').submit(): alert('Ok!');
                                                 });
                                             })
                                         </script>
