@@ -40,7 +40,7 @@ class Kernel extends ConsoleKernel
         $schedule->command(GenerateSitemap::class)->daily();
         // $schedule->command(AutoApprove::class)->everyMinute();
         $schedule->command(EraseCancelledAppointment::class)->everyMinute();
-        // $schedule->command(NotifyTodaysAppointment::class)->everyMinute();
+        // $schedule->command(NotifyTodaysAppointment::class)->everyMinute();.
     }
 
     /**
