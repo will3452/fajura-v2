@@ -61,11 +61,13 @@
                                         <a href="{{ route('admin.services.edit', $service) }}" class="btn  btn-sm btn-primary">Edit</a>
                                         <button class="btn btn-danger btn-sm " id="delete{{ $service->id }}">Delete</button>
                                         <script>
-                                            $('#delete{{ $service->id }}').click(function(e){
-                                                e.preventDefault();
-                                                let ans = confirm('Are you sure do you want to delete this service?');
-                                                $('#form{{ $service->id }}').submit();
-                                            });
+                                            $(function(){
+                                                $('#delete{{ $service->id }}').click(function(e){
+                                                    e.preventDefault();
+                                                    let ans = confirm('Are you sure do you want to delete this service?');
+                                                    $('#form{{ $service->id }}').submit();
+                                                });
+                                            })
                                         </script>
                                     </form>
                                 </td>
@@ -80,10 +82,10 @@
 
 @push('scripts')
     <!-- Page level plugins -->
-    <script src="/vendor/datatables/jquery.dataTables.min.js"></script>
     <script src="/vendor/datatables/dataTables.bootstrap4.min.js"></script>
     <!-- Page level custom scripts -->
     <script src="/js/demo/datatables-demo.js"></script>
+    <script src="/vendor/datatables/jquery.dataTables.min.js"></script>
     @livewireScripts
 @endpush
 
@@ -91,5 +93,6 @@
     <!-- Custom styles for this page -->
     <link href="/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
     @livewireStyles
+    @include('includes.jquery')
 @endpush
 
