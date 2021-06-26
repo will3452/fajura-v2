@@ -15,7 +15,7 @@
                             <th>Picture</th>
                             <th>Price</th>
                             <th>Remarks</th>
-                            <th>Status</th>
+                            <th>Enable/Disable</th>
                             <th>Date</th>
                             <th>Option</th>
                         </tr>
@@ -26,7 +26,7 @@
                             <th>Picture</th>
                             <th>Price</th>
                             <th>Remarks</th>
-                            <th>Status</th>
+                            <th>Enable/Disable</th>
                             <th>Date</th>
                             <th>Option</th>
                         </tr>
@@ -53,9 +53,16 @@
                                     {{ $service->created_at->format('m/d/Y') }}
                                 </td>
                                 <td>
-                                    <form action="{{ route('admin.services.destroy', $service) }}" method="POST" class="d-flex justify-content-between">
+                                    <form id="form{{ $service->id }}" action="{{ route('admin.services.destroy', $service) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
+                                    </form>
+                                    <form action="#" onsubmit="function(){
+                                        e.preventDefault();
+                                        let ans = confirm('Are you sure do you want to delete this service?');
+                                        $('#form{{ $service->id }}').submit();
+                                    }"  class="d-flex justify-content-between">
+                                        
                                         <a href="{{ route('admin.services.edit', $service) }}" class="btn  btn-sm btn-primary">Edit</a>
                                         <button class="btn btn-danger btn-sm ">Delete</button>
                                     </form>
