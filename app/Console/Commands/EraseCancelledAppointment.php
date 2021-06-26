@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Models\Appointment;
 use Illuminate\Console\Command;
 use App\Notifications\AppointmentCancelledWasRemoveByTheSystem;
 
@@ -38,9 +39,10 @@ class EraseCancelledAppointment extends Command
      */
     public function handle()
     {
-        $appointments = Appointment::get();
+        $appointments = Appointment::where('status', 'cancelled')->get();
         foreach($appointments as $app){
-            echo $app->created_at;
+            $app->user->notify(new AppointmentCancelledWasRemoveByTheSystem($app));
+            $app->delete();
         }
         return 0;
     }
