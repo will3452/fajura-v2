@@ -38,9 +38,9 @@ class EraseCancelledAppointment extends Command
      */
     public function handle()
     {
-        $appointments = Appointment::where('status', 'cancelled')->get();
+        $appointments = Appointment::get();
         foreach($appointments as $app){
-            echo $appointments;
+            echo $app->created_at;
         }
         return 0;
     }
