@@ -14,8 +14,8 @@ class AddColumnTimeInTableTimes extends Migration
     public function up()
     {
         Schema::table('appointments', function (Blueprint $table) {
-            $table->string('start_time');
-            $table->string('end_time');
+            $table->string('start_time')->nullable();
+            $table->string('end_time')->nullable();
         });
     }
 

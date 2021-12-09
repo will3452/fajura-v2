@@ -14,7 +14,7 @@ class AddNumColumnsToDaysTable extends Migration
     public function up()
     {
         Schema::table('days', function (Blueprint $table) {
-            $table->string('num');
+            $table->string('num')->nullable();
         });
     }
 

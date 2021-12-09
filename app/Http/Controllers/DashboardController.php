@@ -27,34 +27,33 @@ class DashboardController extends Controller
     public function index()
     {
         // dd(auth()->user()->profile);
-        if(auth()->user()->profile->is_blocked){
+        if (auth()->user()->profile->is_blocked) {
             auth()->logout();
-            alert()->info('','You\'ve been blocked, Contact us to resolve the issue.');
+            alert()->info('', 'You\'ve been blocked, Contact us to resolve the issue.');
             return redirect(route('login'));
-        }
-        elseif(auth()->user()->profile->approved_at != null){
-            if(auth()->user()->is_admin){
+        } elseif (auth()->user()->profile->approved_at != null) {
+            if (auth()->user()->is_admin) {
                 $patients = User::role('patient')->get();
                 $appointments = Appointment::where('status', 'pending')->get();
                 $annual = DentalRecords::whereYear('created_at', today()->format('Y'))->sum('amount');
                 $monthly = DentalRecords::whereYear('created_at', today()->format('Y'))->whereMonth('created_at', today()->format('m'))->sum('amount');
-                
+
                 //get all data for charting
-                $data = DentalRecords::whereYear('created_at', request()->year ?? today()->format('Y'))->get()->groupBy(function($val){
+                $data = DentalRecords::whereYear('created_at', request()->year ?? today()->format('Y'))->get()->groupBy(function ($val) {
                     return $val->created_at->format('M');
                 });
                 // return $data;
-                return view('admin.dashboard', compact('patients', 'appointments', 'annual', 'monthly','data'));
-            }else {
+                return view('admin.dashboard', compact('patients', 'appointments', 'annual', 'monthly', 'data'));
+            } else {
                 // dd(auth()->user()->medicalAnswers()->count());
-                if(auth()->user()->hasRole('patient') && !(auth()->user()->medicalAnswers()->count())){
-                   return redirect(route('medical-history.create').'?first=true');
-                }
+                // if(auth()->user()->hasRole('patient') && !(auth()->user()->medicalAnswers()->count())){
+                //    return redirect(route('medical-history.create').'?first=true');
+                // }
                 return view('dashboard');
             }
-        }else {
+        } else {
             auth()->logout();
-            alert()->info('','Your Profile is under review, Please wait 7 minutes and login :)');
+            alert()->info('', 'Your Profile is under review, Please wait 7 minutes and login :)');
             return redirect(route('login'));
         }
     }
