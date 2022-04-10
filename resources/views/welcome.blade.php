@@ -19,7 +19,7 @@
         <div id="login-control">
             @auth
             <a class="button is-rounded is-white is-small" href="{{ route('home') }}">Home</a>
-            @else 
+            @else
             <a class="button is-rounded is-white is-small" href="{{ route('login') }}">Login</a>
             <a class="button is-rounded is-warning is-small" href="{{ route('register') }}">Sign Up</a>
             @endauth
@@ -207,7 +207,7 @@
                         </div>
                     </div>
                     <div class="box">
-                        <iframe src="{{ $app->map_url ?? 'https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d30758.7524625306!2d120.59334900000002!3d15.492818000000002!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x5245366b15dc8ec4!2sLoving%20Mother%20General%20hospital%20%26%20Diagnostic%20Center!5e0!3m2!1sen!2sph!4v1623973219829!5m2!1sen!2sph'}}" id="map" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                        <div style="width: 700px;position: relative;"><iframe width="700" height="440" src="https://maps.google.com/maps?width=700&amp;height=440&amp;hl=en&amp;q=LFH%20Suite%20Hotel%2C%20JP%20Laurel%20Street%2C%20Odiongan%2C%20Romblon+(LFH%20Suite%20Hotel%2C%20JP%20Laurel%20Street%2C%20Odiongan%2C%20Romblon)&amp;ie=UTF8&amp;t=&amp;z=13&amp;iwloc=B&amp;output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><div style="position: absolute;width: 80%;bottom: 10px;left: 0;right: 0;margin-left: auto;margin-right: auto;color: #000;text-align: center;"><small style="line-height: 1.8;font-size: 2px;background: #fff;">Powered by <a href="http://www.googlemapsgenerator.com/es/">Googlemapsgenerator.com/es/</a> & <a href="https://tannblekingbutikken.com/">https://tannblekingbutikken.com/</a></small></div><style>#gmap_canvas img{max-width:none!important;background:none!important}</style></div><br />
                     </div>
                 </div>
                 <footer class="container px-2 mt-6 pt-6">
