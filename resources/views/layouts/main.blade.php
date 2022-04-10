@@ -9,13 +9,12 @@
     @auth
     @if (auth()->user()->unreadNotifications()->count())
             <title>({{  auth()->user()->unreadNotifications()->count() }}) {{ config('app.name') }}</title>
-        @else 
-            <title>{{ config('app.name') }} Dental Clinic Online Sytem In Tarlac Philippines</title>
+        @else
+            <title>{{ config('app.name') }} Dental Clinic Online Sytem</title>
         @endif
-    @else 
-        <title>{{ config('app.name') }} Dental Clinic Online Sytem In Tarlac Philippines</title>
+    @else
+        <title>{{ config('app.name') }} Dental Clinic Online Sytem</title>
     @endauth
-    @include('includes.favicons')
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
     @livewireStyles()
@@ -68,7 +67,7 @@
             <div id="mobile" class="navbar-menu">
                 <div class="navbar-end">
                     <div class="navbar-item">
-                        @guest 
+                        @guest
                         <div class="buttons">
                             @if (route('register') != url()->current())
                                 <a href="/register" class="button is-info is-rounded has-icon is-small">
@@ -89,7 +88,7 @@
                                 </a>
                             @endif
                         </div>
-                        @else 
+                        @else
                         @if (url()->current() != route('home'))
                             <div class="navbar-item">
                                 <a href="{{ route('home') }}" class="button is-rounded has-icon">
@@ -110,7 +109,7 @@
                                 </div>
                             @endif
                         @endcan
-                        
+
                         <div class="navbar-item">
                             <a href="{{ route('notif.show') }}"  id="notif_box" class="button is-rounded has-icon">
                                 <div class="icon">
@@ -132,13 +131,13 @@
                                     {{ auth()->user()->name }}
                                 </div>
                             </a>
-                    
+
                             <div class="navbar-dropdown is-right">
                               {{-- <a class="navbar-item">
                                 text here
                               </a> --}}
                               <a class="navbar-item"  href="{{route('profile.show', auth()->user()->id)}}">
-                                <i data-feather="user" class="mr-1"></i> 
+                                <i data-feather="user" class="mr-1"></i>
                                 Profile
                               </a>
                               <hr class="navbar-divider">
@@ -164,7 +163,7 @@
     </div>
 
     @livewireScripts()
-    
+
     <script src="/js/jsdpicker.js"></script>
     <script src="/js/feather_init.js"></script>
     {{-- <script src="https://unpkg.com/js-datepicker"></script> --}}
