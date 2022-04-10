@@ -53,7 +53,7 @@ class DashboardController extends Controller
             }
         } else {
             auth()->logout();
-            alert()->info('', 'Your Profile is under review, Please wait 7 minutes and login :)');
+            alert()->info('', 'Your Profile is under review');
             return redirect(route('login'));
         }
     }
