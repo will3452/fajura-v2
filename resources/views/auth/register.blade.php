@@ -9,7 +9,7 @@
         <div class="column is-8 is-offset-2">
             <form method="POST" class="c-form" action="{{ route('register') }}">
                 @csrf
-        
+
                 <div class="field">
                     <label for="" class="label">Name</label>
                     <div class="control">
@@ -54,7 +54,7 @@
                         if(!this.provinces.length){
                             const resp = await fetch('/json/refprovince.json')
                             const {RECORDS: data} = await resp.json()
-                            const provinces = await data.filter(d=>d.regCode == '03');
+                            const provinces = await data.filter(d=>d.regCode == '17');
                             document.getElementById('prov').innerHTML = `<option value='' disabled selected>City</option>`;
                             this.provinces = await provinces;
                             for({provDesc} of provinces){
@@ -140,7 +140,7 @@
                     invalid:false,
                     updateInvalid(){
                         let rx = /\b9\d{9}\b/;
-                        
+
                         this.invalid = document.getElementById('phone').value[0] != 9 || document.getElementById('phone').value.length != 10;
                         console.log(document.getElementById('phone').value[0])
                     }
@@ -203,7 +203,7 @@
                 }">
                 <div class="field" >
                     <label for="password" class="label">{{ __('Password') }}</label>
-                    
+
                     <div class="field has-addons">
                         <div class="control is-expanded">
                             <input x-ref="password" x-on:input="checkPasswordError()" type="password" class="input @error('password') is-danger @enderror" name="password" required autocomplete="new-password">
@@ -236,7 +236,7 @@
                             </a>
                           </p>
                     </div>
-                    
+
                 </div>
                 <div class="field mb-2" >
                     <label for="password" class="label">{{ __('Confirm Password') }}</label>
@@ -262,7 +262,7 @@
                     <label for="" class="label help">By continuing submitting this form, I hereby Agree and consent to the <a href="/privacy-policy" target="_blank">Privacy Policy</a>.</label>
                     <div class="control">
                         <template x-if="checkAll()">
-                            <button 
+                            <button
                              class="button is-info is-rounded"
                                >
                                  <span> {{ __('Submit') }}</span>

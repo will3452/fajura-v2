@@ -15,7 +15,7 @@ class CreateAppSettingsTable extends Migration
     {
         Schema::create('app_settings', function (Blueprint $table) {
             $table->id();
-            $table->string('brand_name')->default('Fajura');
+            $table->string('brand_name')->default('Dental Management system');
             $table->string('brand_saying')->default('smile with confidence');
             $table->text('map_url')->nullable();
             $table->string('fb_page_url')->default('https://www.facebook.com/fajuradentalclinic');
