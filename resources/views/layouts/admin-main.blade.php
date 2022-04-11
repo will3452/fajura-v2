@@ -245,9 +245,9 @@
             <!-- Footer -->
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
-                    <div class="copyright text-center my-auto">
+                    {{-- <div class="copyright text-center my-auto">
                         <span>Copyright &copy; fajura {{ now()->format('Y') }} - Powered by <a href="https://www.williamgalas.tech" target="_blank">williamgalas</a></span>
-                    </div>
+                    </div> --}}
                 </div>
             </footer>
             <!-- End of Footer -->
