@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fajura Dental Clinic Online Sytem In Tarlac Philippines</title>
+    <title>{{config('app.name')}}</title>
     <link rel="stylesheet" href="/css/app.css">
     <link rel="stylesheet" href="/main.css">
     <script src="/js/app.js"></script>
-    @include('includes.favicons')
-    @include('includes.meta')
+    {{-- @include('includes.favicons') --}}
+    {{-- @include('includes.meta') --}}
 </head>
 <body>
     @include('sweetalert::alert')
