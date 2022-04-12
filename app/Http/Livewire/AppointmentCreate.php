@@ -11,6 +11,11 @@ class AppointmentCreate extends Component
     public $dentist;
     public $slot = [];
     public $date = '';
+
+    protected $rules = [
+        'dentist' => 'required',
+    ];
+
     public function __construct(){
         $this->dentists = User::role('dentist')->get();
         $this->dentist = $this->dentists->first();
