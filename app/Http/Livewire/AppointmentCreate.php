@@ -23,7 +23,7 @@ class AppointmentCreate extends Component
     }
 
     public function getTimesProperty(){
-        return optional($this->dentist)->times;
+        return optional($this->dentist)->times ?? [];
     }
 
     public function getDaysProperty(){
