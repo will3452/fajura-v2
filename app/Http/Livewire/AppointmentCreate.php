@@ -18,9 +18,9 @@ class AppointmentCreate extends Component
     }
 
     public function getTimesProperty(){
-        return $this->dentist->times;
+        return optional($this->dentist)->times;
     }
-    
+
     public function getDaysProperty(){
         $arr = [];
         foreach($this->times as $time){
@@ -34,7 +34,7 @@ class AppointmentCreate extends Component
         dd(request()->all());
     }
 
-    
+
 
     public function render()
     {
