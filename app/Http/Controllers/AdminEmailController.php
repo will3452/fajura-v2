@@ -17,7 +17,7 @@ class AdminEmailController extends Controller
         $email = $data['email'];
         Mail::send([], [], function(Message $message) use ($html, $email){
             $message->to($email)
-            ->subject('Fajura Admin Message')
+            ->subject('Admin Message')
             ->setBody($html, 'text/html');
         });
         toast('Message sent!', 'success');
