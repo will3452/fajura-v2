@@ -6,10 +6,17 @@
                 <i data-feather="arrow-left"></i>
             </div>
         </a>
-        
+
         <h2 class="title is-4" style="text-align: center">Available Time</h2>
         <form action="{{ route('appointments.store') }}" method="POST">
             @csrf
+            <div class="field">
+                <label for="" class="label">Patient</label>
+                <div class="control">
+                    <input type="hidden" name="patient_id" value="{{ $user->id }}">
+                    <input type="text" disabled class="input" value="{{ $user->name }}">
+                </div>
+            </div>
             <div class="field">
                 <label for="" class="label">Dentist</label>
                 <div class="control">
@@ -29,7 +36,7 @@
             @forelse ($times as $time)
                 <div class="field">
                     <div class="label">
-                        <input type="radio" required name="time" value="{{ $time['id'] }}"> 
+                        <input type="radio" required name="time" value="{{ $time['id'] }}">
                         {{ \App\Models\Time::MAKEREADBLE($time['start']) }} - {{ \App\Models\Time::MAKEREADBLE($time['end']) }}
                     </div>
                 </div>
@@ -41,8 +48,8 @@
                     No Available Time Slot!
                 </p>
             @endforelse
-            
+
         </form>
-        
+
     </div>
 @endsection

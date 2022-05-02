@@ -42,7 +42,8 @@ class AppointmentController extends Controller
      */
     public function store(Request $request)
     {
-
+        $user = User::find($request->patient_id);
+        $patient_id = $request->patient_id;
         $date = $request->date;
             $dentist_id  = $request->dentist_id;
             $dentist = User::findOrFail($dentist_id);
@@ -59,8 +60,8 @@ class AppointmentController extends Controller
         if(!$request->has('time')){
             $date_secret =Hash::make($date);
             $dentist_secret =Hash::make($dentist_id);
-            
-            return view('appointments.showtime',compact('times', 'date', 'dentist', 'date_secret', 'dentist_secret', 'day'));
+
+            return view('appointments.showtime',compact('times', 'date', 'dentist', 'date_secret', 'dentist_secret', 'day', 'patient_id', 'user'));
         }else {
             if(!$times->where('id', $request->time)->count()) {
                 $date_secret =Hash::make($date);
@@ -70,8 +71,8 @@ class AppointmentController extends Controller
             }
             if(Hash::check($request->dentist_id, $request->dentist_secret) && Hash::check($request->date, $request->date_secret)){
                 $time = Time::find($request->time);
-                $appointment = auth()->user()->appointments()->create([
-                    'date'=>$request->date, 
+                $appointment = $user->appointments()->create([
+                    'date'=>$request->date,
                     'time_id'=>$request->time,
                     'end_time'=>$time->end,
                     'start_time'=>$time->start,
@@ -79,13 +80,13 @@ class AppointmentController extends Controller
                     ]);
 
                     //notify her/him that she/he successfully booked
-                    auth()->user()->notify(new YouBookAnAppointment($appointment));
+                    $user->notify(new YouBookAnAppointment($appointment));
 
-                    //dentist notify 
+                    //dentist notify
                     $appointment->dentist->notify(new YouHaveANewAppointment($appointment));
 
                     toast('You booked successfully!');
-                    return redirect()->route('appointments.index');
+                    return redirect('/all-appointments');
             }else {
                 abort(401);
             }
@@ -138,7 +139,7 @@ class AppointmentController extends Controller
         auth()->user()->notify(new CancelledBookedAppointment($appointment, "You cancelled the appointment (ID ".$appointment->unique_id.").", route('appointments.index')));
 
         $appointment->dentist->notify(new CancelledBookedAppointment($appointment, "Patient cancelled Appointment (ID ".$appointment->unique_id.").", route('dentist-appointments.index')));
-        
+
         toast('You\'ve successfully cancelled!', 'success');
         return back();
     }

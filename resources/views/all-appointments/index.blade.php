@@ -1,12 +1,14 @@
 @extends('layouts.main')
 @section('content')
     <div class="container">
+
         <a href="{{ route('home') }}" class="button is-small is-rounded has-icon">
             <div class="icon">
                 <i data-feather="arrow-left"></i>
             </div>
         </a>
         <h2 class="title is-4" style="text-align: center">Appointments ({{ request()->get ?? 'New' }})</h2>
+
         <div class="block">
             <a href="{{ route('all-appointments.index') }}" class="button is-small is-rounded">
                 New
@@ -27,6 +29,16 @@
                 Cancelled
             </a>
         </div>
+        @if (auth()->user()->hasRole('staff'))
+                <a href="{{ route('appointments.create') }}" class="button is-small is-success has-icon is-rounded">
+                    <div class="icon">
+                        <i data-feather="plus"></i>
+                    </div>
+                    <div>
+                        Book now
+                    </div>
+                </a>
+            @endif
         <div class="table-container">
             <table class="table is-fullwidth table-bordered" id="dataTable">
                 <thead>
@@ -35,7 +47,7 @@
                             ID
                         </th>
                         <th>
-                            PATIENT 
+                            PATIENT
                         </th>
                         <th>
                             DENTIST
@@ -84,7 +96,7 @@
                                 {{ $appointment->created_at->format('m/d/Y') }}
                             </td>
                             @if (!isset(request()->get) || !in_array(isset(request()->get) ? request()->get : '',['completed', 'cancelled']))
-                            <td class="is-flex is-justify-content-space-between"> 
+                            <td class="is-flex is-justify-content-space-between">
                                 @if (!in_array($appointment->status, ['completed', 'cancelled']))
                                     <form action="{{ route('all-appointments.update', $appointment) }}" method="POST">
                                         @csrf
@@ -102,7 +114,7 @@
                                             Cancel
                                         </button>
                                     </form>
-                                @else 
+                                @else
                                     <button disabled="true" class="button is-small p-0 px-2 is-success is-rounded">
                                         Complete
                                     </button>

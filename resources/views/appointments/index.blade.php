@@ -8,8 +8,8 @@
         </a>
         <h2 class="title is-4" style="text-align: center">Appointment</h2>
         <div style="text-align:right;" class="mb-2">
-            
-            @if (auth()->user()->hasUnfinishedAppointment())
+
+            {{-- @if (auth()->user()->hasUnfinishedAppointment())
                 <a href="#" class="button is-small is-success has-icon is-rounded" disabled>
                     <div class="icon">
                         <i data-feather="plus"></i>
@@ -27,8 +27,9 @@
                     Book now
                 </div>
             </a>
-            @endif
-            
+            @endif --}}
+
+
         </div>
         @livewire('search', ['component'=>'appointment-listing', 'placholder'=>'Find Appointment'])
         @livewire('appointment-listing')

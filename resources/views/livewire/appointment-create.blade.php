@@ -2,7 +2,21 @@
     @csrf
     <div class="field">
         <label for="" class="label">
-            Choose your Dentist
+            Choose Patient
+        </label>
+        <div class="control">
+            <div class="select is-fullwidth">
+                <select name="patient_id" id="" wire:model="patient">
+                    @foreach (\App\Models\User::role('patient')->get() as $patient)
+                        <option value="{{ $patient->id }}">{{ $patient->name }}</option>
+                    @endforeach
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="field">
+        <label for="" class="label">
+            Choose Dentist
         </label>
         <div class="control">
             <div class="select is-fullwidth">
