@@ -22,7 +22,7 @@ class AllAppointmentController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    
+
     public function index()
     {
         $this->checkUser();
@@ -32,15 +32,15 @@ class AllAppointmentController extends Controller
         if(request()->has('get')){
             $get = request()->get;
             if($get == 'today'){
-                $appointments = Appointment::where('date', today()->format('Y/m/d'))->get();
+                $appointments = Appointment::whereHas('time')->where('date', today()->format('Y/m/d'))->get();
             }else if($get == 'tomorrow'){
-                $appointments = Appointment::where('date', today()->addDay()->format('Y/m/d'))->get();
+                $appointments = Appointment::whereHas('time')->where('date', today()->addDay()->format('Y/m/d'))->get();
             }else if($get == 'incoming'){
-                $appointments = Appointment::where('status', 'pending')->get();
+                $appointments = Appointment::whereHas('time')->where('status', 'pending')->get();
             }else if($get == 'completed'){
-                $appointments = Appointment::where('status', 'completed')->get();
+                $appointments = Appointment::whereHas('time')->where('status', 'completed')->get();
             }else if($get == 'cancelled'){
-                $appointments = Appointment::where('status', 'cancelled')->get();
+                $appointments = Appointment::whereHas('time')->where('status', 'cancelled')->get();
             }else{
                 toast('Something is wrong!', 'error');
                 return redirect()->route('all-appointments.index');

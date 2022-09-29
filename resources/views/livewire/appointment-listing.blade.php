@@ -35,7 +35,7 @@
                             {{ $appointment->date }}
                         </td>
                         <td>
-                            {{ \App\Models\Time::MAKEREADBLE($appointment->time->start) }} - {{ \App\Models\Time::MAKEREADBLE($appointment->time->end) }}
+                            {{ \App\Models\Time::MAKEREADBLE(optional($appointment->time)->start) }} - {{ \App\Models\Time::MAKEREADBLE(optional($appointment->time)->end) }}
                         </td>
                         <td>
                             {{ $appointment->dentist->name }}
@@ -50,7 +50,7 @@
                             @if (!$appointment->is_finished)
                                 @if ($appointment->is_cancellable)
                                     <form action="{{route('appointments.update', $appointment)}}" method="POST">
-                                        @csrf 
+                                        @csrf
                                         @method('PUT')
                                         <button class="button is-dark is-small is-rounded">
                                             Cancel
@@ -64,7 +64,7 @@
                                     </form>
                                 @endif
                             @endif
-                            
+
                         </td>
                     </tr>
                 @endforeach
